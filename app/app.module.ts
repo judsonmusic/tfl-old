@@ -12,6 +12,7 @@ import {LoginComponent} from "./components/login.component";
 import {UserComponent} from "./components/user.component";
 import {HomeComponent} from "./components/home.component";
 import {PageNotFoundComponent} from "./components/pageNotFound.component";
+import {DashboardComponent} from "./components/dashboard/dashboard.component";
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import {PageNotFoundComponent} from "./components/pageNotFound.component";
     JsonpModule
   ],
   declarations: [
-    AppComponent, LoginComponent, UserComponent, AboutComponent, HomeComponent, PageNotFoundComponent
+    AppComponent, LoginComponent, UserComponent, AboutComponent, HomeComponent, PageNotFoundComponent, DashboardComponent
   ],
   providers: [
     UserService
