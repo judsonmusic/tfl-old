@@ -7,20 +7,25 @@ import {UserService} from "./user.service";
 })
 export class LoginComponent {
 
-  user = {};
+  user: any;
+  loginData: any;
 
   constructor(private userService: UserService) {
 
-    this.user = {email: "test@test.com", password: "Password"};
-
+    this.loginData = {email: "test@test.com", password: "Password"};
+    this.userService.user$.subscribe((userData) => {
+      this.user = userData;
+    });
   }
 
-  onSubmit(user) {
 
-    this.userService.login(user).subscribe((result) => {
+  onSubmit(loginData) {
+
+    console.log(loginData);
+
+    this.userService.login(loginData).subscribe((result) => {
       if (result) {
         console.log('The result of the login is: ', result);
-        this.userService.setUser(result.user[0]);
       }
     });
   }

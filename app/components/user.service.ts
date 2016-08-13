@@ -5,14 +5,15 @@ import Observable = Rx.Observable;
 
 @Injectable()
 export class UserService {
-  private loggedIn = false;
-  private user: Subject<any>;
+
+  loggedIn = false;
+  user: Subject<any>;
   user$: Observable<any>;
 
   constructor(private http: Http) {
-    this.loggedIn = !!localStorage.getItem('auth_token');
     this.user = new Subject();
     this.user$ = this.user.asObservable();
+
   }
 
   createAccount(user) {
@@ -58,16 +59,6 @@ export class UserService {
         }
         return res;
       });
-  }
-
-  getUser() {
-    console.log('Getting User', this.user);
-    return this.user;
-  }
-
-  setUser(user){
-    this.user = user;
-    console.log('User is Set:', this.user);
   }
 
   logout() {

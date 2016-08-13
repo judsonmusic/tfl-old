@@ -19,9 +19,7 @@ export class UserComponent {
 
   }
 
-
-
-  onSubmit(user) {
+  addAccount(user) {
     console.log(user);
     this.userService.createAccount(user).subscribe((result) => {
       if (result) {
@@ -30,5 +28,18 @@ export class UserComponent {
       }
     });
   }
+
+  updateAccount(user) {
+    console.log(this.user.length);
+    this.user = user;
+   /* this.userService.createAccount(user).subscribe((result) => {
+      if (result) {
+        console.log('Account Created Succesfully!', result);
+        //this.router.navigate(['Home']);
+      }
+    });*/
+  }
+
+
 
 }

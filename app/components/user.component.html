@@ -1,8 +1,11 @@
-<form (ngSubmit)="onSubmit(user)">
+<form>
+  You are logged in. Please check your account information...<hr />
   <input type="text" name="firstName" [(ngModel)]="user.firstName" placeholder="First Name"/>
   <input type="text" name="lastName" [(ngModel)]="user.lastName" placeholder="Last Name"/>
   <input type="text" name="email" [(ngModel)]="user.email" placeholder="Email"/>
   <input type="text" name="password" [(ngModel)]="user.password" placeholder="Password"/>
-  <button type="submit">Create Account</button>
+  <button type="submit" *ngIf="user" (click)="updateAccount(user)">Update Account</button>
+  <button type="submit" *ngIf="user" (click)="addAccount(user)">Create Account</button>
 </form>
+{{user.length | async}}
 
