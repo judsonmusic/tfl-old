@@ -11,7 +11,7 @@ export class LoginComponent {
 
   constructor(private userService: UserService) {
 
-    this.user = {email: "judsonmusic@me.com", password: "Morr2sse12"};
+    this.user = {email: "test@test.com", password: "Password"};
 
   }
 
