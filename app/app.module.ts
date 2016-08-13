@@ -4,22 +4,29 @@ import { FormsModule }    from '@angular/forms';
 
 import { AppComponent }   from './app.component';
 import { routing }        from './app.routing';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AboutComponent }  from './components/about.component';
+import {UserService} from "./components/user.service";
+import {LoginComponent} from "./components/login.component";
+import {UserComponent} from "./components/user.component";
+import {HomeComponent} from "./components/home.component";
+import {PageNotFoundComponent} from "./components/pageNotFound.component";
 
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    routing
+    routing,
+    HttpModule,
+    JsonpModule
   ],
   declarations: [
-    AppComponent,
-    AboutComponent
+    AppComponent, LoginComponent, UserComponent, AboutComponent, HomeComponent, PageNotFoundComponent
   ],
   providers: [
-    //HeroService
+    UserService
   ],
   bootstrap: [ AppComponent ]
 })
