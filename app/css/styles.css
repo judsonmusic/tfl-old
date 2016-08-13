@@ -31,3 +31,8 @@ body{
   background-color: #003aa5;
   color: white;
 }
+
+/*HighCharts Override*/
+text[text-anchor="end"]{
+  display: none;
+}

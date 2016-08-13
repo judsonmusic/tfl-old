@@ -231,7 +231,7 @@ app.use(morgan('dev'));
 // serve up static assets
 app.use(express.static(path.join(__dirname, '')));
 app.use('/api', router);
-var a = ['/', '/about', '/contact', '/portal', '/login', '/logout'];
+var a = ['*', '!/api'];
 //all get requests resolve to index.
 app.get(a, function (req, res) {
   res.sendFile('index.html', {root: __dirname});
