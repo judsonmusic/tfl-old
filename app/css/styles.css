@@ -1,3 +1,34 @@
 *{
   font-family: Arial, Helvetica, sans-serif;
+
+}
+body{
+  background-color: #efefef;
+}
+
+.content{
+
+  background-color: white;
+  padding: 20px;
+  min-height:450px;
+
+}
+.navbar{
+
+  margin-bottom: 0 !important;
+}
+.navbar-default {
+  background-color: #003aa5;
+  border-color: #003aa5;
+  border: none;
+  border-radius: 0;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: white !important;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
+  background-color: #003aa5;
+  color: white;
 }
