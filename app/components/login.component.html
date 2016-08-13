@@ -1,6 +1,12 @@
-<form (ngSubmit)="onSubmit(loginData)" *ngIf="!loggedIn">
+<form class="form" (ngSubmit)="onSubmit(loginData)" *ngIf="!loggedIn">
   <p>Login</p>
-  <input type="text" name="email" [(ngModel)]="loginData.email" placeholder="Email Address"/>
-  <input type="text" name="password" [(ngModel)]="loginData.password" placeholder="Password"/>
-  <button type="submit">Login</button>
+  <div class="form-group">
+    <input class="form-control" type="text" name="email" [(ngModel)]="loginData.email" placeholder="Email Address"/>
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" name="password" [(ngModel)]="loginData.password" placeholder="Password"/>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit">Login</button>
+  </div>
 </form>
