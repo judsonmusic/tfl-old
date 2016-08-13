@@ -166,7 +166,7 @@ router.route('/accounts/:account_id')
   // get the account with that id (accessed at GET http://localhost:8080/api/accounts/:account_id)
   .get(function (req, res) {
 
-    Account.findById(req.params.account_id, function (err, account) {
+   Account.findById(req.params.account_id, function (err, account) {
       if (err)
         return res.send(err);
       res.json(account).end;
@@ -175,7 +175,7 @@ router.route('/accounts/:account_id')
 
   // update the account with this id (accessed at PUT http://localhost:8080/api/accounts/:account_id)
   .put(function (req, res) {
-
+    console.log('Attempting Put', req.body);
     // use our account model to find the account we want
     Account.findById(req.params.account_id, function (err, account) {
 

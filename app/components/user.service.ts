@@ -6,13 +6,16 @@ import Observable = Rx.Observable;
 @Injectable()
 export class UserService {
 
-  loggedIn = false;
+  loggedIn: Subject<any>;
+  loggedIn$: Observable<any>;
   user: Subject<any>;
   user$: Observable<any>;
 
   constructor(private http: Http) {
     this.user = new Subject();
     this.user$ = this.user.asObservable();
+    this.loggedIn = new Subject();
+    this.loggedIn$ = this.user.asObservable();
 
   }
 
@@ -31,7 +34,8 @@ export class UserService {
       .map((res) => {
         if (res.success) {
           localStorage.setItem('auth_token', res.auth_token);
-          this.loggedIn = true;
+          this.loggedIn$ = true;
+          this.loggedIn.next(true);
         }
 
         return res.success;
@@ -54,19 +58,43 @@ export class UserService {
         if (res.success) {
           localStorage.setItem('jwt', res.token);
           //set user service info...
-          this.loggedIn = true;
+          this.loggedIn$ = true;
           this.user.next(res.user[0]);
+          this.loggedIn.next(true);
         }
         return res;
       });
   }
 
-  logout() {
-    localStorage.removeItem('auth_token');
-    this.loggedIn = false;
+  updateAccount(user) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('x-access-token', localStorage.jwt);
+
+    console.log('PAYLOAD FOR UPDATE USER: ' , user);
+
+    return this.http
+      .put(
+        '/api/accounts/' + user._id,
+        JSON.stringify(user),
+        { headers }
+      )
+      .map(res => res.json())
+      .map((res) => {
+        if (res.success) {
+          localStorage.setItem('auth_token', res.auth_token);
+          this.loggedIn$ = true;
+          this.loggedIn.next(true);
+        }
+
+        return res.success;
+      });
   }
 
-  isLoggedIn() {
-    return this.loggedIn;
+  logout() {
+    localStorage.removeItem('auth_token');
+    this.loggedIn$ = false;
+    this.loggedIn.next(false);
   }
+
 }

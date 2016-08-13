@@ -8,6 +8,7 @@ import {UserService} from "./user.service";
 export class UserComponent {
 
   user: any;
+  loggedIn: any;
 
   constructor(private userService: UserService) {
 
@@ -15,6 +16,10 @@ export class UserComponent {
 
     this.userService.user$.subscribe((userData) => {
       this.user = userData;
+    });
+
+    this.userService.loggedIn$.subscribe((loggedIn) => {
+      this.loggedIn = loggedIn;
     });
 
   }
@@ -30,14 +35,13 @@ export class UserComponent {
   }
 
   updateAccount(user) {
-    console.log(this.user.length);
-    this.user = user;
-   /* this.userService.createAccount(user).subscribe((result) => {
+
+    this.userService.updateAccount(user).subscribe((result) => {
       if (result) {
-        console.log('Account Created Succesfully!', result);
+        console.log('Account Updated Succesfully!', result);
         //this.router.navigate(['Home']);
       }
-    });*/
+    });
   }
 
 

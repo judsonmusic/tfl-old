@@ -9,12 +9,16 @@ export class LoginComponent {
 
   user: any;
   loginData: any;
+  loggedIn: any;
 
   constructor(private userService: UserService) {
 
     this.loginData = {email: "test@test.com", password: "Password"};
     this.userService.user$.subscribe((userData) => {
       this.user = userData;
+    });
+    this.userService.loggedIn$.subscribe((loggedIn) => {
+      this.loggedIn = loggedIn;
     });
   }
 
