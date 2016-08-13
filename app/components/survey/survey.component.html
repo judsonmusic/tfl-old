@@ -1,0 +1,46 @@
+<div class="container">
+<h1>Welcome to the Survey!</h1>
+<h4>Please answer the following questions to create your profile.</h4>
+<hr/>
+<div class="row">
+  <div class="col-md-12">
+    <form class="form form-horizontal">
+    <ul>
+      <li *ngFor="let q of data" class="row survey-item">
+        <div class="col-md-12 questions" ><span class="survey-category">{{q.category}}</span> <span class="survey-question">{{q.question}}</span></div>
+        <div class="col-md-12">
+            <div class="form-group answers">
+              <div class="survey-radio-wrapper">
+                <input type="radio" id="{{q.id}}_1" name="survey_{{q.category}}"/>
+                <label [attr.for]="q.id + '_1'"><span></span>Strongly Disagree</label>
+              </div>
+              <div class="survey-radio-wrapper">
+                <input type="radio" id="{{q.id}}_2" name="survey_{{q.category}}"/>
+                <label [attr.for]="q.id + '_2'"><span></span>Disagree</label>
+              </div>
+              <div class="survey-radio-wrapper">
+                <input type="radio" id="{{q.id}}_3" name="survey_{{q.category}}"/>
+                <label [attr.for]="q.id + '_3'"><span></span>Somewhat Agree</label>
+              </div>
+              <div class="survey-radio-wrapper">
+                <input type="radio" id="{{q.id}}_4" name="survey_{{q.category}}"/>
+                <label [attr.for]="q.id + '_4'"><span></span>Agree</label>
+              </div>
+              <div class="survey-radio-wrapper">
+                <input type="radio" id="{{q.id}}_5" name="survey_{{q.category}}"/>
+                <label [attr.for]="q.id + '_5'"><span></span>Strongly Agree</label>
+              </div>
+            </div>
+
+        </div>
+      </li>
+    </ul>
+      <button class="btn btn-primary pull-right">Next</button>
+    </form>
+  </div>
+</div>
+</div>
+
+
+
+

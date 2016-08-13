@@ -6,13 +6,15 @@ import { AppComponent }   from './app.component';
 import { routing }        from './app.routing';
 import { HttpModule, JsonpModule } from '@angular/http';
 
-import { AboutComponent }  from './components/about.component';
+import {AboutComponent}  from './components/about.component';
 import {UserService} from "./components/user.service";
 import {LoginComponent} from "./components/login.component";
 import {UserComponent} from "./components/user.component";
 import {HomeComponent} from "./components/home.component";
 import {PageNotFoundComponent} from "./components/pageNotFound.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
+import {SurveyComponent} from "./components/survey/survey.component";
+import {ResourcesComponent} from "./components/resources.component";
 
 
 @NgModule({
@@ -24,7 +26,7 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
     JsonpModule
   ],
   declarations: [
-    AppComponent, LoginComponent, UserComponent, AboutComponent, HomeComponent, PageNotFoundComponent, DashboardComponent
+    AppComponent, LoginComponent, UserComponent, AboutComponent, HomeComponent, PageNotFoundComponent, DashboardComponent, SurveyComponent, ResourcesComponent
   ],
   providers: [
     UserService
