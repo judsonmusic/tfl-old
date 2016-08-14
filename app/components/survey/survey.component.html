@@ -3,7 +3,7 @@
   <!--<h4>Please answer the following questions to create your profile. <a href="javascript:void(0)" (click)="finish($event)">Go to dashboard!</a></h4>-->
   <hr/>
 <div class="instructions" *ngIf="count==0">
-  <img src="/app/images/log_only_large.jpg" style="float: left" />
+  <img src="/app/images/log_only_large.jpg" style="float: left; max-width: 100%;" />
   <p>This Train For Life Balance Assessment tool is intended to allow you to assess your life in 15 different dimensions and rank how balanced and satisfied you are with each. This holistic approach will allow you to take inventory of your life in a more comprehensive manner.  Examining only one aspect of your life would be incomplete so this  TFL Balance Assessment tool will provide you with more insight and a broader perspective of your total wellbeing.  There are no wrong or right answers so just trust your gut and rank each area as authentically as possible. Knowing where you are is the first step in making mindful decisions on where you want to go. </p>
 
   <p>Reflect over the past 3 months as you answer each question. You will be asked to rate each dimension regarded: how balanced and satisfied  you feel, level of importance, motivation to change, your overall happiness and how your job and or school performance is impacted. Once you complete the assessment you will receive your personalized TFL Empowerment Guide which will provide you with insight, resources, and some self-guided exercises.  Your privacy is important to us so be assured that your personal assessment  information will be kept confidential and  will not be shared.</p>
@@ -60,7 +60,7 @@
               </div>
             <!--END: answers-->
             <!--sub-->
-              <div class="sub-survey" *ngIf="q.selected > 0">
+              <div class="sub-survey" *ngIf="q.selected">
                 <h3>Please answer the following questions with 5 meaning you feel the strongest.</h3>
                 <ul>
                   <li><p class="sub-question">How balanced and satisfied are you in this area of your life?</p>
