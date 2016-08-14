@@ -1,20 +1,18 @@
 <div class="container">
   <h1>Welcome to the Survey!</h1>
-  <h4>Please answer the following questions to create your profile.</h4>
+  <h4>Please answer the following questions to create your profile. <a href="javascript:void(0)" (click)="finish($event)">Go to dashboard!</a></h4>
   <hr/>
-  <div class="row">
+  <div class="">
     <div class="col-md-12">
       <form class="form form-horizontal">
         <ul *ngIf="count">
-
-          <li *ngFor="let q of (data | myfilter:count.toString())" class="row survey-item">
-            <div class="col-md-12 questions"><span class="survey-category">{{q.category}}</span> <span
+          <li *ngFor="let q of (data | myfilter:count)" class="row survey-item">
+            <div class="questions"><span class="survey-category">{{q.category}}</span> <span
               class="survey-question-count">Question {{count}} of {{data.length}}</span>
               <hr/>
               <p class="survey-question">{{q.question}}</p></div>
-            <div class="col-md-12">
-              <div class="form-group answers">
-
+            <!--answers-->
+              <div class="answers">
                 <div class="survey-radio-wrapper">
                   <input type="radio" id="{{q.id}}_1" name="survey_{{q.category}}" [(ngModel)]="q.selected"
                          value="1"/>
@@ -41,10 +39,12 @@
                   <label [attr.for]="q.id + '_5'"><span></span>Strongly Agree</label>
                 </div>
               </div>
+            <!--END: answers-->
+            <!--sub-->
               <div class="sub-survey" *ngIf="q.selected > 0">
-                <h4>Please answer the following questions with 5 meaning you feel the strongest.</h4>
+                <h3>Please answer the following questions with 5 meaning you feel the strongest.</h3>
                 <ul>
-                  <li>How balanced and satisfied are you in this area of your life?
+                  <li><p class="sub-question">How balanced and satisfied are you in this area of your life?</p>
 
                     <input type="radio" id="{{q.id}}_sub_1_1" name="survey_sub_1_{{q.category}}"
                            [(ngModel)]="q.selected_sub_1" value="1"/>
@@ -67,7 +67,7 @@
                     <label [attr.for]="q.id + '_sub_1_5'"><span></span>5</label>
 
                   </li>
-                  <li>How importance is it to you to maintain/gain greater balance and satisfaction in this area?
+                  <li><p class="sub-question">How importance is it to you to maintain/gain greater balance and satisfaction in this area?</p>
 
                     <input type="radio" id="{{q.id}}_sub_2_1" name="survey_sub_2_{{q.category}}"
                            [(ngModel)]="q.selected_sub_2" value="1"/>
@@ -89,7 +89,7 @@
                            [(ngModel)]="q.selected_sub_2" value="5"/>
                     <label [attr.for]="q.id + '_sub_2_5'"><span></span>5</label>
                   </li>
-                  <li>How motivated are you to maintain/improve this area of your life?
+                  <li><p class="sub-question">How motivated are you to maintain/improve this area of your life?</p>
 
                     <input type="radio" id="{{q.id}}_sub_3_1" name="survey_sub_3_{{q.category}}"
                            [(ngModel)]="q.selected_sub_3" value="1"/>
@@ -112,7 +112,7 @@
                     <label [attr.for]="q.id + '_sub_3_5'"><span></span>5</label>
 
                   </li>
-                  <li>How is your overall happiness affected by this dimension of your life?
+                  <li><p class="sub-question">How is your overall happiness affected by this dimension of your life?</p>
 
                     <input type="radio" id="{{q.id}}_sub_4_1" name="survey_sub_4_{{q.category}}"
                            [(ngModel)]="q.selected_sub_4" value="1"/>
@@ -135,7 +135,7 @@
                     <label [attr.for]="q.id + '_sub_4_5'"><span></span>5</label>
 
                   </li>
-                  <li>How is your job and/or school performance affected by this dimension of your life?
+                  <li><p class="sub-question">How is your job and/or school performance affected by this dimension of your life?</p>
 
                     <input type="radio" id="{{q.id}}_sub_5_1" name="survey_sub_5_{{q.category}}"
                            [(ngModel)]="q.selected_sub_5" value="1"/>
@@ -158,15 +158,15 @@
                     <label [attr.for]="q.id + '_sub_5_5'"><span></span>5</label>
 
                   </li>
-                  <li>
-                    <button class="btn btn-primary pull-right" (click)="counter()">Next</button>
+                  <li class="text-right">
+                    <button class="btn btn-primary" *ngIf="count < data.length && count > 1" (click)="counterDown()">Back</button>
+                    <button class="btn btn-primary" *ngIf="count < data.length" (click)="counterUp()">Next</button>
+                    <button class="btn btn-primary" *ngIf="count == data.length" (click)="finish($event)">Finish</button>
                   </li>
                   <li class="clearfix"></li>
                   <!-- <li>{{q|json}}</li>-->
                 </ul>
               </div>
-            </div>
-
           </li>
         </ul>
         <button *ngIf="1==2" class="btn btn-primary pull-right">Next</button>

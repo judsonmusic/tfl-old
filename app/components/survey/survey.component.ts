@@ -1,5 +1,6 @@
 import{Component, OnInit} from '@angular/core';
 import {MyFilterPipe} from "../pipes/filter.pipe";
+import {Router} from '@angular/router';
 
 @Component({
   templateUrl: '/app/components/survey/survey.component.html',
@@ -10,7 +11,7 @@ export class SurveyComponent {
   public data: any;
   public count = 1;
 
-  constructor(){
+  constructor(private router: Router){
 
     this.data = [
 
@@ -34,9 +35,37 @@ export class SurveyComponent {
 
   }
 
-  counter(){
+  counterUp(){
 
-    this.count++;
+    if(this.count < this.data.length) {
+
+      this.count++;
+
+    }else{
+
+      this.count = 1;
+    }
+
+  }//end counter
+
+  counterDown(){
+
+    if(this.count > 1 && this.count < this.data.length) {
+
+      this.count--;
+
+    }else{
+
+      this.count = 1;
+    }
+
+  }//end counter
+
+  finish(ev){
+
+    ev.preventDefault();
+    ev.stopPropagation();
+    this.router.navigate(['dashboard']);
 
   }
 

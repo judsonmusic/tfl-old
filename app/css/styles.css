@@ -1,17 +1,17 @@
 *{
   font-family: Arial, Helvetica, sans-serif;
-  color: #444444;
-
 }
-
+hr{
+  margin-top: 0;
+}
 ul, li{
   list-style: none;
   padding: 0;
 }
 body{
-  background-color: #efefef;
+
   padding-top: 50px;
-  padding-bottom: 100px;
+  color: #444444;
 }
 
 footer{
@@ -22,13 +22,14 @@ footer{
   text-align: center;
   padding: 20px;
   color: #ffffff;
-  position: fixed;
+  /*position: fixed;*/
   bottom:0;
   left:0;
   right:0;
   z-index: 999;
 
 }
+
 
 .content{
 
@@ -61,10 +62,15 @@ footer{
   background-color: #003aa5;
   color: white;
 }
+
+.questions{
+
+  padding: 0 20px;
+}
+
 li.survey-item{
 
   border: 1px solid #ccc;
-  border-radius: 10px;
   margin-bottom: 10px;
   box-shadow: 3px 3px 10px #efefef;
   padding-top: 10px;
@@ -101,48 +107,61 @@ li.survey-item{
 }
 
 .answers{
-  padding: 20px;
+  padding: 20px 40px;
 
 }
 
 .sub-survey{
 
-  background: lightgoldenrodyellow;
-  border-radius: 10px;
-  /*box-shadow: 3px 3px 10px #efefef;*/
-  margin-bottom: 20px;
+  background: #337ab7;
   padding: 20px;
+  color: #ffffff;
 }
 
-.sub-survey h4{
+.sub-survey button.btn.btn-primary{
+
+  color: #000000;
+  background: #ffffff;
+
+}
+
+.sub-survey h3{
 
   margin-top: 0;
+}
+
+.sub-survey ul{
+
+  margin-left: 20px;
 }
 
 
 .sub-survey ul li{
 
- padding: 3px;
+ padding: 5px;
 
 }
 
+.sub-survey input[type="radio"] + label span{
 
-@media (max-width: 919px) {
-  .survey-radio-wrapper{
-    width: auto;
-    display: block;
-    text-align: left;
-  }
-  .survey-category{
-    font-size: 24px;
-
-  }
-
-  .survey-question{
-
-    font-size: 18px;
-  }
+  background-color: #ffffff;
 }
+
+
+.sub-survey input[type="radio"] + label{
+
+
+  color: white;
+
+}
+
+.sub-survey .sub-question{
+
+  display: inline;
+  font-size: 16px;
+}
+
+
 
 /*HighCharts Override*/
 text[text-anchor="end"]{
@@ -183,4 +202,84 @@ input[type="radio"]:checked + label span {
   -o-transition:background-color 0.4s linear;
   -moz-transition:background-color 0.4s linear;
   transition:background-color 0.4s linear;
+}
+
+/*ipad*/
+@media all
+and (min-width : 0px)
+and (max-width : 1024px)  {
+
+  body{
+    font-size: 12px;
+  }
+
+  h1, .h1{
+    font-size: 20px;
+    margin-top: 0;
+  }
+
+  h3, .h3{
+    font-size: 14px;
+  }
+
+  h4, .h4{
+    font-size: 12px;
+  }
+
+  .survey-radio-wrapper{
+    width: auto;
+    display: block;
+    text-align: left;
+  }
+  .survey-category{
+    font-size: 24px;
+  }
+
+  .survey-question{
+    font-size: 18px;
+    padding: 0 5px;
+  }
+
+  .sub-survey .sub-question{
+    display: block;
+    font-size: 14px;
+  }
+
+  .survey-question-count{
+    font-size: 12px !important;
+  }
+
+  .survey-question{
+    font-size: 14px;
+  }
+
+  .questions{
+    padding: 0 10px;
+  }
+
+  .answers{
+    padding: 5px 40px;
+  }
+
+  .sub-survey ul{
+    margin-left: 0;
+  }
+
+}
+
+
+@media all
+and (min-width : 768px)
+and (max-width : 9999px)  {
+
+  body{
+
+    padding-bottom: 100px;
+  }
+
+  footer{
+
+    position: fixed;
+  }
+
 }

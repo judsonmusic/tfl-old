@@ -13,8 +13,8 @@ var MyFilterPipe = (function () {
     function MyFilterPipe() {
     }
     MyFilterPipe.prototype.transform = function (items, args) {
-        console.log('FILTER', args[0], items);
-        return items.filter(function (item) { return item.id == args[0]; });
+        console.log('FILTER', args, items);
+        return items.filter(function (item) { return item.id == args; });
     };
     MyFilterPipe = __decorate([
         core_1.Pipe({
