@@ -62,21 +62,27 @@ export class BarChartComponent implements OnInit {
       },
       xAxis: {
         categories: [
-          'Category',
-          'Category',
-          'Category',
-          'Category',
-          'Category',
-          'Category',
-          'Category',
-          'Category',
-          'Category',
-          'Category'
+          'Spiritual ',
+          'Habits',
+          'Relationships',
+          'Emotional Well-being',
+          'Eating Habits',
+          'Relaxation',
+          'Exercise',
+          'Medical Maintenance',
+          'Financial',
+          'Play',
+          'Work-life Balance',
+          'Home Environment',
+          'Intellectual Well-being',
+          'Self-image',
+          'Work Satisfaction'
         ],
         crosshair: true
       },
       yAxis: {
         min: 0,
+        max: 100,
         title: {
           text: 'Measurement'
         }
@@ -84,22 +90,42 @@ export class BarChartComponent implements OnInit {
       tooltip: {
         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-        '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+        '<td style="padding:0"><b>{point.y}</b></td></tr>',
         footerFormat: '</table>',
         shared: true,
         useHTML: true
       },
       plotOptions: {
         column: {
-          pointPadding: 0.2,
+          pointPadding: 0.05,
           borderWidth: 0
         }
       },
       series: [{
-        name: 'Results',
-        data: [30, 70, 50, 10, 40, 100, 60, 20, 80, 70]
+        name: 'Balanced Life',
+        data: [30, 70, 50, 10, 40, 100, 60, 20, 80, 70, 10, 50, 30, 40, 100]
 
-      }]
+      },
+        {
+          name: 'Balance Importance',
+          data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 20, 40, 30, 20, 20]
+
+        },
+        {
+          name: 'Motivation to Improve',
+          data: [100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 30, 20, 30, 10, 10]
+
+        },
+        {
+          name: 'Happiness affect',
+          data: [10, 30, 50, 70, 90, 20, 40, 60, 80, 100, 40, 20, 30, 50, 30]
+
+        },
+        {
+          name: 'School/Job Performance',
+          data: [30, 70, 50, 10, 40, 100, 60, 20, 80, 70, 50, 20, 50, 40, 10]
+
+        }]
     });
   }
 }
