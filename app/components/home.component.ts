@@ -4,7 +4,7 @@ import {UserComponent} from "./user.component";
 
 @Component({
   selector: 'home-component',
-  template: '<div><login-component heading="123"></login-component></div><hr /><div><user-component></user-component></div>',
+  templateUrl: '/app/components/home.component.html',
   directives: [LoginComponent, UserComponent]
 })
 export class HomeComponent {

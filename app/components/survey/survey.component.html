@@ -1,41 +1,60 @@
 <div class="container">
-  <h1>Welcome to the Survey!</h1>
-  <h4>Please answer the following questions to create your profile. <a href="javascript:void(0)" (click)="finish($event)">Go to dashboard!</a></h4>
+  <h1>Train For Life Balance Assessment for {{data.account.name}}</h1>
+  <!--<h4>Please answer the following questions to create your profile. <a href="javascript:void(0)" (click)="finish($event)">Go to dashboard!</a></h4>-->
   <hr/>
+<div class="instructions" *ngIf="count==0">
+  <img src="/app/images/log_only_large.jpg" style="float: left" />
+  <p>This Train For Life Balance Assessment tool is intended to allow you to assess your life in 15 different dimensions and rank how balanced and satisfied you are with each. This holistic approach will allow you to take inventory of your life in a more comprehensive manner.  Examining only one aspect of your life would be incomplete so this  TFL Balance Assessment tool will provide you with more insight and a broader perspective of your total wellbeing.  There are no wrong or right answers so just trust your gut and rank each area as authentically as possible. Knowing where you are is the first step in making mindful decisions on where you want to go. </p>
+
+  <p>Reflect over the past 3 months as you answer each question. You will be asked to rate each dimension regarded: how balanced and satisfied  you feel, level of importance, motivation to change, your overall happiness and how your job and or school performance is impacted. Once you complete the assessment you will receive your personalized TFL Empowerment Guide which will provide you with insight, resources, and some self-guided exercises.  Your privacy is important to us so be assured that your personal assessment  information will be kept confidential and  will not be shared.</p>
+
+
+  <p><button (click)="start($event)" class="btn btn-primary">Let's Begin!</button></p>
+
+</div>
+
+  <div class="instructions"  *ngIf="count>0">
+    <p>
+    Please rate the below statements using the rating scale which best reflects how you view your life in each TFL dimension.
+    </p>
+  </div>
+
   <div class="">
     <div class="col-md-12">
       <form class="form form-horizontal">
         <ul *ngIf="count">
-          <li *ngFor="let q of (data | myfilter:count)" class="row survey-item">
+          <li *ngFor="let q of (data.assessment | myfilter:count)" class="row survey-item">
             <div class="questions"><span class="survey-category">{{q.category}}</span> <span
-              class="survey-question-count">Question {{count}} of {{data.length}}</span>
+              class="survey-question-count">Question {{count}} of {{data.assessment.length}}</span>
               <hr/>
-              <p class="survey-question">{{q.question}}</p></div>
+              <p class="survey-question">{{q.question}}  <br /><span style="color:#089b6f" *ngIf="q.selected">You: {{answers[q.selected]}} <a href="javascript: void(0)" (click)="q.selected = '';" title="Change Answer"><i class="fa fa-times red" aria-hidden="true"></i></a></span></p>
+
+            </div>
             <!--answers-->
-              <div class="answers">
+              <div class="answers" *ngIf="!q.selected">
                 <div class="survey-radio-wrapper">
                   <input type="radio" id="{{q.id}}_1" name="survey_{{q.category}}" [(ngModel)]="q.selected"
-                         value="1"/>
+                         value="0"/>
                   <label [attr.for]="q.id + '_1'"><span></span>Strongly Disagree</label>
                 </div>
                 <div class="survey-radio-wrapper">
                   <input type="radio" id="{{q.id}}_2" name="survey_{{q.category}}" [(ngModel)]="q.selected"
-                         value="2"/>
+                         value="1"/>
                   <label [attr.for]="q.id + '_2'"><span></span>Disagree</label>
                 </div>
                 <div class="survey-radio-wrapper">
                   <input type="radio" id="{{q.id}}_3" name="survey_{{q.category}}" [(ngModel)]="q.selected"
-                         value="3"/>
+                         value="2"/>
                   <label [attr.for]="q.id + '_3'"><span></span>Somewhat Agree</label>
                 </div>
                 <div class="survey-radio-wrapper">
                   <input type="radio" id="{{q.id}}_4" name="survey_{{q.category}}" [(ngModel)]="q.selected"
-                         value="4"/>
+                         value="3"/>
                   <label [attr.for]="q.id + '_4'"><span></span>Agree</label>
                 </div>
                 <div class="survey-radio-wrapper">
                   <input type="radio" id="{{q.id}}_5" name="survey_{{q.category}}" [(ngModel)]="q.selected"
-                         value="5"/>
+                         value="4"/>
                   <label [attr.for]="q.id + '_5'"><span></span>Strongly Agree</label>
                 </div>
               </div>
@@ -47,126 +66,126 @@
                   <li><p class="sub-question">How balanced and satisfied are you in this area of your life?</p>
 
                     <input type="radio" id="{{q.id}}_sub_1_1" name="survey_sub_1_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_1" value="1"/>
+                           [(ngModel)]="q.subs[0]" value="1"/>
                     <label [attr.for]="q.id + '_sub_1_1'"><span></span>1</label>
 
                     <input type="radio" id="{{q.id}}_sub_1_2" name="survey_sub_1_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_1" value="2"/>
+                           [(ngModel)]="q.subs[0]" value="2"/>
                     <label [attr.for]="q.id + '_sub_1_2'"><span></span>2</label>
 
                     <input type="radio" id="{{q.id}}_sub_1_3" name="survey_sub_1_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_1" value="3"/>
+                           [(ngModel)]="q.subs[0]" value="3"/>
                     <label [attr.for]="q.id + '_sub_1_3'"><span></span>3</label>
 
                     <input type="radio" id="{{q.id}}_sub_1_4" name="survey_sub_1_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_1" value="4"/>
+                           [(ngModel)]="q.subs[0]" value="4"/>
                     <label [attr.for]="q.id + '_sub_1_4'"><span></span>4</label>
 
                     <input type="radio" id="{{q.id}}_sub_1_5" name="survey_sub_1_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_1" value="5"/>
+                           [(ngModel)]="q.subs[0]" value="5"/>
                     <label [attr.for]="q.id + '_sub_1_5'"><span></span>5</label>
 
                   </li>
                   <li><p class="sub-question">How importance is it to you to maintain/gain greater balance and satisfaction in this area?</p>
 
                     <input type="radio" id="{{q.id}}_sub_2_1" name="survey_sub_2_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_2" value="1"/>
+                           [(ngModel)]="q.subs[1]" value="1"/>
                     <label [attr.for]="q.id + '_sub_2_1'"><span></span>1</label>
 
                     <input type="radio" id="{{q.id}}_sub_2_2" name="survey_sub_2_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_2" value="2"/>
+                           [(ngModel)]="q.subs[1]" value="2"/>
                     <label [attr.for]="q.id + '_sub_2_2'"><span></span>2</label>
 
                     <input type="radio" id="{{q.id}}_sub_2_3" name="survey_sub_2_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_2" value="3"/>
+                           [(ngModel)]="q.subs[1]" value="3"/>
                     <label [attr.for]="q.id + '_sub_2_3'"><span></span>3</label>
 
                     <input type="radio" id="{{q.id}}_sub_2_4" name="survey_sub_2_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_2" value="4"/>
+                           [(ngModel)]="q.subs[1]" value="4"/>
                     <label [attr.for]="q.id + '_sub_2_4'"><span></span>4</label>
 
                     <input type="radio" id="{{q.id}}_sub_2_5" name="survey_sub_2_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_2" value="5"/>
+                           [(ngModel)]="q.subs[1]" value="5"/>
                     <label [attr.for]="q.id + '_sub_2_5'"><span></span>5</label>
                   </li>
                   <li><p class="sub-question">How motivated are you to maintain/improve this area of your life?</p>
 
                     <input type="radio" id="{{q.id}}_sub_3_1" name="survey_sub_3_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_3" value="1"/>
+                           [(ngModel)]="q.subs[2]" value="1"/>
                     <label [attr.for]="q.id + '_sub_3_1'"><span></span>1</label>
 
                     <input type="radio" id="{{q.id}}_sub_3_2" name="survey_sub_3_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_3" value="2"/>
+                           [(ngModel)]="q.subs[2]" value="2"/>
                     <label [attr.for]="q.id + '_sub_3_2'"><span></span>2</label>
 
                     <input type="radio" id="{{q.id}}_sub_3_3" name="survey_sub_3_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_3" value="3"/>
+                           [(ngModel)]="q.subs[2]" value="3"/>
                     <label [attr.for]="q.id + '_sub_3_3'"><span></span>3</label>
 
                     <input type="radio" id="{{q.id}}_sub_3_4" name="survey_sub_3_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_3" value="4"/>
+                           [(ngModel)]="q.subs[2]" value="4"/>
                     <label [attr.for]="q.id + '_sub_3_4'"><span></span>4</label>
 
                     <input type="radio" id="{{q.id}}_sub_3_5" name="survey_sub_3_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_3" value="5"/>
+                           [(ngModel)]="q.subs[2]" value="5"/>
                     <label [attr.for]="q.id + '_sub_3_5'"><span></span>5</label>
 
                   </li>
                   <li><p class="sub-question">How is your overall happiness affected by this dimension of your life?</p>
 
                     <input type="radio" id="{{q.id}}_sub_4_1" name="survey_sub_4_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_4" value="1"/>
+                           [(ngModel)]="q.subs[3]" value="1"/>
                     <label [attr.for]="q.id + '_sub_4_1'"><span></span>1</label>
 
                     <input type="radio" id="{{q.id}}_sub_4_2" name="survey_sub_4_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_4" value="2"/>
+                           [(ngModel)]="q.subs[3]" value="2"/>
                     <label [attr.for]="q.id + '_sub_4_2'"><span></span>2</label>
 
                     <input type="radio" id="{{q.id}}_sub_4_3" name="survey_sub_4_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_4" value="3"/>
+                           [(ngModel)]="q.subs[3]" value="3"/>
                     <label [attr.for]="q.id + '_sub_4_3'"><span></span>3</label>
 
                     <input type="radio" id="{{q.id}}_sub_4_4" name="survey_sub_4_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_4" value="4"/>
+                           [(ngModel)]="q.subs[3]" value="4"/>
                     <label [attr.for]="q.id + '_sub_4_4'"><span></span>4</label>
 
                     <input type="radio" id="{{q.id}}_sub_4_5" name="survey_sub_4_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_4" value="5"/>
+                           [(ngModel)]="q.subs[3]" value="5"/>
                     <label [attr.for]="q.id + '_sub_4_5'"><span></span>5</label>
 
                   </li>
                   <li><p class="sub-question">How is your job and/or school performance affected by this dimension of your life?</p>
 
                     <input type="radio" id="{{q.id}}_sub_5_1" name="survey_sub_5_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_5" value="1"/>
+                           [(ngModel)]="q.subs[4]" value="1"/>
                     <label [attr.for]="q.id + '_sub_5_1'"><span></span>1</label>
 
                     <input type="radio" id="{{q.id}}_sub_5_2" name="survey_sub_5_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_5" value="2"/>
+                           [(ngModel)]="q.subs[4]" value="2"/>
                     <label [attr.for]="q.id + '_sub_5_2'"><span></span>2</label>
 
                     <input type="radio" id="{{q.id}}_sub_5_3" name="survey_sub_5_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_5" value="3"/>
+                           [(ngModel)]="q.subs[4]" value="3"/>
                     <label [attr.for]="q.id + '_sub_5_3'"><span></span>3</label>
 
                     <input type="radio" id="{{q.id}}_sub_5_4" name="survey_sub_5_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_5" value="4"/>
+                           [(ngModel)]="q.subs[4]" value="4"/>
                     <label [attr.for]="q.id + '_sub_5_4'"><span></span>4</label>
 
                     <input type="radio" id="{{q.id}}_sub_5_5" name="survey_sub_5_{{q.category}}"
-                           [(ngModel)]="q.selected_sub_5" value="5"/>
+                           [(ngModel)]="q.subs[4]" value="5"/>
                     <label [attr.for]="q.id + '_sub_5_5'"><span></span>5</label>
 
                   </li>
                   <li class="text-right">
-                    <button class="btn btn-primary" *ngIf="count < data.length && count > 1" (click)="counterDown()">Back</button>
-                    <button class="btn btn-primary" *ngIf="count < data.length" (click)="counterUp()">Next</button>
-                    <button class="btn btn-primary" *ngIf="count == data.length" (click)="finish($event)">Finish</button>
+                    <button class="btn btn-primary" *ngIf="count < data.assessment.length && count > 1" (click)="counterDown()">Back</button>
+                    <button class="btn btn-primary" *ngIf="count < data.assessment.length && q.subs.length === 5" (click)="counterUp()">Next</button>
+                    <button class="btn btn-primary" *ngIf="count == data.assessment.length" (click)="finish($event)">Finish</button>
                   </li>
                   <li class="clearfix"></li>
-                  <!-- <li>{{q|json}}</li>-->
                 </ul>
               </div>
+          <div>{{q|json}}</div>
           </li>
         </ul>
         <button *ngIf="1==2" class="btn btn-primary pull-right">Next</button>
@@ -174,6 +193,8 @@
     </div>
   </div>
 </div>
+
+<!--<div>{{data | json}}</div>-->
 
 
 

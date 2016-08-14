@@ -3,6 +3,12 @@
 }
 hr{
   margin-top: 0;
+  margin-bottom: 0;
+}
+
+p{
+
+  padding: 10px 20px;
 }
 ul, li{
   list-style: none;
@@ -12,6 +18,10 @@ body{
 
   padding-top: 50px;
   color: #444444;
+}
+
+.red{
+  color: #b90013;
 }
 
 footer{
@@ -63,6 +73,11 @@ footer{
   color: white;
 }
 
+.panel-body{
+
+  min-height: 325px;
+}
+
 .questions{
 
   padding: 0 20px;
@@ -96,7 +111,7 @@ li.survey-item{
   font-size: 23px;
   clear: both;
   display: block;
-  padding: 0 20px;
+  padding: 20px;
 }
 
 .survey-question-count{
