@@ -43,6 +43,12 @@ footer {
 
 }
 
+.modal-header{
+
+  background: #337ab7;
+  color: white;
+}
+
 .content {
 
   background-color: white;
@@ -175,6 +181,11 @@ li.survey-item {
 
 }
 
+.survey-radio-wrapper-subs {
+
+  display: inline;
+}
+
 .sub-survey .sub-question {
 
   display: inline;
@@ -222,6 +233,11 @@ input[type="radio"]:checked + label span {
   -o-transition: background-color 0.4s linear;
   -moz-transition: background-color 0.4s linear;
   transition: background-color 0.4s linear;
+}
+
+ul.swatch-list{
+
+  padding-left: 30px;
 }
 
 .swatch-list li{
@@ -296,10 +312,21 @@ and (max-width: 1024px) {
     font-size: 12px;
   }
 
+  ul.swatch-list{
+
+    padding-left: 10px;
+  }
+
   .survey-radio-wrapper {
     width: auto;
     display: block;
     text-align: left;
+    margin-left: 40px;
+  }
+
+  .survey-radio-wrapper-subs {
+
+    margin-left: 40px;
   }
 
   .survey-category {
