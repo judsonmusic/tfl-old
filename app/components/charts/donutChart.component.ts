@@ -1,14 +1,15 @@
 import {Component, Input, ElementRef, OnInit} from '@angular/core';
 import {TitleCasePipe} from "../pipes/titlecase.pipe";
 
+declare var jQuery:any;
 declare var Highcharts:any;
 
 @Component({
-  selector: 'my-chart2',
-  template: `<div id="{{selector}}" style="width: 280px; height: 280px; margin: 10px auto;">`,
+  selector: 'donut-chart',
+  template: `<div id="{{selector}}" style="width: 280px; height: 280px; margin: 0 auto">`,
   pipes: [TitleCasePipe]
 })
-export class AppleChartComponent implements OnInit {
+export class DonutChartComponent implements OnInit {
 
   @Input() selector: string;
   @Input() heading: string;
@@ -29,27 +30,7 @@ export class AppleChartComponent implements OnInit {
 
   renderChart() {
 
-    /*if (!Highcharts.theme) {
-      Highcharts.setOptions({
-        chart: {
-          backgroundColor: 'black'
-        },
-        colors: ['#F62366', '#9DFF02', '#0CCDD6'],
-        title: {
-          style: {
-            color: 'silver'
-          }
-        },
-        tooltip: {
-          style: {
-            color: 'silver'
-          }
-        }
-      });
-    }*/
-
-
-      Highcharts.chart(this.selector, {
+    Highcharts.chart(this.selector, {
 
         chart: {
           type: 'solidgauge',
@@ -57,7 +38,7 @@ export class AppleChartComponent implements OnInit {
         },
 
         title: {
-          text: this.heading,
+          text: 'Spiritual',
           style: {
             fontSize: '24px'
           }
@@ -131,7 +112,7 @@ export class AppleChartComponent implements OnInit {
         },
 
         series: [{
-          name: 'Balanced',
+          name: 'Move',
           borderColor: Highcharts.getOptions().colors[0],
           data: [{
             color: Highcharts.getOptions().colors[0],
@@ -140,7 +121,7 @@ export class AppleChartComponent implements OnInit {
             y: 80
           }]
         }, {
-          name: 'Motivated',
+          name: 'Exercise',
           borderColor: Highcharts.getOptions().colors[1],
           data: [{
             color: Highcharts.getOptions().colors[1],
@@ -149,7 +130,7 @@ export class AppleChartComponent implements OnInit {
             y: 65
           }]
         }, {
-          name: 'Importance',
+          name: 'Stand',
           borderColor: Highcharts.getOptions().colors[2],
           data: [{
             color: Highcharts.getOptions().colors[2],
@@ -159,7 +140,7 @@ export class AppleChartComponent implements OnInit {
           }]
         },
           {
-            name: 'Happiness',
+            name: 'Blah',
             borderColor: Highcharts.getOptions().colors[3],
             data: [{
               color: Highcharts.getOptions().colors[3],
@@ -169,7 +150,7 @@ export class AppleChartComponent implements OnInit {
             }]
           },
           {
-            name: 'Performance',
+            name: 'Blah2',
             borderColor: Highcharts.getOptions().colors[4],
             data: [{
               color: Highcharts.getOptions().colors[4],
@@ -185,7 +166,7 @@ export class AppleChartComponent implements OnInit {
        */
       function callback() {
 
-        //alert('Chart Loaded!');
+          //alert('Chart Loaded!');
       });
 
   }

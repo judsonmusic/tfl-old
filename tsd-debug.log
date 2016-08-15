@@ -1,0 +1,21 @@
+[ERR!] cwd  : /Users/judsonterrell/WebstormProjects/tfl
+[ERR!] os   : Darwin 15.5.0
+[ERR!] argv : "/usr/local/bin/node" "/usr/local/bin/tsd" "install" "jQuery"
+[ERR!] node : v5.1.0
+[ERR!] tsd  : 0.6.5
+[ERR!] Error: EACCES: permission denied, mkdir '/Users/judsonterrell/WebstormProjects/tfl/typings/jquery'
+[ERR!] CODE : EACCES
+[ERR!] RejectionError: EACCES: permission denied, mkdir '/Users/judsonterrell/WebstormProjects/tfl/typings/jquery'
+[ERR!] 
+Please try running this command again as root/Administrator.
+[ERR!] 
+Error: EACCES: permission denied, mkdir '/Users/judsonterrell/WebstormProjects/tfl/typings/jquery'
+    at Error (native)
+
+[ERR!] tsd.json could not be retrieved
+
+[ERR!] .tsdrc could not be retrieved
+
+[ERR!] Please include the following file with any support request:
+    /Users/judsonterrell/WebstormProjects/tfl/tsd-debug.log
+

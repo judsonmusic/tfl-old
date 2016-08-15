@@ -61,7 +61,7 @@
             <!--END: answers-->
             <!--sub-->
               <div class="sub-survey" *ngIf="q.selected">
-                <h3>Please answer the following questions with 5 meaning you feel the strongest.</h3>
+                <h3>Please answer the following questions with 1 meaning "not at all" 5 being "extremely"</h3>
                 <ul>
                   <li><p class="sub-question">How balanced and satisfied are you in this area of your life?</p>
 
@@ -86,7 +86,7 @@
                     <label [attr.for]="q.id + '_sub_1_5'"><span></span>5</label>
 
                   </li>
-                  <li><p class="sub-question">How importance is it to you to maintain/gain greater balance and satisfaction in this area?</p>
+                  <li><p class="sub-question">How importance is it to you to gain greater balance and satisfaction in this area?</p>
 
                     <input type="radio" id="{{q.id}}_sub_2_1" name="survey_sub_2_{{q.category}}"
                            [(ngModel)]="q.subs[1]" value="1"/>

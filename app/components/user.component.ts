@@ -18,9 +18,9 @@ export class UserComponent {
       this.user = userData;
     });
 
-    this.userService.loggedIn$.subscribe((loggedIn) => {
+   /* this.userService.loggedIn$.subscribe((loggedIn) => {
       this.loggedIn = loggedIn;
-    });
+    });*/
 
   }
 

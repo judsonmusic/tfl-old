@@ -6,6 +6,7 @@ import { AppComponent }   from './app.component';
 import { routing }        from './app.routing';
 import { HttpModule, JsonpModule } from '@angular/http';
 
+
 import {AboutComponent}  from './components/about.component';
 import {UserService} from "./components/user.service";
 import {LoginComponent} from "./components/login.component";
