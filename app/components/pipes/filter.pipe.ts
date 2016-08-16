@@ -5,8 +5,8 @@ import {Injectable, Pipe, PipeTransform} from '@angular/core';
 })
 @Injectable()
 export class MyFilterPipe implements PipeTransform {
-  transform(items: any[], args: number): any {
-    console.log('FILTER', args, items);
+  transform(items: any[], args: any[]): any {
+    console.log(args);
     return items.filter(item => item.id == args);
   }
 }
