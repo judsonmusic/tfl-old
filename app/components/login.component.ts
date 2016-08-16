@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
 
   user: any;
   loginData: any;
-  loggedIn: any;
+  //loggedIn: any;
 
   ngOnInit(){
 
@@ -23,9 +23,9 @@ export class LoginComponent implements OnInit {
 
 
     this.loginData = {email: "test@test.com", password: "Password"};
-    this.userService.user$.subscribe((userData) => {
+    /*this.userService.user$.subscribe((userData) => {
       this.user = userData;
-    });
+    });*/
    /* this.userService.loggedIn$.subscribe((loggedIn) => {
       this.loggedIn = loggedIn;
     });*/

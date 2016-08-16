@@ -6,6 +6,7 @@ import {HomeComponent} from "./components/home.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {SurveyComponent} from "./components/survey/survey.component";
 import {ResourcesComponent} from "./components/resources.component";
+import {LogoutComponent} from "./components/logout.component";
 
 const appRoutes:Routes = [
   {
@@ -15,6 +16,10 @@ const appRoutes:Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent
   },
   {
     path: 'resources',

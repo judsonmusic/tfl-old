@@ -3,15 +3,21 @@ import { Http, Headers } from '@angular/http';
 import {Subject} from "../../node_modules/rxjs/src/Subject";
 import {Observable} from "../../node_modules/rxjs/src/Observable";
 
+
 @Injectable()
 export class UserService {
 
   user: Subject<any>;
   user$: Observable<any>;
+  loggedIn = new Subject<boolean>();
+  loggedIn$: Observable<any>;
+
 
   constructor(private http: Http) {
     this.user = new Subject();
     this.user$ = this.user.asObservable();
+    this.loggedIn = new Subject();
+    this.loggedIn$ = this.loggedIn.asObservable();
 
 
   }
@@ -30,13 +36,12 @@ export class UserService {
       )
       .map(res => res.json())
       .map((res) => {
-        if (res.success) {
-          localStorage.setItem('auth_token', res.auth_token);
-          //this.loggedIn$ = true;
-          //this.loggedIn.next(true);
+        if (res['success']) {
+          localStorage.setItem('jwt', res['jwt']);
+           this.loggedIn.next(true);
         }
 
-        return res.success;
+        return res['success'];
       });
   }
 
@@ -53,11 +58,11 @@ export class UserService {
       .map(res => res.json())
       .map((res) => {
         console.log('Login Result:', res.user);
-        if (res.success) {
+        if (res["success"]) {
           localStorage.setItem('jwt', res.token);
           //set user service info...
           this.user.next(res.user[0]);
-          //this.loggedIn.next(true);
+          this.loggedIn.next(true);
         }
         return res;
       });
@@ -78,20 +83,19 @@ export class UserService {
       )
       .map(res => res.json())
       .map((res) => {
-        if (res.success) {
-          localStorage.setItem('auth_token', res.auth_token);
+        if (res['success']) {
+          //localStorage.setItem('jwt', res['jwt']);
           //this.loggedIn$ = true;
-          //this.loggedIn.next(true);
+          this.loggedIn.next(true);
         }
 
-        return res.success;
+        return res['success'];
       });
   }
 
   logout() {
-    localStorage.removeItem('auth_token');
-    //this.loggedIn$ = false;
-    //this.loggedIn.next(false);
+    localStorage.removeItem('jwt');
+    this.loggedIn.next(false);
   }
 
 }

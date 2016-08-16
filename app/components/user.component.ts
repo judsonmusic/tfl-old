@@ -16,11 +16,13 @@ export class UserComponent {
 
     this.userService.user$.subscribe((userData) => {
       this.user = userData;
+      console.log('We got some data!');
     });
 
-   /* this.userService.loggedIn$.subscribe((loggedIn) => {
+    this.userService.loggedIn$.subscribe((loggedIn) => {
       this.loggedIn = loggedIn;
-    });*/
+      console.log('The user is logged in!');
+    });
 
   }
 
@@ -43,7 +45,5 @@ export class UserComponent {
       }
     });
   }
-
-
 
 }

@@ -16,6 +16,7 @@ import {PageNotFoundComponent} from "./components/pageNotFound.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {SurveyComponent} from "./components/survey/survey.component";
 import {ResourcesComponent} from "./components/resources.component";
+import {LogoutComponent} from "./components/logout.component";
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import {ResourcesComponent} from "./components/resources.component";
     JsonpModule
   ],
   declarations: [
-    AppComponent, LoginComponent, UserComponent, AboutComponent, HomeComponent, PageNotFoundComponent, DashboardComponent, SurveyComponent, ResourcesComponent
+    AppComponent, LoginComponent, UserComponent, AboutComponent, HomeComponent, PageNotFoundComponent, DashboardComponent, SurveyComponent, ResourcesComponent, LogoutComponent
   ],
   providers: [
     UserService

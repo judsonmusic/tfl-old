@@ -7,21 +7,23 @@ declare var jQuery:any;
 })
 export class HeaderComponent  implements AfterViewInit {
 
-
   @ViewChild('hoversafe') el:ElementRef;
 
   ngAfterViewInit() {
 
-    jQuery('a').on('click', function(evt){
+    jQuery("a").on('click', function(evt){
 
-      evt.stopPropagation();
+      if(jQuery('.navbar-collapse').hasClass('in')) {
 
-      jQuery('.navbar-toggle').click();
+        evt.stopPropagation();
+
+        jQuery('.navbar-toggle').click();
+      }
 
 
     });
 
-   jQuery('.navbar-collapse').on('mouseleave mouseout', function(evt){
+   jQuery('.navbar-collapse').on('mouseleave', function(evt){
 
       if(jQuery(this).hasClass('in')) {
 
