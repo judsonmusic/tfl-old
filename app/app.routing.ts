@@ -1,14 +1,15 @@
 import { Routes, RouterModule } from '@angular/router';
-import { AboutComponent } from './components/about.component';
-import {PageNotFoundComponent} from "./components/pageNotFound.component";
-import {HomeComponent} from "./components/home.component";
+import { AboutComponent } from './components/about/about.component';
+import {PageNotFoundComponent} from "./components/not-found/pageNotFound.component";
+import {HomeComponent} from "./components/home/home.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {SurveyComponent} from "./components/survey/survey.component";
-import {ResourcesComponent} from "./components/resources.component";
-import {LogoutComponent} from "./components/logout.component";
-import {AuthGuard} from "./components/auth-guard.service";
+import {ResourcesComponent} from "./components/resources/resources.component";
+import {LogoutComponent} from "./components/logout/logout.component";
+import {AuthGuard} from "./components/auth/auth-guard.service";
 import { loginRoutes, authProviders }      from './login.routing';
-import {LoginComponent} from "./components/login.component";
+import {LoginComponent} from "./components/login/login.component";
+
 
 const appRoutes:Routes = [
   { path: '', component: HomeComponent },

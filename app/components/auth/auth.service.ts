@@ -1,8 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from '../../../node_modules/rxjs/Observable.d';
-import '../../../node_modules/rxjs/add/observable/of.d';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/delay';
 
 @Injectable()
 export class AuthService {

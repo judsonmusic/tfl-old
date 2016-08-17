@@ -1,9 +1,9 @@
 import { Component }   from '@angular/core';
 import { Router }      from '@angular/router';
-import { AuthService } from "../auth/auth.service.ts";
+import { AuthService } from "../auth/auth.service";
 import { Http, Headers } from '@angular/http';
-import { UserService } from "../user-service/user.service.ts";
-import {AlertComponent} from '../../../node_modules/ng2-bootstrap/ng2-bootstrap.d';
+import { UserService } from "../user-service/user.service";
+import {AlertComponent} from '../../../node_modules/ng2-bootstrap/ng2-bootstrap';
 
 @Component({
 

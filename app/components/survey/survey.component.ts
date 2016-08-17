@@ -1,8 +1,8 @@
 import{Component, OnInit} from '@angular/core';
 import {MyFilterPipe} from "../pipes/filter.pipe";
 import {Router} from '@angular/router';
-import {UserService} from "../user.service";
-import {AuthService} from "../auth.service";
+import {UserService} from "../user-service/user.service";
+import {AuthService} from "../auth/auth.service";
 
 @Component({
   templateUrl: '/app/components/survey/survey.component.html',

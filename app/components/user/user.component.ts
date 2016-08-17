@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {UserService} from "./../user-service/user.service.ts";
-import {AuthService} from "./../auth/auth.service.ts";
+import {UserService} from "./../user-service/user.service";
+import {AuthService} from "./../auth/auth.service";
 
 @Component({
   selector: 'user-component',
-  templateUrl: "./app/components/user.component.html"
+  templateUrl: "/app/components/user/user.component.html"
 })
 export class UserComponent {
 

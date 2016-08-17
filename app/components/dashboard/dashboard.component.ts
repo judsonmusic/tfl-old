@@ -1,6 +1,6 @@
 import{ Component , ViewChild} from '@angular/core';
-import {LoginComponent} from "../login.component";
-import {UserService} from "../user.service";
+import {LoginComponent} from "../login/login.component";
+import {UserService} from "../user-service/user.service";
 import {SimpleChartComponent} from "../charts/simpleChart.component";
 import {AppleChartComponent} from "../charts/appleChart.component";
 import {BarChartComponent} from "../charts/barChart.component";

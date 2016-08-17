@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {LoginComponent} from "../login/login.component.ts";
-import {UserComponent} from "../user/user.component.ts";
-import {UserService} from "../user-service/user.service.ts";
+import {LoginComponent} from "../login/login.component";
+import {UserComponent} from "../user/user.component";
+import {UserService} from "../user-service/user.service";
 
 @Component({
   selector: 'home-component',

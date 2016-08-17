@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {UserService} from "../user-service/user.service.ts";
+import {UserService} from "../user-service/user.service";
 
 @Component({
   selector: 'logout',

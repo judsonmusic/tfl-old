@@ -1,8 +1,8 @@
 import { Component, ViewContainerRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {HeaderComponent} from "./components/layout/header.component";
-import {UserService} from "./components/user.service";
-import {AuthService} from "./components/auth.service";
+import {UserService} from "./components/user-service/user.service";
+import {AuthService} from "./components/auth/auth.service";
 
 @Component({
   selector: 'my-app',
