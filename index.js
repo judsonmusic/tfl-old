@@ -42,7 +42,7 @@ router.post('/authenticate', function(req, res) {
       res.json({ success: false, message: 'Authentication failed. User not found.' });
 
     } else if (account) {
-
+      console.log(account);
       console.log('We found an account!', account[0].password, req.body.password);
       // check if password matches
       if (account[0].password != req.body.password) {
@@ -50,8 +50,6 @@ router.post('/authenticate', function(req, res) {
         res.json({ success: false, message: 'Authentication failed. Wrong password.' });
 
       } else {
-
-
 
         // if user is found and password is right
         // create a token
@@ -140,6 +138,7 @@ router.route('/accounts')
     account.email = req.body.email;
     account.username = req.body.username;
     account.password = req.body.password;
+    account.assessment = req.body.assessment;
     //account.monthlyExpenses = req.body.monthlyExpenses;
     //account.date = req.body.date;
     console.log('SENDING: ' , account);
@@ -165,7 +164,7 @@ router.route('/accounts/:account_id')
   // get the account with that id (accessed at GET http://localhost:8080/api/accounts/:account_id)
   .get(function (req, res) {
 
-   Account.findById(req.params.account_id, function (err, account) {
+   Account.findOne(req.params.account_id, function (err, account) {
       if (err)
         return res.send(err);
       res.json(account).end;
@@ -188,6 +187,7 @@ router.route('/accounts/:account_id')
       account.password = req.body.password;
       account.monthlyExpenses = req.body.monthlyExpenses;
       account.date = req.body.date;
+      account.assessment = req.body.assessment;
 
       // save the account
       account.save(function (err, account) {

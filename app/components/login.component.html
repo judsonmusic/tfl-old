@@ -1,4 +1,4 @@
-<form class="form" (ngSubmit)="onSubmit(loginData)" *ngIf="!loggedIn">
+<form class="form" (ngSubmit)="login(loginData)" *ngIf="!loggedIn">
   <div class="form-group">
     <input class="form-control" type="text" name="email" [(ngModel)]="loginData.email" placeholder="Email Address"/>
   </div>

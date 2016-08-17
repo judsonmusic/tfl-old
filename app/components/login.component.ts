@@ -1,46 +1,44 @@
-import { Component, Input, OnInit } from '@angular/core';
-import {UserService} from "./user.service";
+import { Component }   from '@angular/core';
+import { Router }      from '@angular/router';
+import { AuthService } from "./auth.service";
+import { Http, Headers } from '@angular/http';
+import { UserService } from "./user.service";
 
 @Component({
-  selector: 'login-component',
-  templateUrl: "./app/components/login.component.html",
+
+  selector:'login-component',
+  templateUrl: '/app/components/login.component.html'
 })
-export class LoginComponent implements OnInit {
 
-  @Input() heading: string;
+export class LoginComponent {
 
-  user: any;
-  loginData: any;
-  //loggedIn: any;
+  message: string;
+  loginData:any;
 
-  ngOnInit(){
 
-    console.log('LOGIN HEADING', this.heading);
+  constructor(public authService: AuthService, public router: Router, public http: Http, public userService: UserService) {
+    this.setMessage();
+    this.loginData = {email: "blah@blah.com", password: "password"};
+  }
+  setMessage() {
+    this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
   }
 
-  constructor(private userService: UserService) {
+  login(user) {
+    this.userService.login(user).subscribe(user => {
+      this.authService.login();
+      console.log(this.authService.isLoggedIn);
+      // Get the redirect URL from our auth service
+      // If no redirect has been set, use the default
+      let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/dashboard';
+      // Redirect the user
+      this.router.navigate([redirect]);
 
-
-
-    this.loginData = {email: "test@test.com", password: "Password"};
-    /*this.userService.user$.subscribe((userData) => {
-      this.user = userData;
-    });*/
-   /* this.userService.loggedIn$.subscribe((loggedIn) => {
-      this.loggedIn = loggedIn;
-    });*/
-  }
-
-
-  onSubmit(loginData) {
-
-    console.log(loginData);
-
-    this.userService.login(loginData).subscribe((result) => {
-      if (result) {
-        console.log('The result of the login is: ', result);
-      }
     });
   }
 
+  logout() {
+    this.authService.logout();
+    this.setMessage();
+  }
 }

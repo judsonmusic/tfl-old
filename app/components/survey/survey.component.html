@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Train For Life Balance Assessment for {{data.account.name}}</h1>
+  <h1>Train For Life Balance Assessment for {{data.account.firstName}}</h1>
   <!--<h4>Please answer the following questions to create your profile. <a href="javascript:void(0)" (click)="finish($event)">Go to dashboard!</a></h4>-->
   <hr/>
   <div class="instructions" *ngIf="count==0">
@@ -32,19 +32,19 @@
             <div class="questions"><span class="survey-category">{{q.category}}</span> <span
               class="survey-question-count">Question {{count}} of {{questions.length}}</span>
               <hr/>
-              <p class="survey-question">{{q.question}} <br/><span style="color:#089b6f" *ngIf="q.selected">You: {{(answers | myfilter:data.selected)[0].value}}<a href="javascript: void(0)" (click)="q.selected = '';" title="Change Answer"><i class="fa fa-times red" aria-hidden="true"></i></a></span></p>
+              <p class="survey-question">{{q.question}} <br/><span style="color:#089b6f" *ngIf="data.account.assessment[q.id].answer">You: {{(answers | myfilter: data.account.assessment[q.id].answer)[0].value }}<a href="javascript: void(0)" (click)="data.account.assessment[q.id].answer = '';" title="Change Answer"><i class="fa fa-times red" aria-hidden="true"></i></a></span></p>
 
             </div>
             <!--answers-->
             <div class="answers">
               <div class="survey-radio-wrapper" *ngFor="let a of answers">
-                <input type="radio" id="{{q.id}}_{{a.id}}" name="survey_{{q.category}}" value="{{a.id}}" [(ngModel)]="data.assessment[q.id].answer"/> {{a.id}}
+                <input type="radio" id="{{q.id}}_{{a.id}}" name="survey_{{q.category}}" value="{{a.id}}" [(ngModel)]="data.account.assessment[q.id].answer"/> {{a.id}}
                 <label [attr.for]="q.id + '_' + a.id"><span></span>{{a.value}}</label>
               </div>
             </div>
             <!--END: answers-->
             <!--sub-->
-            <div class="sub-survey" *ngIf="data.assessment[q.id]">
+            <div class="sub-survey" *ngIf="data.account.assessment[q.id].answer">
               <h3>Please answer the following 5 questions by indicating where you fall on the below 1 through 5 scale</h3>
 
               <p>1 = NOT at all<br>
@@ -56,21 +56,21 @@
                   <p class="sub-question">{{s.question}}</p>
 
                   <div class="survey-radio-wrapper-subs">
-                    <input type="radio" id="{{q.id}}_sub_{{s.id}}_1" name="survey_sub_{{s.id}}_{{q.category}}" value="1" [(ngModel)]="data.assessment[q.id].subs[s.id-1]"/>
+                    <input type="radio" id="{{q.id}}_sub_{{s.id}}_1" name="survey_sub_{{s.id}}_{{q.category}}" value="1" [(ngModel)]="data.account.assessment[q.id].subs[s.id-1]"/>
                     <label [attr.for]="q.id + '_sub_' + s.id + '_1'"><span></span>1</label>
-                    <input type="radio" id="{{q.id}}_sub_{{s.id}}_2" name="survey_sub_{{s.id}}_{{q.category}}" value="2" [(ngModel)]="data.assessment[q.id].subs[s.id-1]"/>
+                    <input type="radio" id="{{q.id}}_sub_{{s.id}}_2" name="survey_sub_{{s.id}}_{{q.category}}" value="2" [(ngModel)]="data.account.assessment[q.id].subs[s.id-1]"/>
                     <label [attr.for]="q.id + '_sub_' + s.id + '_2'"><span></span>2</label>
-                    <input type="radio" id="{{q.id}}_sub_{{s.id}}_3" name="survey_sub_{{s.id}}_{{q.category}}" value="3" [(ngModel)]="data.assessment[q.id].subs[s.id-1]"/>
+                    <input type="radio" id="{{q.id}}_sub_{{s.id}}_3" name="survey_sub_{{s.id}}_{{q.category}}" value="3" [(ngModel)]="data.account.assessment[q.id].subs[s.id-1]"/>
                     <label [attr.for]="q.id + '_sub_' + s.id + '_3'"><span></span>3</label>
-                    <input type="radio" id="{{q.id}}_sub_{{s.id}}_4" name="survey_sub_{{s.id}}_{{q.category}}" value="4" [(ngModel)]="data.assessment[q.id].subs[s.id-1]"/>
+                    <input type="radio" id="{{q.id}}_sub_{{s.id}}_4" name="survey_sub_{{s.id}}_{{q.category}}" value="4" [(ngModel)]="data.account.assessment[q.id].subs[s.id-1]"/>
                     <label [attr.for]="q.id + '_sub_' + s.id + '_4'"><span></span>4</label>
-                    <input type="radio" id="{{q.id}}_sub_{{s.id}}_5" name="survey_sub_{{s.id}}_{{q.category}}" value="5" [(ngModel)]="data.assessment[q.id].subs[s.id-1]"/>
+                    <input type="radio" id="{{q.id}}_sub_{{s.id}}_5" name="survey_sub_{{s.id}}_{{q.category}}" value="5" [(ngModel)]="data.account.assessment[q.id].subs[s.id-1]"/>
                     <label [attr.for]="q.id + '_sub_' + s.id + '_5'"><span></span>5</label>
                   </div>
                 </li>
                 <li class="text-right">
                   <button class="btn btn-primary" *ngIf="count < questions.length && count > 1" (click)="counterDown()">Back</button>
-                  <button class="btn btn-primary" *ngIf="count < questions.length && data.assessment[q.id].subs.length === 5" (click)="counterUp()">Next</button>
+                  <button class="btn btn-primary" *ngIf="count < questions.length && data.account.assessment[q.id].subs.length === 5" (click)="save();">Next</button>
                   <button class="btn btn-primary" *ngIf="count == questions.length" (click)="finish($event)">Finish</button>
                 </li>
                 <li class="clearfix"></li>
@@ -85,10 +85,3 @@
     </div>
   </div>
 </div>
-
-<div>{{data.assessment | json}}</div>
-<div>{{count}}</div>
-
-
-
-

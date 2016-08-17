@@ -3,7 +3,7 @@ import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
 
 import { AppComponent }   from './app.component';
-import { routing }        from './app.routing';
+import { routing, appRoutingProviders}        from './app.routing';
 import { HttpModule, JsonpModule } from '@angular/http';
 
 
@@ -28,10 +28,20 @@ import {LogoutComponent} from "./components/logout.component";
     JsonpModule
   ],
   declarations: [
-    AppComponent, LoginComponent, UserComponent, AboutComponent, HomeComponent, PageNotFoundComponent, DashboardComponent, SurveyComponent, ResourcesComponent, LogoutComponent
+    AppComponent,
+    LoginComponent,
+    UserComponent,
+    AboutComponent,
+    HomeComponent,
+    PageNotFoundComponent,
+    DashboardComponent,
+    SurveyComponent,
+    ResourcesComponent,
+    LogoutComponent
   ],
   providers: [
-    UserService
+    UserService,
+    appRoutingProviders
   ],
   bootstrap: [ AppComponent ]
 })

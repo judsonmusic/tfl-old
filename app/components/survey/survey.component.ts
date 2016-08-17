@@ -1,12 +1,13 @@
 import{Component, OnInit} from '@angular/core';
 import {MyFilterPipe} from "../pipes/filter.pipe";
 import {Router} from '@angular/router';
+import {UserService} from "../user.service";
 
 @Component({
   templateUrl: '/app/components/survey/survey.component.html',
   pipes: [MyFilterPipe]
 })
-export class SurveyComponent {
+export class SurveyComponent implements OnInit {
 
   public data:any;
   public count = 0;
@@ -15,10 +16,54 @@ export class SurveyComponent {
   public subquestions:any;
   public blah:any[];
   public testData:any[];
+  public user: any[];
+  public newData:any;
 
-  constructor(private router:Router) {
+  ngOnInit(){
 
+
+
+    this.data.account = {"FirstName" : "Guest"};
+
+    this.data.account.assessment = {
+
+      1: {id: "1", answer: "", subs: []},
+      2: {id: "2", answer: "", subs: []},
+      3: {id: "3", answer: "", subs: []},
+      4: {id: "4", answer: "", subs: []},
+      5: {id: "5", answer: "", subs: []},
+      6: {id: "6", answer: "", subs: []},
+      7: {id: "7", answer: "", subs: []},
+      8: {id: "8", answer: "", subs: []},
+      9: {id: "9", answer: "", subs: []},
+      10: {id: "10", answer: "", subs: []},
+      11: {id: "11", answer: "", subs: []},
+      12: {id: "12", answer: "", subs: []},
+      13: {id: "13", answer: "", subs: []},
+      14: {id: "14", answer: "", subs: []},
+      15: {id: "15", answer: "", subs: []}
+
+    };
+
+    this.data.account = this.userService.userData || this.newData;
+    console.log('@@@@@SURVEY INIT!', this.data.account);
+    this.userService.user$.subscribe((userData) => {
+
+      this.data.account = userData;
+      console.log('ACCOUNT INFORMATION ADDED!', this.data.account);
+
+    });
+  }
+
+  constructor(private router:Router, public userService: UserService) {
+
+    console.log('the survey componet loaded.');
     //array of answers they can select for main question.
+
+    this.data = {};
+    this.data.account = {};
+
+    //console.log("TEST", this.userService.user, this.userService.user$);
 
     this.questions = [
       {id: 1, question: "Do you feel a connection to a higher source and have a sense of comfort knowing that you are part of something greater than yourself?", category: "Spiritual", subs: []},
@@ -60,31 +105,6 @@ export class SurveyComponent {
 
     ];
 
-    this.data = {
-
-      account: {id: 123, name: "Judson Terrell"}
-
-    };
-
-    this.data.assessment = {
-
-      1: {id: "1", answer: "", subs: []},
-      2: {id: "2", answer: "", subs: []},
-      3: {id: "3", answer: "", subs: []},
-      4: {id: "4", answer: "", subs: []},
-      5: {id: "5", answer: "", subs: []},
-      6: {id: "6", answer: "", subs: []},
-      7: {id: "7", answer: "", subs: []},
-      8: {id: "8", answer: "", subs: []},
-      9: {id: "9", answer: "", subs: []},
-      10: {id: "10", answer: "", subs: []},
-      11: {id: "11", answer: "", subs: []},
-      12: {id: "12", answer: "", subs: []},
-      13: {id: "13", answer: "", subs: []},
-      14: {id: "14", answer: "", subs: []},
-      15: {id: "15", answer: "", subs: []}
-
-    };
 
     this.testData = [
       {
@@ -107,14 +127,31 @@ export class SurveyComponent {
     ];
 
 
-    console.log(this.data['account'], this.data['assessment']);
+
+
+
+
+    //console.log(this.data['account'], this.data['assessment']);
   }
 
   start() {
 
     this.count = 1;
   }
+  save(){
 
+    console.log('Saving Your Data!');
+    //we need to add the assessment data to the account so it will get stored in use data;
+    this.userService.updateAccount(this.data.account).subscribe((res) => {
+
+      console.log('Data saved. Going to next slide.');
+      this.counterUp();
+
+    }, (err) => console.log('There was an error!'));
+
+
+
+  }
   counterUp() {
 
     if (this.count < this.questions.length) {

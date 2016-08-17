@@ -18,7 +18,7 @@ import {MODAL_DIRECTIVES, BS_VIEW_PROVIDERS} from 'ng2-bootstrap/ng2-bootstrap';
   providers: [UserService, BS_VIEW_PROVIDERS],
   directives: [SimpleChartComponent, AppleChartComponent, BarChartComponent, DonutChartComponent, AlertComponent, ModalDemoComponent, NgInitHelperComponent, ModalDirective]
 })
-export class DashboardComponent {
+export class DashboardComponent  {
 
   public areas:any;
 

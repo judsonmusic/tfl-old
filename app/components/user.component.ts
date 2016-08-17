@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import {UserService} from "./user.service";
+import {AuthService} from "./auth.service";
 
 @Component({
   selector: 'user-component',
@@ -10,9 +12,16 @@ export class UserComponent {
   user: any;
   loggedIn: any;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, public authService: AuthService, public router: Router) {
 
-    this.user = {};
+    this.user = {
+
+      firstName: "Blah",
+      lastName: "User",
+      email: "blah@blah.com",
+      password: "password"
+
+    };
 
     this.userService.user$.subscribe((userData) => {
       this.user = userData;
@@ -27,11 +36,26 @@ export class UserComponent {
   }
 
   addAccount(user) {
-    console.log(user);
+
     this.userService.createAccount(user).subscribe((result) => {
+      console.log('The result from creating account: ', result);
       if (result) {
-        console.log('Account Created Succesfully!', result);
-        //this.router.navigate(['Home']);
+
+        console.log('Account Created Succesfully!', result.account);
+
+        this.userService.login(result.account).subscribe((result) => {
+
+            console.log('You are now logged in as well...', result);
+          this.authService.login();
+          console.log(this.authService.isLoggedIn);
+          // Get the redirect URL from our auth service
+          // If no redirect has been set, use the default
+          let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/survey';
+          // Redirect the user
+          this.router.navigate([redirect]);
+        });
+
+
       }
     });
   }
@@ -41,7 +65,7 @@ export class UserComponent {
     this.userService.updateAccount(user).subscribe((result) => {
       if (result) {
         console.log('Account Updated Succesfully!', result);
-        //this.router.navigate(['Home']);
+
       }
     });
   }

@@ -7,7 +7,8 @@ var AccountSchema   = new Schema({
     firstName: String,
     lastName: String,
     email: String,
-    password: String
+    password: String,
+    assessment: { type: Object, default: {"some" : "object"} }
 },{
   timestamps: true
 });
