@@ -16,7 +16,6 @@ export class LoginComponent {
 
   message: string;
   loginData:any;
-  message: string;
 
   constructor(public authService: AuthService, public router: Router, public http: Http, public userService: UserService) {
     this.setMessage();

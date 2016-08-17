@@ -45,21 +45,21 @@ export class SurveyComponent implements OnInit {
     this.data.account = {};
     this.data.account.assessment = {
 
-      1: {id: "1", answer: "", subs: []},
-      2: {id: "2", answer: "", subs: []},
-      3: {id: "3", answer: "", subs: []},
-      4: {id: "4", answer: "", subs: []},
-      5: {id: "5", answer: "", subs: []},
-      6: {id: "6", answer: "", subs: []},
-      7: {id: "7", answer: "", subs: []},
-      8: {id: "8", answer: "", subs: []},
-      9: {id: "9", answer: "", subs: []},
-      10: {id: "10", answer: "", subs: []},
-      11: {id: "11", answer: "", subs: []},
-      12: {id: "12", answer: "", subs: []},
-      13: {id: "13", answer: "", subs: []},
-      14: {id: "14", answer: "", subs: []},
-      15: {id: "15", answer: "", subs: []}
+      1: {id: 1, answer: "", subs: []},
+      2: {id: 2, answer: "", subs: []},
+      3: {id: 3, answer: "", subs: []},
+      4: {id: 4, answer: "", subs: []},
+      5: {id: 5, answer: "", subs: []},
+      6: {id: 6, answer: "", subs: []},
+      7: {id: 7, answer: "", subs: []},
+      8: {id: 8, answer: "", subs: []},
+      9: {id: 9, answer: "", subs: []},
+      10: {id: 10, answer: "", subs: []},
+      11: {id: 11, answer: "", subs: []},
+      12: {id: 12, answer: "", subs: []},
+      13: {id: 13, answer: "", subs: []},
+      14: {id: 14, answer: "", subs: []},
+      15: {id: 15, answer: "", subs: []}
 
     };
 
