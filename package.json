@@ -67,6 +67,7 @@
     "karma-jasmine": "^0.3.8",
     "lite-server": "^2.2.2",
     "lodash": "^4.11.1",
+    "open": "0.0.5",
     "protractor": "^3.3.0",
     "rimraf": "^2.5.2",
     "tslint": "^3.7.4",

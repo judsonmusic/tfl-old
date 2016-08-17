@@ -2,6 +2,7 @@
 
 var express = require('express');
 var http = require('http');
+var open = require('open');
 var path = require('path');
 var morgan = require('morgan'); // formerly express.logger
 var errorhandler = require('errorhandler');
@@ -246,6 +247,7 @@ if ('development' === app.get('env')) {
 }
 
 http.createServer(app).listen(app.get('port'), function () {
+  open("http://localhost:" + app.get('port'));
   console.log('myApp server listening on port ' + app.get('port'));
 });
 /**END SERVER*************************************/

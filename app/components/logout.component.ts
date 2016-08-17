@@ -11,5 +11,6 @@ export class LogoutComponent {
 
     userService.logout();
 
+
   }
 }

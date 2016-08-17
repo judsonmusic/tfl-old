@@ -133,6 +133,7 @@ export class UserService{
 
   logout() {
     localStorage.clear();
+    this.authService.isLoggedIn = false;
     this.loggedIn.next(false);
   }
 
