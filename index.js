@@ -9,9 +9,9 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Account = require('./app/models/account');
 var router = express.Router();
-var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
+var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('./config/config'); // get our config file
-var User   = require('./app/models/user'); // get our mongoose model
+var User = require('./app/models/user'); // get our mongoose model
 var app = express();
 
 mongoose.connect(config.database);
@@ -23,51 +23,59 @@ app.use(bodyParser.json());
 
 
 // route to authenticate a user (POST http://localhost:8080/api/authenticate)
-router.post('/authenticate', function(req, res) {
+router.post('/authenticate', function (req, res) {
 
-  console.log('Trying to authenticate: ' , req.body);
+  console.log('Trying to authenticate: ', req.body);
 
   // find the user
   Account.find({
     email: req.body.email,
     password: req.body.password
-  }, function(err, account) {
+  }, function (err, account) {
 
-    console.log(err, account);
+    console.log('THIS IS THE RESPONSE FROM LOGIN: ', err, account);
 
-    if (err) throw err;
+    if (err) {
 
-    if (!account) {
+      res.send(err);
 
-      res.json({ success: false, message: 'Authentication failed. User not found.' });
+    } else {
 
-    } else if (account) {
-      console.log(account);
-      console.log('We found an account!', account[0].password, req.body.password);
-      // check if password matches
-      if (account[0].password != req.body.password) {
+      if (account.length > 0) {
 
-        res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+
+        console.log('AN ACCOUNT WAS FOUND!', account);
+        console.log('We found an account!', account[0].password, req.body.password);
+        // check if password matches
+        if (account[0].password != req.body.password) {
+
+          res.json({success: false, message: 'Authentication failed. Wrong password.'});
+
+        } else {
+
+          // if user is found and password is right
+          // create a token
+          console.log('*****ACCOUNT', account);
+
+          var token = jwt.sign({password: account[0].password}, app.get('superSecret'), {
+            expiresIn: 60 // expires in 24 hours
+          });
+
+          // return the information including token as JSON
+          res.json({
+            success: true,
+            message: 'Enjoy your token!',
+            token: token,
+            user: account
+          });
+        }
 
       } else {
 
-        // if user is found and password is right
-        // create a token
-        console.log('*****ACCOUNT', account);
+        //error handler for no account found
+        res.json({success: false, message: 'No account was found matching the information that you provided.'});
 
-        var token = jwt.sign({password: account[0].password}, app.get('superSecret'), {
-          expiresIn: 60 // expires in 24 hours
-        });
-
-        // return the information including token as JSON
-        res.json({
-          success: true,
-          message: 'Enjoy your token!',
-          token: token,
-          user: account
-        });
       }
-
     }
 
   });
@@ -75,15 +83,15 @@ router.post('/authenticate', function(req, res) {
 
 ////TOKEN AUTH////////////////////////////////////////////////////
 // route middleware to verify a token, dont need this for things like create account etc..
-router.use(function(req, res, next) {
+router.use(function (req, res, next) {
   console.log('Trying to hit url!', req.url);
   var publicUrls = ['/accounts'];
-  if(publicUrls.indexOf(req.url) > -1) {
+  if (publicUrls.indexOf(req.url) > -1) {
 
     //this is a public url
     next();
 
-  }else{
+  } else {
     // check header or url parameters or post parameters for token
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
     console.log('Route', token);
@@ -141,7 +149,7 @@ router.route('/accounts')
     account.assessment = req.body.assessment;
     //account.monthlyExpenses = req.body.monthlyExpenses;
     //account.date = req.body.date;
-    console.log('SENDING: ' , account);
+    console.log('SENDING: ', account);
 
     // save the bear and check for errors
     account.save(function (err) {
@@ -156,15 +164,14 @@ router.route('/accounts')
   });//end accounts
 
 
-
 // on routes that end in /accounts/:account_id
 // ----------------------------------------------------
 router.route('/accounts/:account_id')
 
   // get the account with that id (accessed at GET http://localhost:8080/api/accounts/:account_id)
   .get(function (req, res) {
-  console.log('ATTEMPTING TO FIND BY ID!', req);
-   Account.findById(req.params.account_id, function (err, account) {
+    console.log('ATTEMPTING TO FIND BY ID!', req);
+    Account.findById(req.params.account_id, function (err, account) {
       if (err)
         return res.send(err);
       res.json(account).end;
@@ -212,8 +219,6 @@ router.route('/accounts/:account_id')
       res.json({message: 'Successfully deleted'}).end;
     });
   });
-
-
 
 
 /**SERVER*************************************/

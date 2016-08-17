@@ -28,8 +28,6 @@ export class UserService{
 
   getUser(){
 
-
-
       let headers = new Headers();
       //headers.append('Content-Type', 'application/json');
 
@@ -112,21 +110,29 @@ export class UserService{
       )
       .map(res => res.json())
       .map((res) => {
-        console.log('Login Result:', res);
 
-          localStorage.setItem('jwt', res.token);
-          localStorage.setItem('_id', res.user[0]._id);
-          //set user service info...
-          this.loggedIn.next(true);
-          this.userData = res.user[0];
-          this.user.next(res.user[0]);
-          return res;
+
+          if(res['success'] == true) {
+            localStorage.setItem('jwt', res.token);
+            localStorage.setItem('_id', res.user[0]._id);
+            //set user service info...
+            this.loggedIn.next(true);
+            this.userData = res.user[0];
+            this.user.next(res.user[0]);
+            return res;
+
+
+          }else{
+
+            return res;
+
+        }
       });
   }
 
 
   logout() {
-    localStorage.removeItem('jwt');
+    localStorage.clear();
     this.loggedIn.next(false);
   }
 

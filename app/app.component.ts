@@ -29,7 +29,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
 
-    this.userService.getUser().subscribe((user) =>{
+    /*this.userService.getUser().subscribe((user) =>{
       //this.authService.isLoggedIn = true;
       let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/dashboard';
       // Redirect the user
@@ -42,7 +42,7 @@ export class AppComponent implements OnInit{
       this.router.navigate([redirect]);
 
 
-    });
+    });*/
 
   }
 }
