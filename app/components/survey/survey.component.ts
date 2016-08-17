@@ -2,6 +2,7 @@ import{Component, OnInit} from '@angular/core';
 import {MyFilterPipe} from "../pipes/filter.pipe";
 import {Router} from '@angular/router';
 import {UserService} from "../user.service";
+import {AuthService} from "../auth.service";
 
 @Component({
   templateUrl: '/app/components/survey/survey.component.html',
@@ -22,9 +23,27 @@ export class SurveyComponent implements OnInit {
   ngOnInit(){
 
 
+    this.data.account = this.userService.userData || this.data.account;
+    console.log('@@@@@SURVEY INIT!', this.data.account);
+    this.userService.user$.subscribe((userData) => {
 
-    this.data.account = {"FirstName" : "Guest"};
+      this.data.account = userData;
+      console.log('ACCOUNT INFORMATION ADDED!', this.data.account);
 
+    });
+  }
+
+  constructor(private router:Router, public userService: UserService, public authService: AuthService) {
+
+
+    this.authService.redirectUrl = '/survey';
+
+
+    console.log('the survey componet loaded.');
+    //array of answers they can select for main question.
+
+    this.data = {};
+    this.data.account = {};
     this.data.account.assessment = {
 
       1: {id: "1", answer: "", subs: []},
@@ -44,24 +63,6 @@ export class SurveyComponent implements OnInit {
       15: {id: "15", answer: "", subs: []}
 
     };
-
-    this.data.account = this.userService.userData || this.newData;
-    console.log('@@@@@SURVEY INIT!', this.data.account);
-    this.userService.user$.subscribe((userData) => {
-
-      this.data.account = userData;
-      console.log('ACCOUNT INFORMATION ADDED!', this.data.account);
-
-    });
-  }
-
-  constructor(private router:Router, public userService: UserService) {
-
-    console.log('the survey componet loaded.');
-    //array of answers they can select for main question.
-
-    this.data = {};
-    this.data.account = {};
 
     //console.log("TEST", this.userService.user, this.userService.user$);
 

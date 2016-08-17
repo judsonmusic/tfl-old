@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Router }      from '@angular/router';
 import { Http, Headers } from '@angular/http';
 import {Subject} from "../../node_modules/rxjs/src/Subject";
@@ -7,7 +7,7 @@ import {AuthService} from "./auth.service";
 
 
 @Injectable()
-export class UserService {
+export class UserService{
 
   userData:any;
   user:Subject<any>;
@@ -22,6 +22,37 @@ export class UserService {
     this.user$ = this.user.asObservable();
     this.loggedIn = new Subject();
     this.loggedIn$ = this.loggedIn.asObservable();
+
+
+  }
+
+  getUser(){
+
+
+
+      let headers = new Headers();
+      //headers.append('Content-Type', 'application/json');
+
+      headers.append('x-access-token', localStorage['jwt']);
+      console.log('We have a user ID! Lets try to get a user!');
+      return this.http
+        .get('/api/accounts/' + localStorage['_id'], {headers : headers} )
+        .map(res => res.json())
+        .map((res) => {
+
+          if(res["success"] && res["success"] == 'false'){
+
+            console.log('***THERE WAS AN ERROR!');
+
+          }else {
+            console.log('USER FOUND!', res);
+            this.authService.isLoggedIn = true;
+            this.loggedIn.next(true);
+            this.userData = res;
+            this.user.next(res);
+            return res;
+          }
+        }, (error) => console.log('There was an error', error));
 
   }
 
@@ -81,9 +112,10 @@ export class UserService {
       )
       .map(res => res.json())
       .map((res) => {
-        console.log('Login Result:', res.user);
+        console.log('Login Result:', res);
 
           localStorage.setItem('jwt', res.token);
+          localStorage.setItem('_id', res.user[0]._id);
           //set user service info...
           this.loggedIn.next(true);
           this.userData = res.user[0];
@@ -92,44 +124,35 @@ export class UserService {
       });
   }
 
+
+  logout() {
+    localStorage.removeItem('jwt');
+    this.loggedIn.next(false);
+  }
+
   updateAccount(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('x-access-token', localStorage.getItem('jwt'));
 
-    console.log('PAYLOAD FOR UPDATE USER: ', user);
+    console.log('PAYLOAD FOR UPDATE USER: ' , user);
 
     return this.http
       .put(
         '/api/accounts/' + user._id,
         JSON.stringify(user),
-        {headers}
+        { headers }
       )
       .map(res => res.json())
       .map((res) => {
-
-        console.log('!!!!!!!!!!!!user updated!', res);
         if (res['success']) {
-          console.log('!!!!!!!!!!!!user updated!', res);
           //localStorage.setItem('jwt', res['jwt']);
           //this.loggedIn$ = true;
-          //this.loggedIn.next(true);
+          this.loggedIn.next(true);
         }
 
-        //return res['success'];
+        return res['success'];
       });
-  }
-
-  getUser(){
-
-    console.log('GET USER:', this.user$);
-
-    return this.user$;
-  }
-
-  logout() {
-    localStorage.removeItem('jwt');
-    this.loggedIn.next(false);
   }
 
 }

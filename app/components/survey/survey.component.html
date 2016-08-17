@@ -1,8 +1,24 @@
 <div class="container">
-  <h1>Train For Life Balance Assessment for {{data.account.firstName}}</h1>
+  <h1>Train For Life Balance Assessment <span *ngIf="data.account.firstName">for {{data.account.firstName}}</span></h1>
   <!--<h4>Please answer the following questions to create your profile. <a href="javascript:void(0)" (click)="finish($event)">Go to dashboard!</a></h4>-->
   <hr/>
-  <div class="instructions" *ngIf="count==0">
+
+  <div *ngIf="!data.account.createdAt">
+    <div class="row">
+      <div class="col-md-12"> <p>Before we begin, we just need to know a little bit about you. Setting up an account will keep you from losing your data and allow you to come back and finish at any time.</p></div>
+      </div>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+
+    <user-component></user-component>
+        </div>
+    <div class="col-md-4"></div>
+    </div>
+  </div>
+
+  <!--show the instructions if count is 0 and account has been created--->
+  <div class="instructions" *ngIf="count==0 && data.account.createdAt">
     <img src="/app/images/log_only_large.jpg" style="float: left; max-width: 100%;"/>
 
     <p>This Train For Life Balance Assessment tool is intended to allow you to assess your life in 15 different dimensions and rank how balanced and satisfied you are with each. This holistic approach will allow you to take inventory of your life in a more comprehensive manner. Examining only one aspect of your life would be incomplete so this TFL Balance Assessment tool will provide you with more insight and a broader perspective of your total wellbeing. There are no wrong or right answers so

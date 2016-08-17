@@ -163,8 +163,8 @@ router.route('/accounts/:account_id')
 
   // get the account with that id (accessed at GET http://localhost:8080/api/accounts/:account_id)
   .get(function (req, res) {
-
-   Account.findOne(req.params.account_id, function (err, account) {
+  console.log('ATTEMPTING TO FIND BY ID!', req);
+   Account.findById(req.params.account_id, function (err, account) {
       if (err)
         return res.send(err);
       res.json(account).end;
@@ -218,7 +218,7 @@ router.route('/accounts/:account_id')
 
 /**SERVER*************************************/
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3003);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 

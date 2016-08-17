@@ -16,10 +16,10 @@ export class UserComponent {
 
     this.user = {
 
-      firstName: "Blah",
-      lastName: "User",
-      email: "blah@blah.com",
-      password: "password"
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: ""
 
     };
 
