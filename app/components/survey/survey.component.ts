@@ -180,6 +180,8 @@ export class SurveyComponent implements OnInit {
 
   finish(ev) {
 
+    this.save();
+
     ev.preventDefault();
     ev.stopPropagation();
     this.router.navigate(['dashboard']);
