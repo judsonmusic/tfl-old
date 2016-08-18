@@ -38,9 +38,10 @@ export class UserService{
         .map(res => res.json())
         .map((res) => {
 
-          if(res["success"] && res["success"] == 'false'){
+          if(res.success === false){
 
             console.log('***THERE WAS AN ERROR!');
+            this.authService.isLoggedIn = false;
 
           }else {
             console.log('USER FOUND!', res);
@@ -138,6 +139,7 @@ export class UserService{
 
   logout() {
     localStorage.clear();
+    this.userData = null;
     this.authService.isLoggedIn = false;
     this.loggedIn.next(false);
   }

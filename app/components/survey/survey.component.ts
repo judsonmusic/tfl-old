@@ -21,7 +21,7 @@ export class SurveyComponent implements OnInit {
   public newData:any;
 
   ngOnInit(){
-
+    console.log(this.userService.userData, this.data.account);
     this.data.account = this.userService.userData || this.data.account;
     console.log('@@@@@SURVEY INIT!', this.data.account);
     this.userService.user$.subscribe((userData) => {
