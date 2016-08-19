@@ -27,12 +27,12 @@ export class DimensionsComponent implements OnInit, OnDestroy {
 
 
 
-    this.userService.user$.subscribe((userData) => {
-
-      this.seriesData = this.surveyService.getSubsForDimension(userData.assessment, this.dimension.id)[0].subs;
-      //console.log('SERIES DATA::::::::::', this.seriesData);
-
-    });
+    // this.userService.user$.subscribe((userData) => {
+    //
+    //   this.seriesData = this.surveyService.getSubsForDimension(userData.assessment, this.dimension.id)[0].subs;
+    //   //console.log('SERIES DATA::::::::::', this.seriesData);
+    //
+    // });
 
 
     this.sub = this.route.params.subscribe(params => {

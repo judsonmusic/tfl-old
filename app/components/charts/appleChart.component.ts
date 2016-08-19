@@ -12,6 +12,7 @@ export class AppleChartComponent implements OnInit {
 
   @Input() selector: string;
   @Input() heading: string;
+  @Input() seriesdata: any;
 
   ngOnInit(){
 
@@ -137,7 +138,7 @@ export class AppleChartComponent implements OnInit {
             color: Highcharts.getOptions().colors[0],
             radius: '107%',
             innerRadius: '107%',
-            y: 80
+            y: this.seriesdata[0]
           }]
         }, {
           name: 'Motivated',
@@ -146,7 +147,7 @@ export class AppleChartComponent implements OnInit {
             color: Highcharts.getOptions().colors[1],
             radius: '92%',
             innerRadius: '92%',
-            y: 65
+            y: this.seriesdata[1]
           }]
         }, {
           name: 'Importance',
@@ -155,7 +156,7 @@ export class AppleChartComponent implements OnInit {
             color: Highcharts.getOptions().colors[2],
             radius: '77%',
             innerRadius: '77%',
-            y: 50
+            y: this.seriesdata[2]
           }]
         },
           {
@@ -165,7 +166,7 @@ export class AppleChartComponent implements OnInit {
               color: Highcharts.getOptions().colors[3],
               radius: '62%',
               innerRadius: '62%',
-              y: 35
+              y: this.seriesdata[3]
             }]
           },
           {
@@ -175,7 +176,7 @@ export class AppleChartComponent implements OnInit {
               color: Highcharts.getOptions().colors[4],
               radius: '47%',
               innerRadius: '47%',
-              y: 50
+              y: this.seriesdata[4]
             }]
           }]
       },

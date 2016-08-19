@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
     }else {
 
 
-      this.userService.getUser().subscribe((user) => {
+      this.userService.user$.subscribe((user) => {
 
         //console.log('AUTH GUARD GETTING USER', user);
 

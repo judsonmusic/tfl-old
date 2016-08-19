@@ -15,7 +15,9 @@ export class BarChartComponent implements OnInit {
 
   @Input() selector: string;
   @Input() heading: string;
-  @Input() seriesdata: any[];
+  @Input() seriesdata: string;
+  public seriesData;
+
 
   ngOnInit(){
 
@@ -32,6 +34,8 @@ export class BarChartComponent implements OnInit {
   }
 
   renderChart() {
+
+    this.seriesData = [1,2,3,4,5];
 
     //console.log('The series data ', this.seriesdata);
 

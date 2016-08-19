@@ -20,6 +20,7 @@ import {LogoutComponent} from "./components/logout/logout.component";
 import {DimensionsComponent} from "./components/dimensions/dimensions.component";
 import {SurveyService} from "./components/survey/survey.service";
 import {BarChartComponent} from "./components/charts/barChart.component";
+import {OnCreate} from "./components/directives/oncreate.directive";
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import {BarChartComponent} from "./components/charts/barChart.component";
     ResourcesComponent,
     LogoutComponent,
     DimensionsComponent,
-    BarChartComponent
+    BarChartComponent,
+    OnCreate
   ],
   providers: [
     UserService,

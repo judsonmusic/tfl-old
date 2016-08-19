@@ -7,8 +7,8 @@
   <div *ngFor="let i of areas" class="col-sm-12 col-md-12 col-lg-6">
     <div class="row" style="border: 1px solid grey; margin: 30px 0 0 0; padding-bottom: 20px;">
 
-     <div class="col-sm-4 col-md-5">
-        <apple-chart selector="{{i.category}}" heading="{{i.category}}"></apple-chart>
+     <div class="col-sm-4 col-md-5" >
+        <apple-chart selector="{{i.category}}" heading="{{i.category}}" [seriesdata]="assessmentData[i.id-1].subs"></apple-chart>
       </div>
       <div class="col-sm-8 col-md-7">
         <h3>This items title the area.</h3>
