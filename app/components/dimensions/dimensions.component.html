@@ -1,0 +1,8 @@
+<h1>{{dimension.category}}</h1>
+<p>The question was: {{dimension.question}}</p>
+<hr/>
+<div>
+  <bar-chart heading="{{dimension.category}}" selector="{{dimension.category}}_bar_chart" seriesdata="[{{seriesData}}]"></bar-chart>
+</div>
+
+{{seriesData | json}}

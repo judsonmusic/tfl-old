@@ -59,7 +59,7 @@ router.post('/authenticate', function (req, res) {
           console.log('*****ACCOUNT', account);
 
           var token = jwt.sign({password: account[0].password}, app.get('superSecret'), {
-            expiresIn: 60 // expires in 24 hours
+            expiresIn: 9999 // expires in 24 hours
           });
 
           // return the information including token as JSON

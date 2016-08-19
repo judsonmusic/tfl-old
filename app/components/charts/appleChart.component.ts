@@ -4,7 +4,7 @@ import {TitleCasePipe} from "../pipes/titlecase.pipe";
 declare var Highcharts:any;
 
 @Component({
-  selector: 'my-chart2',
+  selector: 'apple-chart',
   template: `<div id="{{selector}}" style="width: 280px; height: 280px; margin: 10px auto;">`,
   pipes: [TitleCasePipe]
 })

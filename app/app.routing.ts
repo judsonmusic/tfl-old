@@ -9,6 +9,7 @@ import {LogoutComponent} from "./components/logout/logout.component";
 import {AuthGuard} from "./components/auth/auth-guard.service";
 import { loginRoutes, authProviders }      from './login.routing';
 import {LoginComponent} from "./components/login/login.component";
+import {DimensionsComponent} from "./components/dimensions/dimensions.component";
 
 
 const appRoutes:Routes = [
@@ -19,6 +20,7 @@ const appRoutes:Routes = [
   { path: 'survey', component: SurveyComponent },
   { path: 'about', component: AboutComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'dimensions/:id', component: DimensionsComponent},
   { path: '**', component: PageNotFoundComponent}
 ];
 

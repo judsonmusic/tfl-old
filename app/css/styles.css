@@ -193,9 +193,9 @@ li.survey-item {
 }
 
 /*HighCharts Override*/
-text[text-anchor="end"] {
-  display: none;
-}
+/*text[text-anchor="end"] {*/
+  /*display: none;*/
+/*}*/
 
 /*radio buttons*/
 input[type="radio"] {

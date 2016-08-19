@@ -19,7 +19,7 @@ export class LoginComponent {
 
   constructor(public authService: AuthService, public router: Router, public http: Http, public userService: UserService) {
     this.setMessage();
-    this.loginData = {email: "blah@blah.com", password: "password"};
+    this.loginData = {email: "test@user.com", password: "password"};
   }
   setMessage() {
     //this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');

@@ -9,8 +9,6 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-
-
     if (this.authService.isLoggedIn){
 
       console.log('AUTH GUARD SAYS THEY ARE ALREADY LOGGED IN!');
@@ -24,7 +22,7 @@ export class AuthGuard implements CanActivate {
 
         console.log('AUTH GUARD GETTING USER', user);
 
-        if (user._id) {
+        if (user && user._id) {
         this.authService.isLoggedIn = true;
         // Store the attempted URL for redirecting
         this.authService.redirectUrl = state.url || '/dashboard';

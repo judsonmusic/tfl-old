@@ -4,6 +4,7 @@ import { Http, Headers } from '@angular/http';
 import {Subject} from "../../../node_modules/rxjs/src/Subject";
 import {Observable} from "../../../node_modules/rxjs/src/Observable";
 import {AuthService} from "../auth/auth.service";
+import {SurveyService} from "../survey/survey.service";
 
 
 @Injectable()
@@ -16,7 +17,7 @@ export class UserService{
   loggedIn$:Observable<any>;
 
 
-  constructor(private http:Http, public authService:AuthService, public router:Router) {
+  constructor(private http:Http, public authService:AuthService, public router:Router, public surveyService: SurveyService) {
 
     this.user = new Subject();
     this.user$ = this.user.asObservable();
@@ -39,7 +40,6 @@ export class UserService{
         .map((res) => {
 
           if(res.success === false){
-
             console.log('***THERE WAS AN ERROR!');
             this.authService.isLoggedIn = false;
 
@@ -56,25 +56,8 @@ export class UserService{
   }
 
   createAccount(user) {
-    user.assessment = {
-
-      1: {id: "1", answer: "", subs: []},
-      2: {id: "2", answer: "", subs: []},
-      3: {id: "3", answer: "", subs: []},
-      4: {id: "4", answer: "", subs: []},
-      5: {id: "5", answer: "", subs: []},
-      6: {id: "6", answer: "", subs: []},
-      7: {id: "7", answer: "", subs: []},
-      8: {id: "8", answer: "", subs: []},
-      9: {id: "9", answer: "", subs: []},
-      10: {id: "10", answer: "", subs: []},
-      11: {id: "11", answer: "", subs: []},
-      12: {id: "12", answer: "", subs: []},
-      13: {id: "13", answer: "", subs: []},
-      14: {id: "14", answer: "", subs: []},
-      15: {id: "15", answer: "", subs: []}
-
-    };
+    user.assessment = this.surveyService.assessment;
+    console.log('Build empty assessment: ' , user.assessment);
     console.log('Attempting to create an account with', user);
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -88,6 +71,7 @@ export class UserService{
       .map(res => res.json())
       .map((res) => {
         if (res['account']) {
+          console.log('Account created!', res["account"]);
           this.authService.isLoggedIn = true;
           this.loggedIn.next(true);
           this.userData = res["account"];
