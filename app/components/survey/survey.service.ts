@@ -34,7 +34,7 @@ export class SurveyService{
 
     this.subquestions = [
 
-      {id: "1", category: "Balance", question: "How balanced and satisfied are you in this dimension of your life?"},
+      {id: "1", category: "Satisfied", question: "How balanced and satisfied are you in this dimension of your life?"},
       {id: "2", category: "Importance", question: "Is it importance for your to gain greater balance and satisfaction in this dimension?"},
       {id: "3", category: "Motivation", question: "How motivated are you to improve this dimension?"},
       {id: "4", category: "Happiness", question: "How is your overall happiness affected by this dimension of your life?"},

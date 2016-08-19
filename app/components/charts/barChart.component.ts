@@ -16,7 +16,8 @@ export class BarChartComponent implements OnInit {
   @Input() selector: string;
   @Input() heading: string;
   @Input() seriesdata: string;
-  public seriesData;
+  @Input() categories: string;
+
 
 
   ngOnInit(){
@@ -34,8 +35,6 @@ export class BarChartComponent implements OnInit {
   }
 
   renderChart() {
-
-    this.seriesData = [1,2,3,4,5];
 
     //console.log('The series data ', this.seriesdata);
 
@@ -58,6 +57,9 @@ export class BarChartComponent implements OnInit {
       });
     }*/
 
+    console.log('Categories for chart', this.categories);
+    console.log('Series Data  for chart', this.seriesdata);
+
     //now that we have the dimension that we want to populate data for...Build series data...
 
     Highcharts.chart(this.selector, {
@@ -72,13 +74,7 @@ export class BarChartComponent implements OnInit {
         text: ''
       },
       xAxis: {
-        categories: [
-          'Balanced ',
-          'Importance',
-          'Motivated',
-          'Happiness',
-          'Importance'
-        ],
+        categories: this.categories,
         crosshair: true
       },
       yAxis: {
@@ -109,10 +105,7 @@ export class BarChartComponent implements OnInit {
       },
       //for series we need to loop through each area and then get data from each on in service.
 
-      series: [{
-        name: 'value',
-        data: this.seriesdata
-      }]
+      series: this.seriesdata
     });
   }
 }

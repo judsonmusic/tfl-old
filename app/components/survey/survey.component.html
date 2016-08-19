@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Train For Life Balance Assessment <span *ngIf="data.account.firstName">for {{data.account.firstName}}</span></h1>
+  <h1>Train For Life Assessment <span *ngIf="data.account.firstName">for {{data.account.firstName}}</span></h1>
   <!--<h4>Please answer the following questions to create your profile. <a href="javascript:void(0)" (click)="finish($event)">Go to dashboard!</a></h4>-->
   <hr/>
 
@@ -21,14 +21,17 @@
   <div class="instructions" *ngIf="count==0 && data.account.createdAt">
     <img src="/app/images/log_only_large.jpg" style="float: left; max-width: 100%;"/>
 
-    <p>This Train For Life Balance Assessment tool is intended to allow you to assess your life in 15 different dimensions and rank how balanced and satisfied you are with each. This holistic approach will allow you to take inventory of your life in a more comprehensive manner. Examining only one aspect of your life would be incomplete so this TFL Balance Assessment tool will provide you with more insight and a broader perspective of your total wellbeing. There are no wrong or right answers so
-      just trust your gut and rank each area as authentically as possible. Knowing where you are is the first step in making mindful decisions on where you want to go. </p>
+    <p>Welcome and thank you for making the time to take your Train for Life Assessment (TFL). The TFL Assessment tool is intended to allow you to assess your life in 15 different dimensions and rate how satisfied you are with each. This holistic approach will allow you to take inventory of your life in a more comprehensive manner.  Examining only one aspect of your life would be incomplete so the TFL Assessment tool will provide you with more insight and a broader perspective of your total wellbeing. Become your greatest advocate by becoming more informed.
+    </p>
 
-    <p>Reflect over the past 3 months as you answer each question. You will be asked to rate each dimension regarded: how balanced and satisfied you feel, level of importance, motivation to change, your overall happiness and how your job and or school performance is impacted. Once you complete the assessment you will receive your personalized TFL Empowerment Guide which will provide you with insight, resources, and some self-guided exercises. Your privacy is important to us so be assured that
-      your personal assessment information will be kept confidential and will not be shared.</p>
+    <p>There are no wrong or right answers so just trust your gut and rate each dimension as authentically as possible. Knowing where you are is the first step in making mindful decisions on where you want to go.</p>
+
+    <p><strong>Reflect over the past 3 months</strong> as you answer each question. You will be asked to rate each dimension regarding how satisfied you feel, level of importance, motivation to change and how your happiness and your school and/or job performance is impacted. You are just <strong>20 minutes</strong> away from receiving a complete overview of your life in 15 different dimensions. Once you complete the TFL assessment you will have immediate access to your personalized TFL Dashboard and assessment results.</p>
+
+    <p>Start your journey to greater self-awareness by beginning your assessment now!</p>
 
 
-    <p>
+    <p class="text-right">
       <button (click)="start($event)" class="btn btn-primary">Let's Begin!</button>
     </p>
 

@@ -132,7 +132,7 @@ export class AppleChartComponent implements OnInit {
         },
 
         series: [{
-          name: 'Balanced',
+          name: 'Satisfied',
           borderColor: Highcharts.getOptions().colors[0],
           data: [{
             color: Highcharts.getOptions().colors[0],

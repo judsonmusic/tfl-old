@@ -16,7 +16,8 @@ export class DimensionsComponent implements OnInit, OnDestroy {
 
   private sub: Subscription;
   private dimension: any;
-  private seriesData: any;
+  private seriesdata: any;
+  private categories: any;
 
   constructor(private route: ActivatedRoute,
               private userService: UserService,
@@ -25,23 +26,22 @@ export class DimensionsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-
-
-    // this.userService.user$.subscribe((userData) => {
-    //
-    //   this.seriesData = this.surveyService.getSubsForDimension(userData.assessment, this.dimension.id)[0].subs;
-    //   //console.log('SERIES DATA::::::::::', this.seriesData);
-    //
-    // });
-
-
     this.sub = this.route.params.subscribe(params => {
 
       let id = +params['id']; // (+) converts string 'id' to a number
       this.dimension = this.surveyService.getDimension(id);
       if (this.userService.userData) {
-        this.seriesData = this.surveyService.getSubsForDimension(this.userService.userData.assessment, this.dimension.id)[0].subs || null;
+        this.seriesdata = this.surveyService.getSubsForDimension(this.userService.userData.assessment, this.dimension.id)[0].subs || null;
+        let temp = [];
+        this.surveyService.subquestions.map((x)=> {
+
+          temp.push(x.category);
+
+        });
+        this.categories = temp;
       }
+
+
 
     });
 

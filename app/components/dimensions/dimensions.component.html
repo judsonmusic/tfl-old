@@ -2,5 +2,5 @@
 <p>The question was: {{dimension.question}}</p>
 <hr/>
 <div *ngIf="seriesData">
-  <bar-chart heading="{{dimension.category}}" selector="{{dimension.category}}_bar_chart" [seriesdata]="seriesData"></bar-chart>
+  <bar-chart heading="{{dimension.category}}" selector="{{dimension.category}}_bar_chart" [seriesdata]="seriesData" [categories]="categories"></bar-chart>
 </div>
