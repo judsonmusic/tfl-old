@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy, Input} from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Component, OnInit, OnDestroy, Input} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 import {SurveyService} from "../survey/survey.service";
-import { Subscription } from 'rxjs/Subscription';
+import {Subscription} from 'rxjs/Subscription';
 import {BarChartComponent} from "../charts/barChart.component";
 import {UserService} from "../user-service/user.service";
 
@@ -12,28 +12,40 @@ import {UserService} from "../user-service/user.service";
 })
 
 
-export class DimensionsComponent implements OnInit, OnDestroy  {
-
+export class DimensionsComponent implements OnInit, OnDestroy {
 
   private sub: Subscription;
-  private dimension:any;
+  private dimension: any;
   private seriesData: any;
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private userService: UserService,
-    private surveyService: SurveyService) {}
+  constructor(private route: ActivatedRoute,
+              private userService: UserService,
+              private surveyService: SurveyService) {
+  }
 
   ngOnInit() {
+
+
+
+    this.userService.user$.subscribe((userData) => {
+
+      this.seriesData = this.surveyService.getSubsForDimension(userData.assessment, this.dimension.id)[0].subs;
+      //console.log('SERIES DATA::::::::::', this.seriesData);
+
+    });
+
+
     this.sub = this.route.params.subscribe(params => {
+
       let id = +params['id']; // (+) converts string 'id' to a number
       this.dimension = this.surveyService.getDimension(id);
-      console.log('The assessment data loaded into the dimension comp: ' , this.userService.userData.assessment);
-      this.seriesData = [1, 2, 3, 4, 5];//this.surveyService.getSubsForDimension(this.userService.userData.assessment, this.dimension.id)[0].subs;
-      console.log('@@@: ', this.seriesData);
-      console.log('The loaded dimension is: ', this.dimension);
+      if (this.userService.userData) {
+        this.seriesData = this.surveyService.getSubsForDimension(this.userService.userData.assessment, this.dimension.id)[0].subs || null;
+      }
+
     });
+
+
 
 
   }

@@ -84,7 +84,7 @@ export class SurveyService{
   }
 
   getSubsForDimension(assessment, id){
-    console.log('ASSESSMENT FOR FILTER', id, assessment);
+    //console.log('ASSESSMENT FOR FILTER', id, assessment);
     return assessment.filter(
       (item:any) => item.id == id);
 

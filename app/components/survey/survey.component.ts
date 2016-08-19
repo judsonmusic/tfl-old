@@ -19,13 +19,13 @@ export class SurveyComponent implements OnInit {
   public user: any[];
 
   ngOnInit(){
-    console.log(this.userService.userData, this.data.account);
+    //console.log(this.userService.userData, this.data.account);
     this.data.account = this.userService.userData || this.data.account;
-    console.log('@@@@@SURVEY INIT!', this.data.account);
+    //console.log('@@@@@SURVEY INIT!', this.data.account);
     this.userService.user$.subscribe((userData) => {
 
       this.data.account = userData;
-      console.log('ACCOUNT INFORMATION ADDED!', this.data.account);
+      //console.log('ACCOUNT INFORMATION ADDED!', this.data.account);
 
     });
   }
@@ -36,7 +36,7 @@ export class SurveyComponent implements OnInit {
     this.authService.redirectUrl = '/survey';
 
 
-    console.log('the survey componet loaded.');
+    //console.log('the survey componet loaded.');
     //array of answers they can select for main question.
 
     this.data = {};
@@ -54,11 +54,11 @@ export class SurveyComponent implements OnInit {
   }
   save(){
 
-    console.log('Saving Your Data!');
+    //console.log('Saving Your Data!');
     //we need to add the assessment data to the account so it will get stored in use data;
     this.userService.updateAccount(this.data.account).subscribe((res) => {
 
-      console.log('Data saved. Going to next slide.');
+      //console.log('Data saved. Going to next slide.');
       this.counterUp();
 
     }, (err) => console.log('There was an error!'));
@@ -101,6 +101,8 @@ export class SurveyComponent implements OnInit {
     this.router.navigate(['dashboard']);
 
   }
+
+
 
 
 }

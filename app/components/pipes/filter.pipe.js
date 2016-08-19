@@ -22,8 +22,8 @@ System.register(['@angular/core'], function(exports_1, context_1) {
                 function MyFilterPipe() {
                 }
                 MyFilterPipe.prototype.transform = function (items, args) {
-                    console.log(args);
-                    return items.filter(function (item) { return item.id == args; });
+                    //console.log(items, args);
+                    return items.filter(function (item) { return item.id === Number(args); });
                 };
                 MyFilterPipe = __decorate([
                     core_1.Pipe({

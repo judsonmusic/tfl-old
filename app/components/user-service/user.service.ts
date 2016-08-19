@@ -33,14 +33,14 @@ export class UserService{
       //headers.append('Content-Type', 'application/json');
 
       headers.append('x-access-token', localStorage['jwt']);
-      console.log('We have a user ID! Lets try to get a user!');
+      //console.log('We have a user ID! Lets try to get a user!');
       return this.http
         .get('/api/accounts/' + localStorage['_id'], {headers : headers} )
         .map(res => res.json())
         .map((res) => {
 
           if(res.success === false){
-            console.log('***THERE WAS AN ERROR!');
+            //console.log('***THERE WAS AN ERROR!');
             this.authService.isLoggedIn = false;
 
           }else {
@@ -57,8 +57,8 @@ export class UserService{
 
   createAccount(user) {
     user.assessment = this.surveyService.assessment;
-    console.log('Build empty assessment: ' , user.assessment);
-    console.log('Attempting to create an account with', user);
+    //console.log('Build empty assessment: ' , user.assessment);
+    //console.log('Attempting to create an account with', user);
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
@@ -133,6 +133,15 @@ export class UserService{
     headers.append('Content-Type', 'application/json');
     headers.append('x-access-token', localStorage.getItem('jwt'));
 
+    // user.assessment.map((x) => {
+    //
+    //   x.id = Number(x.id);
+    //   x.answer = Number(x.answer);
+    //   x.subs = String(x.subs).split(',').map(Number);
+    //
+    //
+    // });
+
     console.log('PAYLOAD FOR UPDATE USER: ' , user);
 
     return this.http
@@ -143,13 +152,15 @@ export class UserService{
       )
       .map(res => res.json())
       .map((res) => {
-        if (res['success']) {
+        if (res['account']) {
+
+          console.log('USER UPDATE RETURNED:  ' , res);
           //localStorage.setItem('jwt', res['jwt']);
           //this.loggedIn$ = true;
-          this.loggedIn.next(true);
+          //this.loggedIn.next(true);
         }
 
-        return res['success'];
+        //return res['success'];
       });
   }
 

@@ -11,8 +11,6 @@ import {AuthService} from "./components/auth/auth.service";
 })
 export class AppComponent implements OnInit{
 
-
-
   public viewContainerRef;
   public userService;
   public authService;
@@ -31,15 +29,15 @@ export class AppComponent implements OnInit{
 
     this.userService.getUser().subscribe((user) =>{
       //this.authService.isLoggedIn = true;
-      let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/dashboard';
+      //let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/dashboard';
       // Redirect the user
-      this.router.navigate([redirect]);
+      //this.router.navigate([redirect]);
 
     }, (error) => {
-
+      console.log('Error! Redirecting!');
       let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/';
       // Redirect the user
-      this.router.navigate([redirect]);
+      this.router.navigate(['/']);
 
 
     });

@@ -25,12 +25,12 @@ export class UserComponent {
 
     this.userService.user$.subscribe((userData) => {
       this.user = userData;
-      console.log('We got some data!');
+      //console.log('We got some data!');
     });
 
     this.userService.loggedIn$.subscribe((loggedIn) => {
       this.loggedIn = loggedIn;
-      console.log('The user is logged in!');
+      //console.log('The user is logged in!');
     });
 
   }
@@ -38,16 +38,16 @@ export class UserComponent {
   addAccount(user) {
 
     this.userService.createAccount(user).subscribe((result) => {
-      console.log('The result from creating account: ', result);
+      //console.log('The result from creating account: ', result);
       if (result) {
 
-        console.log('Account Created Succesfully!', result.account);
+        //console.log('Account Created Succesfully!', result.account);
 
         this.userService.login(result.account).subscribe((result) => {
 
-            console.log('You are now logged in as well...', result);
+          //console.log('You are now logged in as well...', result);
           this.authService.login();
-          console.log(this.authService.isLoggedIn);
+          //onsole.log(this.authService.isLoggedIn);
           // Get the redirect URL from our auth service
           // If no redirect has been set, use the default
           let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/survey';
@@ -64,7 +64,7 @@ export class UserComponent {
 
     this.userService.updateAccount(user).subscribe((result) => {
       if (result) {
-        console.log('Account Updated Succesfully!', result);
+        //console.log('Account Updated Succesfully!', result);
 
       }
     });

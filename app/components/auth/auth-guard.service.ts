@@ -11,7 +11,10 @@ export class AuthGuard implements CanActivate {
 
     if (this.authService.isLoggedIn){
 
-      console.log('AUTH GUARD SAYS THEY ARE ALREADY LOGGED IN!');
+      //console.log('AUTH GUARD SAYS THEY ARE ALREADY LOGGED IN!');
+      this.authService.redirectUrl = state.url;
+      //console.log(state.url);
+      //this.router.navigate([this.authService.redirectUrl]);
       return true;
 
 
@@ -20,13 +23,14 @@ export class AuthGuard implements CanActivate {
 
       this.userService.getUser().subscribe((user) => {
 
-        console.log('AUTH GUARD GETTING USER', user);
+        //console.log('AUTH GUARD GETTING USER', user);
 
         if (user && user._id) {
         this.authService.isLoggedIn = true;
-        // Store the attempted URL for redirecting
+        // Store the attempted URL for redirectin
+          //console.log('Trying to go to ', state.url);
         this.authService.redirectUrl = state.url || '/dashboard';
-        this.router.navigate([state.url]);
+        this.router.navigate([this.authService.redirectUrl]);
         return true;
         }else{
           console.log('Validation Failed.');

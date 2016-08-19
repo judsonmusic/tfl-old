@@ -19,6 +19,7 @@ import {ResourcesComponent} from "./components/resources/resources.component";
 import {LogoutComponent} from "./components/logout/logout.component";
 import {DimensionsComponent} from "./components/dimensions/dimensions.component";
 import {SurveyService} from "./components/survey/survey.service";
+import {BarChartComponent} from "./components/charts/barChart.component";
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {SurveyService} from "./components/survey/survey.service";
     SurveyComponent,
     ResourcesComponent,
     LogoutComponent,
-    DimensionsComponent
+    DimensionsComponent,
+    BarChartComponent
   ],
   providers: [
     UserService,

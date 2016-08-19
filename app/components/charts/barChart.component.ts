@@ -28,12 +28,12 @@ export class BarChartComponent implements OnInit {
 
 
   ngAfterViewInit() {
-    this.renderChart();
+      this.renderChart();
   }
 
   renderChart() {
 
-    console.log('The series data for the ', this.seriesdata);
+    //console.log('The series data ', this.seriesdata);
 
     /*if (!Highcharts.theme) {
       Highcharts.setOptions({
@@ -107,7 +107,7 @@ export class BarChartComponent implements OnInit {
 
       series: [{
         name: 'value',
-        data: this.seriesdata;
+        data: this.seriesdata
       }]
     });
   }
