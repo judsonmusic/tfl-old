@@ -79,19 +79,16 @@ export class DashboardComponent implements OnInit {
 
     });
 
-
-      //loop through assessment
-    let temp3 = [];
-       this.assessmentData.map((x, y) =>{
-        //for each area on the series, we need to set what they selected from each area. 5 total. For example spiriitual.
-         temp2.map((z, index)=>{
-            //in each of the 5 things, get the values by index.
-           //console.log('The index of data we are pushing to:', index);
-           z.data.push(x.subs[index]);
-         });
+     this.assessmentData.map((x, y) =>{
+      //for each area on the series, we need to set what they selected from each area. 5 total. For example spiriitual.
+       temp2.map((z, index)=>{
+          //in each of the 5 things, get the values by index.
+         //console.log('The index of data we are pushing to:', index);
+         z.data.push(x.subs[index]);
+       });
 
 
-        });
+      });
 
 
     this.seriesdata = temp2;

@@ -113,6 +113,11 @@ li.survey-item {
 
 }
 
+.survey-radio-wrapper-subs {
+
+  margin-left: 40px;
+}
+
 .survey-category {
 
   color: #337ab7;
@@ -187,8 +192,6 @@ li.survey-item {
 }
 
 .sub-survey .sub-question {
-
-  display: inline;
   font-size: 16px;
 }
 

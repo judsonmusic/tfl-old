@@ -14,31 +14,31 @@ export class SurveyService{
   constructor() {
 
     this.questions = [
-      {id: 1, question: "Do you feel a connection to a higher source and have a sense of comfort knowing that you are part of something greater than yourself?", category: "Spiritual"},
-      {id: 2, question: "Do you feel you are free of unhealthy behavior that impacts your overall well-being?", category: "Habits"},
-      {id: 3, question: "Do you feel you have healthy and fulfilling relationships?", category: "Relationships"},
-      {id: 4, question: "Do you feel you have a sense of purpose and that you have a positive outlook about yourself and life?", category: "Emotional Well-being"},
-      {id: 5, question: "Do you feel you have a healthy diet and that you are fueling your body for optimal health? ", category: "Eating Habits "},
-      {id: 6, question: "Do you feel that you get enough rest and that your stress level is healthy?", category: "Relaxation "},
-      {id: 7, question: "Do you feel you get enough physical activity for optimal health?", category: "Exercise "},
-      {id: 8, question: "Do you feel you practice self-care and go to the doctor regularly?", category: "Medical Maintenance"},
-      {id: 9, question: "Do you feel satisfied with your income and economic stability?", category: "Financial"},
-      {id: 10, question: "Do you feel you do fun things and laugh enough in your life?", category: "Play"},
-      {id: 11, question: "Do you feel you have a healthy sense of balance in this area of your life?", category: "Work-life Balance"},
-      {id: 12, question: "Do you feel a sense of peace and contentment  in your home? ", category: "Home Environment"},
-      {id: 13, question: "Do you feel that you are challenged and growing as a person?", category: "Intellectual Wellbeing"},
-      {id: 14, question: "Do you feel content with what you see when you look in the mirror?", category: "Self-image"},
-      {id: 15, question: "Do you feel engaged at work and a sense of fulfillment with your job?", category: "Work Satisfaction"}
+      {id: 1, question: "I feel a connection to a higher source and have a sense of comfort knowing that I am part of something greater than myself.", category: "Spiritual"},
+      {id: 2, question: "I am free of unhealthy behavior that impacts my overall wellbeing.", category: "Habits"},
+      {id: 3, question: "I have a strong social network and feel my relationships are healthy and fulfilling.", category: "Relationships"},
+      {id: 4, question: "I have a sense of self-worth, a positive attitude and I am free of current and/or past self-doubt and struggles.", category: "Emotional"},
+      {id: 5, question: "I feel my diet is healthy and that I am fueling my body for optimal performance. ", category: "Nutrition"},
+      {id: 6, question: "I get adequate rest, have strong coping skills and feel that my stress level is healthy. ", category: "Relaxation"},
+      {id: 7, question: "I get enough exercise and movement throughout the day for optimal health.", category: "Activity "},
+      {id: 8, question: "I routinely go to my doctor(s), follow medical recommendations and practice self-care.", category: "Health"},
+      {id: 9, question: "I am satisfied with my income and economic stability", category: "Financial"},
+      {id: 10, question: "I engage in fun activities, hobbies and laugh often.", category: "Play"},
+      {id: 11, question: "I feel a sense of fulfillment with the way I spend my time.", category: "Life Balance"},
+      {id: 12, question: "I feel a sense of peace and contentment in my home.", category: "Home"},
+      {id: 13, question: "I feel that I am challenged and growing as a person.", category: "Intellectual"},
+      {id: 14, question: "I am content with what I see when I look in the mirror.", category: "Self-image"},
+      {id: 15, question: "I feel engaged, valued and have a sense of purpose.", category: "Occupation"}
 
     ];
 
     this.subquestions = [
 
-      {id: "1", category: "Satisfied", question: "How balanced and satisfied are you in this dimension of your life?"},
-      {id: "2", category: "Importance", question: "Is it importance for your to gain greater balance and satisfaction in this dimension?"},
-      {id: "3", category: "Motivation", question: "How motivated are you to improve this dimension?"},
-      {id: "4", category: "Happiness", question: "How is your overall happiness affected by this dimension of your life?"},
-      {id: "5", category: "Performance", question: "Is your job and/or school performance affected by this dimension of your life?"},
+      {id: "1", category: "Satisfied", question: "I am satisfied in this dimension of my life"},
+      {id: "2", category: "Importance", question: "I feel my life would be better if I improved this dimension or it is important to me to maintain in this dimension if I am completely satisfied."},
+      {id: "3", category: "Motivation", question: "I am motivated to take action to improve this dimension or I am motivated to maintain in this dimension if I am completely satisfied."},
+      {id: "4", category: "Happiness", question: "This dimension impacts my overall happiness."},
+      {id: "5", category: "Performance", question: "This dimension impacts my ability to achieve high performance."},
 
     ];
 
