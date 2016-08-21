@@ -1,0 +1,39 @@
+<!-- Large modal -->
+<div bsModal #childModal="bs-modal" #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close" style="color: white; opacity: 10; text-shadow: none; font-size: 36px; font-weight: normal;">
+          <span aria-hidden="true" style="opacity: 10;">&times;</span>
+        </button>
+        <h4 class="modal-title">Instructions for graphs</h4>
+      </div>
+
+
+      <div class="modal-body">
+
+        <p>The below graph represents how you ranked yourself in all 15 TFL Dimensions.  20% represents that you rated yourself not satisfied and 100% indicates that you ranked yourself completely satisfied. It is through self-awareness that we can celebrate the areas of our lives in which we are satisfied and begin taking mindful action in the dimensions we want to change.  </p>
+
+        <p>There are 4 additional grayed out words below the chart: <strong>Importance</strong>, <strong>Motivation</strong>, <strong>Happiness</strong> and <strong>Performance</strong>. How you ranked yourself in each area will populate once you click each word.  We encourage you to click and un-click each area to compare and contrast your results.</p>
+
+        <p>Click on the <strong>Take Action</strong> button and the dimensions you ranked the greatest motivation to change will populate.  We encourage you to focus your efforts on the things that are important to you so take a look at your results  and we hope you are motivated to take action.</p>
+
+        <p>The colors below denote which each item on the charts mean:</p>
+
+
+        <ul class="swatch-list">
+          <li><span class="swatch blue-bg"></span>Blue: How satisfied are you with this dimension in your life?</li>
+          <li><span class="swatch red-bg"></span>Green: How important is it for your to gain greater balance and satisfaction in this dimension of your life</li>
+          <li><span class="swatch green-bg"></span>Black: How motivated are your to improve this dimension in your life?</li>
+          <li><span class="swatch yellow-bg"></span>Orange: How much is your overall happiness affected?</li>
+          <li><span class="swatch orange-bg"></span>Purple: How much is your performance at work or school affected?</li>
+        </ul>
+
+        <div class="text-right">
+          <button class="btn btn-primary" (click)="lgModal.hide()">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -14,13 +14,14 @@ export class SurveyService{
   constructor() {
 
     this.questions = [
-      {id: 1, question: "I feel a connection to a higher source and have a sense of comfort knowing that I am part of something greater than myself.", category: "Spiritual"},
-      {id: 2, question: "I am free of unhealthy behavior that impacts my overall wellbeing.", category: "Habits"},
-      {id: 3, question: "I have a strong social network and feel my relationships are healthy and fulfilling.", category: "Relationships"},
+
+      {id: 1, question: "I feel my diet is healthy and that I am fueling my body for optimal performance. ", category: "Nutrition"},
+      {id: 2, question: "I get adequate rest, have strong coping skills and feel that my stress level is healthy. ", category: "Relaxation"},
+      {id: 3, question: "I get enough exercise and movement throughout the day for optimal health.", category: "Activity "},
       {id: 4, question: "I have a sense of self-worth, a positive attitude and I am free of current and/or past self-doubt and struggles.", category: "Emotional"},
-      {id: 5, question: "I feel my diet is healthy and that I am fueling my body for optimal performance. ", category: "Nutrition"},
-      {id: 6, question: "I get adequate rest, have strong coping skills and feel that my stress level is healthy. ", category: "Relaxation"},
-      {id: 7, question: "I get enough exercise and movement throughout the day for optimal health.", category: "Activity "},
+      {id: 5, question: "I feel a connection to a higher source and have a sense of comfort knowing that I am part of something greater than myself.", category: "Spiritual"},
+      {id: 6, question: "I am free of unhealthy behavior that impacts my overall wellbeing.", category: "Habits"},
+      {id: 7, question: "I have a strong social network and feel my relationships are healthy and fulfilling.", category: "Relationships"},
       {id: 8, question: "I routinely go to my doctor(s), follow medical recommendations and practice self-care.", category: "Health"},
       {id: 9, question: "I am satisfied with my income and economic stability", category: "Financial"},
       {id: 10, question: "I engage in fun activities, hobbies and laugh often.", category: "Play"},
@@ -38,7 +39,7 @@ export class SurveyService{
       {id: "2", category: "Importance", question: "I feel my life would be better if I improved this dimension or it is important to me to maintain in this dimension if I am completely satisfied."},
       {id: "3", category: "Motivation", question: "I am motivated to take action to improve this dimension or I am motivated to maintain in this dimension if I am completely satisfied."},
       {id: "4", category: "Happiness", question: "This dimension impacts my overall happiness."},
-      {id: "5", category: "Performance", question: "This dimension impacts my ability to achieve high performance."},
+      {id: "5", category: "Performance", question: "This dimension impacts my ability to achieve optimal performance."},
 
     ];
 

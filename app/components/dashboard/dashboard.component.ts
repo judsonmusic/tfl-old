@@ -12,13 +12,14 @@ import {BS_VIEW_PROVIDERS} from 'ng2-bootstrap/ng2-bootstrap';
 import {SurveyService} from "../survey/survey.service";
 import {OnCreate} from "../directives/oncreate.directive";
 import {UserService} from "../user-service/user.service";
+import {ModalHelpComponent} from "../modals/modalHelpComponent";
 
 
 @Component({
   selector: 'dashboard',
   templateUrl: '/app/components/dashboard/dashboard.component.html',
   providers: [BS_VIEW_PROVIDERS],
-  directives: [SimpleChartComponent, AppleChartComponent, BarChartComponent, DonutChartComponent, AlertComponent, ModalDemoComponent, NgInitHelperComponent, ModalDirective, OnCreate]
+  directives: [SimpleChartComponent, AppleChartComponent, BarChartComponent, DonutChartComponent, AlertComponent, ModalDemoComponent, ModalHelpComponent, NgInitHelperComponent, ModalDirective, OnCreate]
 })
 export class DashboardComponent implements OnInit {
 
@@ -69,13 +70,21 @@ export class DashboardComponent implements OnInit {
     this.categories = temp;
     //console.log('Categories: ', temp);
 
+    let colors = [
+      "#002494",
+      "#bc0015",
+      "#039f71",
+      "#e5d500",
+      "#eb6b00"
+    ];
+
 
     let temp2 = [];
     //loop through sub questions and then get each map data to what they chose for each area.
     this.surveyService.subquestions.map((x, i)=> {
       //console.log('Row:', i, x);
       let visible = i == 0;
-      temp2.push({name: x.category, data:[], visible: visible});
+      temp2.push({name: x.category, data:[], visible: visible, color: colors[i]});
 
     });
 

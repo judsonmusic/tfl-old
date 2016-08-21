@@ -1,6 +1,7 @@
 'use strict';
 
 var express = require('express');
+var mongodb = require('mongodb');
 var http = require('http');
 var open = require('open');
 var path = require('path');
@@ -17,6 +18,7 @@ var app = express();
 
 mongoose.connect(config.database);
 app.set('superSecret', config.secret);
+var db = mongodb.db;
 
 // use body parser so we can get info from POST and/or URL parameters
 app.use(bodyParser.urlencoded({extended: true}));
@@ -86,7 +88,7 @@ router.post('/authenticate', function (req, res) {
 // route middleware to verify a token, dont need this for things like create account etc..
 router.use(function (req, res, next) {
   console.log('Trying to hit url!', req.url);
-  var publicUrls = ['/accounts'];
+  var publicUrls = ['/accounts', '/reports'];
   if (publicUrls.indexOf(req.url) > -1) {
 
     //this is a public url
@@ -124,6 +126,34 @@ router.use(function (req, res, next) {
   }
 });
 ///////////////////////////////////////////////////////////////
+
+router.route('/reports')
+  .get(function(req, res, next){
+
+    Account.aggregate([
+      { $unwind: '$assessment' },
+      { $match : { "assessment.id" : 1 }},
+      {
+        $group:
+        {
+          _id: "1",
+          avg: { $avg: "$assessment.answer" }
+        }
+      }
+    ], function (err, result) {
+      if (err)
+        res.send(err);
+
+      res.json(result);
+      res.end();
+    });
+
+  });
+//end reports
+
+
+
+
 
 router.route('/accounts')
 

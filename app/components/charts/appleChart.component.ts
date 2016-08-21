@@ -141,7 +141,7 @@ export class AppleChartComponent implements OnInit {
             y: this.seriesdata[0]
           }]
         }, {
-          name: 'Motivated',
+          name: 'Importance',
           borderColor: Highcharts.getOptions().colors[1],
           data: [{
             color: Highcharts.getOptions().colors[1],
@@ -150,7 +150,7 @@ export class AppleChartComponent implements OnInit {
             y: this.seriesdata[1]
           }]
         }, {
-          name: 'Importance',
+          name: 'Motivation',
           borderColor: Highcharts.getOptions().colors[2],
           data: [{
             color: Highcharts.getOptions().colors[2],

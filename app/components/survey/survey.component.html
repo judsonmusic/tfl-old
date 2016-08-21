@@ -39,7 +39,7 @@
 
   <div class="instructions" *ngIf="count>0">
     <p>
-      Please rate the below statements using the rating scale which best reflects how you view your life in each TFL dimension.
+      Please rate the below statements using the rating scale which best reflects how you view your life in each TFL dimension. {{(count)*15/100}}
     </p>
   </div>
 
@@ -48,8 +48,8 @@
       <form class="form form-horizontal">
         <ul *ngIf="count">
           <li *ngFor="let q of (questions | myfilter:count)" class="row survey-item">
-            <div class="questions"><span class="survey-category">{{q.category}}</span> <span
-              class="survey-question-count">Question {{count}} of {{questions.length}}</span>
+            <div class="questions"><span class="survey-category">{{q.category}}</span>
+              <div class="survey-question-count"><div style="float: left;">{{count}}</div><div style="float: left; width: 300px; background-color:#efefef; height:24px; position: relative;"><div style="background: #337ab7; width:20%; height:22px;"></div></div><div style="float: left;">{{questions.length}}</div></div>
               <hr/>
               <p class="survey-question">
                 {{q.question}}
@@ -72,10 +72,9 @@
             <!--END: answers-->
             <!--sub-->
             <div class="sub-survey" *ngIf="data.account.assessment[q.id-1].answer">
-              <h3>Please answer the following 5 questions by indicating where you fall on the below 1 through 5 scale</h3>
+              <h4>Please answer the following 5 questions based on the below rating scale.</h4>
 
-              <p>1 = NOT at all<br>
-                5 = Extremely</p>
+              <p> 1 = strongly disagree |  2 = disagree |  3 somewhat agree |  4 = agree | 5 = strongly agree</p>
 
               <ul>
                 <li *ngFor="let s of subquestions; let i = index">

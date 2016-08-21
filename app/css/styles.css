@@ -28,6 +28,38 @@ body {
   color: #b90013;
 }
 
+.blue{
+
+  color: #337ab7;
+}
+
+.blue-bg{
+
+  background: #002494
+
+}
+.green-bg{
+
+  background: #039f71
+
+}
+.red-bg{
+
+  background: #bc0015
+
+}
+.yellow-bg{
+
+  background: #e5d500
+
+}
+
+.orange-bg{
+
+  background: #eb6b00
+
+}
+
 footer {
 
   background: #337ab7;
@@ -255,8 +287,8 @@ ul.swatch-list{
 
 
   display: inline-block;
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   margin-right: 10px;
   float: left;
 
