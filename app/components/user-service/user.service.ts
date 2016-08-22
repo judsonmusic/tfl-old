@@ -39,7 +39,7 @@ export class UserService{
         .map(res => res.json())
         .map((res) => {
 
-          if(res.success === false){
+          if(!res._id){
             //console.log('***THERE WAS AN ERROR!');
             this.authService.isLoggedIn = false;
 
@@ -49,6 +49,7 @@ export class UserService{
             this.loggedIn.next(true);
             this.userData = res;
             this.user.next(res);
+
             return res;
           }
         }, (error) => console.log('There was an error', error));

@@ -21,6 +21,7 @@ import {DimensionsComponent} from "./components/dimensions/dimensions.component"
 import {SurveyService} from "./components/survey/survey.service";
 import {BarChartComponent} from "./components/charts/barChart.component";
 import {OnCreate} from "./components/directives/oncreate.directive";
+import {ActionComponent} from "./components/action/action.component";
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {OnCreate} from "./components/directives/oncreate.directive";
     LogoutComponent,
     DimensionsComponent,
     BarChartComponent,
-    OnCreate
+    OnCreate,
+    ActionComponent
   ],
   providers: [
     UserService,

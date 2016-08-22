@@ -9,29 +9,23 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-    if (this.authService.isLoggedIn){
 
-      //console.log('AUTH GUARD SAYS THEY ARE ALREADY LOGGED IN!');
-      this.authService.redirectUrl = state.url;
-      //console.log(state.url);
-      //this.router.navigate([this.authService.redirectUrl]);
-      return true;
+    if (!this.authService.isLoggedIn){
 
+      console.log('Auth Guard subscribing to get user.');
 
-    }else {
+      this.userService.getUser().subscribe((user) => {
 
-
-      this.userService.user$.subscribe((user) => {
-
-        //console.log('AUTH GUARD GETTING USER', user);
+        console.log('AUTH GUARD GETTING USER', user);
 
         if (user && user._id) {
-        this.authService.isLoggedIn = true;
-        // Store the attempted URL for redirectin
+          this.authService.isLoggedIn = true;
+          // Store the attempted URL for redirectin
           //console.log('Trying to go to ', state.url);
-        this.authService.redirectUrl = state.url || '/dashboard';
-        this.router.navigate([this.authService.redirectUrl]);
-        return true;
+          this.authService.redirectUrl = state.url || '/dashboard';
+          this.router.navigate([this.authService.redirectUrl]);
+          return true;
+
         }else{
           console.log('Validation Failed.');
           localStorage.clear();
@@ -46,6 +40,20 @@ export class AuthGuard implements CanActivate {
         return false
 
       });
+
+
+
+
+
+    }else {
+
+      console.log('AUTH GUARD SAYS THEY ARE ALREADY LOGGED IN!');
+      this.authService.redirectUrl = state.url;
+      //console.log(state.url);
+      //this.router.navigate([this.authService.redirectUrl]);
+      return true;
+
+
 
     }
 

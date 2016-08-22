@@ -3,7 +3,7 @@ import {UserService} from "../user-service/user.service";
 
 @Component({
   selector: 'logout',
-  templateUrl: "app/components/logout.component.html"
+  templateUrl: "app/components/logout/logout.component.html"
 })
 export class LogoutComponent {
 

@@ -89,7 +89,7 @@ router.post('/authenticate', function (req, res) {
 router.use(function (req, res, next) {
   console.log('Trying to hit url!', req.url);
   var publicUrls = ['/accounts', '/reports'];
-  if (publicUrls.indexOf(req.url) > -1) {
+  if (publicUrls.indexOf(req.url.split("/") > -1)) {
 
     //this is a public url
     next();
@@ -127,20 +127,44 @@ router.use(function (req, res, next) {
 });
 ///////////////////////////////////////////////////////////////
 
-router.route('/reports')
+router.route('/reports/:question_id/:sub_index')
   .get(function(req, res, next){
 
-    Account.aggregate([
-      { $unwind: '$assessment' },
-      { $match : { "assessment.id" : 1 }},
-      {
-        $group:
-        {
-          _id: "1",
-          avg: { $avg: "$assessment.answer" }
-        }
-      }
-    ], function (err, result) {
+
+    console.log(req.params.question_id);
+
+    var matchStage = { "$match": { "assessment.id": +req.params.question_id} };//1 would be nutrition
+
+    var query = [
+
+      [
+        matchStage,
+        {$unwind: "$assessment"},
+        matchStage,
+        {$project: {
+          id: "$assessment.id",
+          answer: "$assessment.answer",
+          subs: {"$avg" : {$slice : ["$assessment.subs" , +req.params.sub_index, 1]}}
+        }}
+      ]
+      // {$unwind: "$assessment"},
+      // {$unwind: "$assessment.subs"},
+      //
+      // // group back into single docs, projecting the first and last
+      // // coordinates as lng and lat, respectively
+      // matchStage,
+      // {$group: {
+      //   _id: "$_id",
+      //   lng: {$first: "$assessment.subs"}//first is how balanced you are.
+      // }},
+      // // then group as normal for the averaging
+      // {$group: {
+      //   _id: 0,
+      //   lngAvg: {$avg: "$lng"}
+      // }}
+    ];
+
+    Account.aggregate(query, function (err, result) {
       if (err)
         res.send(err);
 

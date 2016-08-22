@@ -16,12 +16,12 @@ import {ModalHelpComponent} from "../modals/modalHelpComponent";
 
 
 @Component({
-  selector: 'dashboard',
-  templateUrl: '/app/components/dashboard/dashboard.component.html',
+  selector: 'action',
+  templateUrl: '/app/components/action/action.component.html',
   providers: [BS_VIEW_PROVIDERS],
   directives: [SimpleChartComponent, AppleChartComponent, BarChartComponent, DonutChartComponent, AlertComponent, ModalDemoComponent, ModalHelpComponent, NgInitHelperComponent, ModalDirective, OnCreate]
 })
-export class DashboardComponent implements OnInit {
+export class ActionComponent implements OnInit {
 
   public areas:any;
   public assessmentData: any[];
@@ -37,29 +37,7 @@ export class DashboardComponent implements OnInit {
     this.userService = userService;
   }
 
-  /**
-   * series: [{
-            name: 'Tokyo',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-
-        }, {
-            name: 'New York',
-            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-
-        }, {
-            name: 'London',
-            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
-
-        }, {
-            name: 'Berlin',
-            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
-
-        }]
-   */
-
-  ngOnInit(){
-
-    this.assessmentData = this.userService.userData.assessment || [];
+  makeSubs(){
 
     let temp = [];
     this.surveyService.questions.map((x)=> {
@@ -88,32 +66,54 @@ export class DashboardComponent implements OnInit {
 
     });
 
-     this.assessmentData.map((x, y) =>{
+    this.assessmentData.map((x, y) =>{
       //for each area on the series, we need to set what they selected from each area. 5 total. For example spiriitual.
-       temp2.map((z, index)=>{
-          //in each of the 5 things, get the values by index.
-         //console.log('The index of data we are pushing to:', index);
-         z.data.push(x.subs[index]);
-       });
-
-
+      temp2.map((z, index)=>{
+        //in each of the 5 things, get the values by index.
+        //console.log('The index of data we are pushing to:', index);
+        z.data.push(x.subs[index]);
       });
+
+    });
 
 
     this.seriesdata = temp2;
     //console.log('Series Data: ', temp2);
 
+
+
   }
+  ngOnInit() {
+
+
+
+    if(this.userService.userData) {
+
+      this.assessmentData = this.userService.userData.assessment || [];
+      this.makeSubs();
+
+    }else{
+
+      this.userService.user$.subscribe((userData) =>{
+
+        this.assessmentData = userData.assessment || [];
+        this.makeSubs();
+
+      });
+
+
+    }
+   // console.log('ACTION: ', this.assessmentData);
+
+
+
+
+  }
+
 
   goToDimension(id){
 
       this.router.navigate(['/dimensions', id]);
-
-  }
-
-  takeAction(id){
-
-    this.router.navigate(['/action']);
 
   }
 }
