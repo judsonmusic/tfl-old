@@ -1,7 +1,6 @@
 'use strict';
 
 var express = require('express');
-var mongodb = require('mongodb');
 var http = require('http');
 var open = require('open');
 var path = require('path');
@@ -18,7 +17,6 @@ var app = express();
 
 mongoose.connect(config.database);
 app.set('superSecret', config.secret);
-var db = mongodb.db;
 
 // use body parser so we can get info from POST and/or URL parameters
 app.use(bodyParser.urlencoded({extended: true}));
