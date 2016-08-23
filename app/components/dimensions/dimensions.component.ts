@@ -4,11 +4,12 @@ import {SurveyService} from "../survey/survey.service";
 import {Subscription} from 'rxjs/Subscription';
 import {BarChartComponent} from "../charts/barChart.component";
 import {UserService} from "../user-service/user.service";
+import {OnCreateView} from "./oncreateview";
 
 @Component({
   selector: 'my-hero-detail',
   templateUrl: '/app/components/dimensions/dimensions.component.html',
-  directives: [BarChartComponent]
+  directives: [BarChartComponent, OnCreateView]
 })
 
 

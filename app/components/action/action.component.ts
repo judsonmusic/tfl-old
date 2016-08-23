@@ -13,13 +13,14 @@ import {SurveyService} from "../survey/survey.service";
 import {OnCreate} from "../directives/oncreate.directive";
 import {UserService} from "../user-service/user.service";
 import {ModalHelpComponent} from "../modals/modalHelpComponent";
+import {ModalHelpAppleComponent} from "../modals/modalHelpAppleComponent";
 
 
 @Component({
   selector: 'action',
   templateUrl: '/app/components/action/action.component.html',
   providers: [BS_VIEW_PROVIDERS],
-  directives: [SimpleChartComponent, AppleChartComponent, BarChartComponent, DonutChartComponent, AlertComponent, ModalDemoComponent, ModalHelpComponent, NgInitHelperComponent, ModalDirective, OnCreate]
+  directives: [SimpleChartComponent, AppleChartComponent, BarChartComponent, DonutChartComponent, AlertComponent, ModalDemoComponent, ModalHelpComponent, ModalHelpAppleComponent, NgInitHelperComponent, ModalDirective, OnCreate]
 })
 export class ActionComponent implements OnInit {
 
