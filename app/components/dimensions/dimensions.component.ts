@@ -5,11 +5,13 @@ import {Subscription} from 'rxjs/Subscription';
 import {BarChartComponent} from "../charts/barChart.component";
 import {UserService} from "../user-service/user.service";
 import {OnCreateView} from "./oncreateview";
+import {MyFilterPipe} from "../pipes/filter.pipe";
 
 @Component({
   selector: 'my-hero-detail',
   templateUrl: '/app/components/dimensions/dimensions.component.html',
-  directives: [BarChartComponent, OnCreateView]
+  directives: [BarChartComponent, OnCreateView],
+  pipes: [MyFilterPipe]
 })
 
 
@@ -20,6 +22,8 @@ export class DimensionsComponent implements OnInit, OnDestroy {
   private seriesdata: any;
   private categories: any;
   private assessmentData: any;
+  private answers: any;
+  private answerData: any;
 
 
   constructor(private route: ActivatedRoute,
@@ -28,6 +32,8 @@ export class DimensionsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+
+    this.answers = this.surveyService.answers;
     //passing route param...
     this.sub = this.route.params.subscribe(params => {
 
@@ -50,6 +56,8 @@ export class DimensionsComponent implements OnInit, OnDestroy {
 
 
   buildData() {
+
+    this.answerData = this.surveyService.getAnwerForQuestion(this.assessmentData, this.dimension.id)[0] || [];
 
     this.seriesdata = this.surveyService.getSubsForDimension(this.assessmentData, this.dimension.id)[0].subs || [];
 

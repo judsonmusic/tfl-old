@@ -1,8 +1,10 @@
 <h1>{{dimension.category}}</h1>
-<p>The question was: {{dimension.question}}</p>
+<p *ngIf="answerData">The question was: {{dimension.question}}. You answered: {{ (answers | myfilter: answerData.answer)[0].value }}</p>
 <hr/>
 <div *ngIf="seriesdata">
   <bar-chart heading="{{dimension.category}}" selector="{{dimension.category}}_bar_chart" [seriesdata]="seriesdata" [categories]="categories"></bar-chart>
 </div>
 
 <div [onCreateView]="dimension.templateUrl">Html will appear here..</div>
+
+

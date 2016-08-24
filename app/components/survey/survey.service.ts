@@ -96,6 +96,14 @@ export class SurveyService{
 
   }
 
+  getAnwerForQuestion(assessment, id){
+
+    return assessment.filter(
+      (item:any) => item.id == id);
+
+
+  }
+
   getHtmlForDimension(templateUrl){
 
     return this.http.get(templateUrl).map((response) => {
