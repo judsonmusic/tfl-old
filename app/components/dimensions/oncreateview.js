@@ -1,4 +1,4 @@
-System.register(['@angular/core'], function(exports_1, context_1) {
+System.register(['@angular/core', "../survey/survey.service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,29 +10,39 @@ System.register(['@angular/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, survey_service_1;
     var OnCreateView;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (survey_service_1_1) {
+                survey_service_1 = survey_service_1_1;
             }],
         execute: function() {
             OnCreateView = (function () {
-                function OnCreateView() {
+                function OnCreateView(el, surveyService) {
+                    this.el = el;
+                    this.surveyService = surveyService;
+                    this.el = el;
+                    this.surveyService = surveyService;
                 }
                 OnCreateView.prototype.ngOnInit = function () {
-                    console.log('Directive Initialized. The value is: ', this.onCreateView);
+                    var _this = this;
+                    this.surveyService.getHtmlForDimension(this.onCreateView).subscribe(function (html) {
+                        _this.el.nativeElement.innerHTML = html;
+                    });
                 };
                 __decorate([
                     core_1.Input(), 
-                    __metadata('design:type', Function)
+                    __metadata('design:type', Object)
                 ], OnCreateView.prototype, "onCreateView", void 0);
                 OnCreateView = __decorate([
                     core_1.Directive({
                         selector: '[onCreateView]'
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [core_1.ElementRef, survey_service_1.SurveyService])
                 ], OnCreateView);
                 return OnCreateView;
             }());

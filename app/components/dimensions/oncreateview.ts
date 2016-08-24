@@ -1,14 +1,28 @@
 /**
  * Created by jterrell on 8/23/16.
  */
-import {Directive, Input, OnInit} from '@angular/core';
+import {Directive, Input, OnInit, ElementRef} from '@angular/core';
+import {SurveyService} from "../survey/survey.service";
 
 @Directive({
   selector: '[onCreateView]'
 })
 export class OnCreateView implements OnInit{
-  @Input() onCreateView:Function;
+  @Input() onCreateView:any;
+
+
+  constructor(public el: ElementRef, public surveyService: SurveyService){
+
+    this.el = el;
+    this.surveyService = surveyService;
+
+  }
   ngOnInit() {
-    console.log('Directive Initialized. The value is: ', this.onCreateView);
+
+    this.surveyService.getHtmlForDimension(this.onCreateView).subscribe((html) =>{
+
+      this.el.nativeElement.innerHTML = html;
+
+    });
   }
 }

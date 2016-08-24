@@ -4,3 +4,5 @@
 <div *ngIf="seriesdata">
   <bar-chart heading="{{dimension.category}}" selector="{{dimension.category}}_bar_chart" [seriesdata]="seriesdata" [categories]="categories"></bar-chart>
 </div>
+
+<div [onCreateView]="dimension.templateUrl">Html will appear here..</div>

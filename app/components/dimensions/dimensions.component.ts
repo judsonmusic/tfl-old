@@ -31,8 +31,6 @@ export class DimensionsComponent implements OnInit, OnDestroy {
     //passing route param...
     this.sub = this.route.params.subscribe(params => {
 
-
-
       console.log('Dimension Comp', this.userService.userData);
       let id = +params['id']; // (+) converts string 'id' to a number
       this.dimension = this.surveyService.getDimension(id);
@@ -48,13 +46,7 @@ export class DimensionsComponent implements OnInit, OnDestroy {
 
     });
 
-
-
-
-
   }
-
-
 
 
   buildData() {
