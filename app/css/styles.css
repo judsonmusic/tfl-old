@@ -33,6 +33,11 @@ body {
   color: #337ab7;
 }
 
+.green{
+
+  color: #039f71;
+}
+
 .blue-bg{
 
   background: #002494
@@ -58,6 +63,11 @@ body {
 
   background: #eb6b00
 
+}
+
+.survey-image{
+
+  height:360px;
 }
 
 footer {
@@ -164,6 +174,7 @@ li.survey-item {
   clear: both;
   display: block;
   padding: 20px;
+  height:120px;
 }
 
 .survey-question-count {

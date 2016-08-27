@@ -60,7 +60,6 @@
                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Change my Answer </button>
                   </span>
               </p>
-
             </div>
             <!--answers-->
             <div class="answers" *ngIf="!data.account.assessment[q.id-1].answer">
@@ -69,45 +68,53 @@
                 <label [attr.for]="q.id + '_' + a.id"><span></span>{{a.value}}</label>
               </div>
             </div>
+
+            <div class="survey-image" [ngStyle]="{'background-image': 'url(/app/images/slides/' + q.category.toLowerCase() + '.jpg)', 'background-repeat' : 'no-repeat', 'background-position': 'center -140px', 'background-size' : '100%'}">
+
+            </div>
+
+            <div class="text-right" style="margin:20px;">
+              <button class="btn btn-primary" *ngIf="count < questions.length && count > 1" (click)="counterDown()">Back</button>
+              <button class="btn btn-primary" *ngIf="data.account.assessment[q.id-1].answer" (click)="save();">Next</button>
+              <button class="btn btn-primary" *ngIf="count == questions.length" (click)="finish($event)">Finish</button>
+            </div>
             <!--END: answers-->
             <!--sub-->
-            <div class="sub-survey" *ngIf="data.account.assessment[q.id-1].answer">
-              <h4>Please answer the following 5 questions based on the below rating scale.</h4>
+            <!--<div class="sub-survey" *ngIf="data.account.assessment[q.id-1].answer">-->
+              <!--<h4>Please answer the following 5 questions based on the below rating scale.</h4>-->
 
-              <p> 1 = strongly disagree |  2 = disagree |  3 somewhat agree |  4 = agree | 5 = strongly agree</p>
+              <!--<p> 1 = strongly disagree |  2 = disagree |  3 somewhat agree |  4 = agree | 5 = strongly agree</p>-->
 
-              <ul>
-                <li *ngFor="let s of subquestions; let i = index">
+              <!--<ul>-->
+                <!--<li *ngFor="let s of subquestions; let i = index">-->
 
-                  <p class="sub-question">{{s.question}}</p>
+                  <!--<p class="sub-question">{{s.question}}</p>-->
 
-                  <div class="survey-radio-wrapper-subs">
-                    <input type="radio" id="{{q.id}}_sub_{{s.id}}_1" name="survey_sub_{{s.id}}_{{q.category}}" [value]="20" [(ngModel)]="data.account.assessment[q.id-1].subs[s.id-1]"/>
-                    <label [attr.for]="q.id + '_sub_' + s.id + '_1'"><span></span>1</label>
-                    <input type="radio" id="{{q.id}}_sub_{{s.id}}_2" name="survey_sub_{{s.id}}_{{q.category}}" [value]="40" [(ngModel)]="data.account.assessment[q.id-1].subs[s.id-1]"/>
-                    <label [attr.for]="q.id + '_sub_' + s.id + '_2'"><span></span>2</label>
-                    <input type="radio" id="{{q.id}}_sub_{{s.id}}_3" name="survey_sub_{{s.id}}_{{q.category}}" [value]="60" [(ngModel)]="data.account.assessment[q.id-1].subs[s.id-1]"/>
-                    <label [attr.for]="q.id + '_sub_' + s.id + '_3'"><span></span>3</label>
-                    <input type="radio" id="{{q.id}}_sub_{{s.id}}_4" name="survey_sub_{{s.id}}_{{q.category}}" [value]="80" [(ngModel)]="data.account.assessment[q.id-1].subs[s.id-1]"/>
-                    <label [attr.for]="q.id + '_sub_' + s.id + '_4'"><span></span>4</label>
-                    <input type="radio" id="{{q.id}}_sub_{{s.id}}_5" name="survey_sub_{{s.id}}_{{q.category}}" [value]="100" [(ngModel)]="data.account.assessment[q.id-1].subs[s.id-1]"/>
-                    <label [attr.for]="q.id + '_sub_' + s.id + '_5'"><span></span>5</label>
-                  </div>
-                </li>
-                <li class="text-right">
-                  <button class="btn btn-primary" *ngIf="count < questions.length && count > 1" (click)="counterDown()">Back</button>
-                  <button class="btn btn-primary" *ngIf="data.account.assessment[q.id-1].subs.length === 5" (click)="save();">Next</button>
-                  <button class="btn btn-primary" *ngIf="count == questions.length" (click)="finish($event)">Finish</button>
-                </li>
-                <li class="clearfix"></li>
-              </ul>
-            </div>
+                  <!--<div class="survey-radio-wrapper-subs">-->
+                    <!--<input type="radio" id="{{q.id}}_sub_{{s.id}}_1" name="survey_sub_{{s.id}}_{{q.category}}" [value]="20" [(ngModel)]="data.account.assessment[q.id-1].subs[s.id-1]"/>-->
+                    <!--<label [attr.for]="q.id + '_sub_' + s.id + '_1'"><span></span>1</label>-->
+                    <!--<input type="radio" id="{{q.id}}_sub_{{s.id}}_2" name="survey_sub_{{s.id}}_{{q.category}}" [value]="40" [(ngModel)]="data.account.assessment[q.id-1].subs[s.id-1]"/>-->
+                    <!--<label [attr.for]="q.id + '_sub_' + s.id + '_2'"><span></span>2</label>-->
+                    <!--<input type="radio" id="{{q.id}}_sub_{{s.id}}_3" name="survey_sub_{{s.id}}_{{q.category}}" [value]="60" [(ngModel)]="data.account.assessment[q.id-1].subs[s.id-1]"/>-->
+                    <!--<label [attr.for]="q.id + '_sub_' + s.id + '_3'"><span></span>3</label>-->
+                    <!--<input type="radio" id="{{q.id}}_sub_{{s.id}}_4" name="survey_sub_{{s.id}}_{{q.category}}" [value]="80" [(ngModel)]="data.account.assessment[q.id-1].subs[s.id-1]"/>-->
+                    <!--<label [attr.for]="q.id + '_sub_' + s.id + '_4'"><span></span>4</label>-->
+                    <!--<input type="radio" id="{{q.id}}_sub_{{s.id}}_5" name="survey_sub_{{s.id}}_{{q.category}}" [value]="100" [(ngModel)]="data.account.assessment[q.id-1].subs[s.id-1]"/>-->
+                    <!--<label [attr.for]="q.id + '_sub_' + s.id + '_5'"><span></span>5</label>-->
+                  <!--</div>-->
+                <!--</li>-->
+                <!--<li class="text-right">-->
+                  <!--<button class="btn btn-primary" *ngIf="count < questions.length && count > 1" (click)="counterDown()">Back</button>-->
+                  <!--<button class="btn btn-primary" *ngIf="data.account.assessment[q.id-1].subs.length === 6" (click)="save();">Next</button>-->
+                  <!--<button class="btn btn-primary" *ngIf="count == questions.length" (click)="finish($event)">Finish</button>-->
+                <!--</li>-->
+                <!--<li class="clearfix"></li>-->
+              <!--</ul>-->
+            <!--</div>-->
           </li>
         </ul>
-        <div class="text-right">
-          <button *ngIf="1==2" class="btn btn-primary">Next</button>
-        </div>
       </form>
     </div>
   </div>
 </div>
+{{data.account.assessment | json}}

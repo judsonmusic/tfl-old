@@ -9,11 +9,26 @@
 
 <div class="row">
   <div class="col-md-12">
-    <h3>Take Action!</h3>
-    <p>This custom report helps you take action on specific areas that you need help in.</p>
-    <div class="text-right"><button (click)="takeAction()" class="btn btn-primary">Take Action!</button></div>
+    <h3>Unlock your 15 dimensions!</h3>
   </div>
 </div>
+<div class="row">
+  <div *ngFor="let item of assessmentData" class="col-md-2 text-center" style="padding: 20px;">
+    <i class="fa fa-unlock-alt green" aria-hidden="true" style="font-size: 72px; cursor: pointer" *ngIf="item.answer" (click)="goToDimension(item.id)"></i>
+    <i class="fa fa-lock" aria-hidden="true" style="font-size: 72px; color: #efefef; cursor: pointer" *ngIf="!item.answer" (click)="goToDimension(item.id)"></i><br>
+    {{(categories | myfilter: item.id)[0].category}}
+  </div>
+  <div class="col-md-2 text-center" style="padding: 20px;">
+    <i class="fa fa-star blue" aria-hidden="true" style="font-size: 72px; cursor: pointer"></i>
+  </div>
+  <div class="col-md-2 text-center" style="padding: 20px;">
+    <i class="fa fa-bar-chart blue" aria-hidden="true" style="font-size: 72px; cursor: pointer"></i>
+  </div>
+  <div class="col-md-2 text-center" style="padding: 20px;">
+    <i class="fa fa-file-pdf-o blue" aria-hidden="true" style="font-size: 72px; cursor: pointer"></i>
+  </div>
+</div>
+
 
 <modal-demo #m="child"></modal-demo>
 <modal-help #h="child2"></modal-help>

@@ -45,6 +45,7 @@ export class SurveyService{
       {id: "3", category: "Motivation", question: "I am motivated to take action to improve this dimension or I am motivated to maintain in this dimension if I am completely satisfied."},
       {id: "4", category: "Happiness", question: "This dimension impacts my overall happiness."},
       {id: "5", category: "Performance", question: "This dimension impacts my ability to achieve optimal performance."},
+      {id: "6", category: "Blah", question: "This is a test"}
 
     ];
 
@@ -53,7 +54,7 @@ export class SurveyService{
 
       {id: 1, value: "Strongly Disagree"},
       {id: 2, value: "Disagree"},
-      {id: 3, value: "Somewhat Agree"},
+      {id: 3, value: "Neutral"},
       {id: 4, value: "Agree"},
       {id: 5, value: "Strongly Agree"}
 

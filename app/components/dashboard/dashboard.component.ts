@@ -13,12 +13,14 @@ import {SurveyService} from "../survey/survey.service";
 import {OnCreate} from "../directives/oncreate.directive";
 import {UserService} from "../user-service/user.service";
 import {ModalHelpComponent} from "../modals/modalHelpComponent";
+import {MyFilterPipe} from "../pipes/filter.pipe";
 
 
 @Component({
   selector: 'dashboard',
   templateUrl: '/app/components/dashboard/dashboard.component.html',
   providers: [BS_VIEW_PROVIDERS],
+  pipes: [MyFilterPipe],
   directives: [SimpleChartComponent, AppleChartComponent, BarChartComponent, DonutChartComponent, AlertComponent, ModalDemoComponent, ModalHelpComponent, NgInitHelperComponent, ModalDirective, OnCreate]
 })
 export class DashboardComponent implements OnInit {
@@ -64,7 +66,7 @@ export class DashboardComponent implements OnInit {
     let temp = [];
     this.surveyService.questions.map((x)=> {
 
-      temp.push(x.category);
+      temp.push({id: x.id, category: x.category});
 
     });
     this.categories = temp;
@@ -114,6 +116,18 @@ export class DashboardComponent implements OnInit {
   takeAction(id){
 
     this.router.navigate(['/action']);
+
+  }
+
+  checkIfAnswered(id){
+
+    // this.assessmentData.map((item) =>{
+    //
+    //   console.log(item.id == id);
+    //
+    //
+    // });
+
 
   }
 }
