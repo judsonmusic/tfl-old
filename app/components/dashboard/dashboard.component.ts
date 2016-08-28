@@ -100,6 +100,7 @@ export class DashboardComponent implements OnInit {
 
     });
 
+    this.dataCheckPassed = true;
     this.assessmentData.map((x) =>{
 
       if(x.answer == ""){
@@ -113,7 +114,10 @@ export class DashboardComponent implements OnInit {
           //in each of the 5 things, get the values by index.
           //console.log('The index of data we are pushing to:', z);
           z.data.push(x.subs[index]);
+
         });
+
+
 
       }
 
