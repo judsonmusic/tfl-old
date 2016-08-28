@@ -54,7 +54,7 @@ export class DimensionsComponent implements OnInit, OnDestroy {
     //passing route param...
     this.sub = this.route.params.subscribe(params => {
 
-      console.log('Dimension Comp', this.userService.userData);
+      //console.log('Dimension Comp', this.userService.userData);
       let id = +params['id']; // (+) converts string 'id' to a number
       this.dimension = this.surveyService.getDimension(id);
       this.userService.user$.subscribe((user) =>{
@@ -76,7 +76,6 @@ export class DimensionsComponent implements OnInit, OnDestroy {
 
     this.answerData = this.surveyService.getAnwerForQuestion(this.assessmentData, this.dimension.id)[0] || [];
     this.answerConfirmed = (this.answerData.subs.length == this.subquestions.length) && this.answerData.subs.indexOf('null') == -1;
-
     this.seriesdata = this.surveyService.getSubsForDimension(this.assessmentData, this.dimension.id)[0].subs || [];
 
     let temp = [];
@@ -86,7 +85,7 @@ export class DimensionsComponent implements OnInit, OnDestroy {
 
     });
     this.categories = temp;
-    console.log('The categories are:', this.categories);
+    //console.log('The categories are:', this.categories);
 
 
     let temp2 = [];
@@ -99,7 +98,7 @@ export class DimensionsComponent implements OnInit, OnDestroy {
     });
 
     this.seriesdata = temp2;
-    console.log('The series data is: ', this.seriesdata);
+    //console.log('The series data is: ', this.seriesdata);
 
   }
 
@@ -110,11 +109,13 @@ export class DimensionsComponent implements OnInit, OnDestroy {
 
   save(){
 
-    console.log('Saving Your Data!', this.data.account);
+    //console.log('Saving Your Data!', this.data.account);
     //we need to add the assessment data to the account so it will get stored in use data;
     this.userService.updateAccount(this.data.account).subscribe((res) => {
-
+      //console.log('The result of the update is: ', this.data.account.assessment);
+      this.buildData();
       this.answerConfirmed = true;
+
 
     }, (err) => console.log('There was an error!'));
 

@@ -29,6 +29,7 @@ export class DashboardComponent implements OnInit {
   public assessmentData: any[];
   public categories: any;
   public seriesdata: any;
+  public dataCheckPassed: boolean;
 
   constructor(public router: Router, public surveyService: SurveyService, public userService: UserService) {
 
@@ -37,6 +38,7 @@ export class DashboardComponent implements OnInit {
     this.areas = this.surveyService.questions;
     this.assessmentData = [];
     this.userService = userService;
+    this.dataCheckPassed = false;
   }
 
   /**
@@ -72,6 +74,14 @@ export class DashboardComponent implements OnInit {
     this.categories = temp;
     //console.log('Categories: ', temp);
 
+    this.buildSeries();
+    //console.log('Series Data: ', temp2);
+
+  }
+
+  buildSeries(){
+
+
     let colors = [
       "#002494",
       "#bc0015",
@@ -90,21 +100,28 @@ export class DashboardComponent implements OnInit {
 
     });
 
-     this.assessmentData.map((x, y) =>{
-      //for each area on the series, we need to set what they selected from each area. 5 total. For example spiriitual.
-       temp2.map((z, index)=>{
+    this.assessmentData.map((x, y) =>{
+
+      if(x.answer == ""){
+
+        this.dataCheckPassed = false;
+
+      }else {
+
+        //for each area on the series, we need to set what they selected from each area. 5 total. For example spiriitual.
+        temp2.map((z, index)=> {
           //in each of the 5 things, get the values by index.
-         //console.log('The index of data we are pushing to:', index);
-         z.data.push(x.subs[index]);
-       });
+          //console.log('The index of data we are pushing to:', z);
+          z.data.push(x.subs[index]);
+        });
+
+      }
 
 
-      });
+    });
 
 
     this.seriesdata = temp2;
-    //console.log('Series Data: ', temp2);
-
   }
 
   goToDimension(id){

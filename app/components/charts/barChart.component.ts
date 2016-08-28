@@ -15,8 +15,8 @@ export class BarChartComponent implements OnInit {
 
   @Input() selector: string;
   @Input() heading: string;
-  @Input() seriesdata: string;
-  @Input() categories: string;
+  @Input() seriesdata: any;
+  @Input() categories: any;
 
 
 
@@ -57,8 +57,16 @@ export class BarChartComponent implements OnInit {
       });
     }*/
 
-    console.log('Categories for chart', this.categories);
-    console.log('Series Data  for chart', this.seriesdata);
+    let tempcats = [];
+
+    this.categories.map((item)=>{
+
+      tempcats.push(item.category);
+
+    });
+
+    //console.log('Categories for chart', tempcats);
+    //console.log('Series Data  for chart', this.seriesdata);
 
     //now that we have the dimension that we want to populate data for...Build series data...
 
@@ -74,12 +82,13 @@ export class BarChartComponent implements OnInit {
         text: ''
       },
       xAxis: {
-        categories: this.categories,
+        categories: tempcats,
         crosshair: true
       },
       yAxis: {
         min: 0,
         max: 100,
+        tickInterval: 20,
         title: {
           text: 'Measurement'
         },

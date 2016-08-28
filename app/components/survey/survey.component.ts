@@ -17,6 +17,7 @@ export class SurveyComponent implements OnInit {
   public questions:any;
   public subquestions:any;
   public user: any[];
+  public Math: any;
 
   ngOnInit(){
     //console.log(this.userService.userData, this.data.account);
@@ -34,6 +35,8 @@ export class SurveyComponent implements OnInit {
 
 
     this.authService.redirectUrl = '/survey';
+
+    this.Math = Math;
 
 
     //console.log('the survey componet loaded.');
@@ -81,7 +84,7 @@ export class SurveyComponent implements OnInit {
 
   counterDown() {
 
-    if (this.count > 1 && this.count < this.questions.length) {
+    if (this.count > 1 && this.count <= this.questions.length) {
 
       this.count--;
 
