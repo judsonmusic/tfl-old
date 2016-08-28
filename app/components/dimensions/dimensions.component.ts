@@ -24,14 +24,31 @@ export class DimensionsComponent implements OnInit, OnDestroy {
   private assessmentData: any;
   private answers: any;
   private answerData: any;
+  private subquestions: any;
+  public data:any;
+  public answerConfirmed:boolean
 
 
   constructor(private route: ActivatedRoute,
               private userService: UserService,
               private surveyService: SurveyService) {
+
+    this.subquestions = this.surveyService.subquestions;
+    this.data = {};
+    this.data.account = {};
+    this.answerConfirmed = false;
   }
 
   ngOnInit() {
+
+    this.data.account = this.userService.userData || this.data.account;
+    //console.log('@@@@@SURVEY INIT!', this.data.account);
+    this.userService.user$.subscribe((userData) => {
+
+      this.data.account = userData;
+      //console.log('ACCOUNT INFORMATION ADDED!', this.data.account);
+
+    });
 
     this.answers = this.surveyService.answers;
     //passing route param...
@@ -58,6 +75,7 @@ export class DimensionsComponent implements OnInit, OnDestroy {
   buildData() {
 
     this.answerData = this.surveyService.getAnwerForQuestion(this.assessmentData, this.dimension.id)[0] || [];
+    this.answerConfirmed = (this.answerData.subs.length == this.subquestions.length) && this.answerData.subs.indexOf('null') == -1;
 
     this.seriesdata = this.surveyService.getSubsForDimension(this.assessmentData, this.dimension.id)[0].subs || [];
 
@@ -88,6 +106,20 @@ export class DimensionsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  save(){
+
+    console.log('Saving Your Data!', this.data.account);
+    //we need to add the assessment data to the account so it will get stored in use data;
+    this.userService.updateAccount(this.data.account).subscribe((res) => {
+
+      this.answerConfirmed = true;
+
+    }, (err) => console.log('There was an error!'));
+
+
+
   }
 }
 

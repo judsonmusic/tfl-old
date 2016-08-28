@@ -153,6 +153,8 @@ export class UserService{
       )
       .map(res => res.json())
       .map((res) => {
+
+        console.log('RESULT AFTER UPDATE', res);
         if (res['account']) {
 
           console.log('USER UPDATE RETURNED:  ' , res);
