@@ -37,6 +37,7 @@ export class DimensionsComponent implements OnInit, OnDestroy {
     this.data = {};
     this.data.account = {};
     this.answerConfirmed = false;
+    this.categories = [];
   }
 
   ngOnInit() {
