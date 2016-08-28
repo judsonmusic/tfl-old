@@ -100,7 +100,7 @@ export class DashboardComponent implements OnInit {
 
     });
 
-    this.assessmentData.map((x, y) =>{
+    this.assessmentData.map((x) =>{
 
       if(x.answer == ""){
 

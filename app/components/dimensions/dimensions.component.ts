@@ -74,8 +74,10 @@ export class DimensionsComponent implements OnInit, OnDestroy {
 
   buildData() {
 
+    console.log('Building data.');
+
     this.answerData = this.surveyService.getAnwerForQuestion(this.assessmentData, this.dimension.id)[0] || [];
-    this.answerConfirmed = (this.answerData.subs.length == this.subquestions.length) && this.answerData.subs.indexOf('null') == -1;
+    this.answerConfirmed = (this.answerData.subs.length == this.subquestions.length) && this.answerData.subs.indexOf('null') == -1 && this.answerData.subs.indexOf('') == -1;
     this.seriesdata = this.surveyService.getSubsForDimension(this.assessmentData, this.dimension.id)[0].subs || [];
 
     let temp = [];
