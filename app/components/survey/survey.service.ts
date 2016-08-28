@@ -21,31 +21,31 @@ export class SurveyService{
     this.questions = [
 
       {id: 1, question: "I feel my diet is healthy and that I am fueling my body for optimal performance. ", category: "Nutrition", templateUrl: "/app/components/dimensions/nutrition.html"},
-      {id: 2, question: "I get adequate rest, have strong coping skills and feel that my stress level is healthy. ", category: "Relaxation",  templateUrl: "/app/components/dimensions/relaxation.html"},
-      {id: 3, question: "I get enough exercise and movement throughout the day for optimal health.", category: "Activity ",  templateUrl: "/app/components/dimensions/activity.html"},
+      {id: 2, question: "I get adequate rest, have strong coping skills and feel that my stress level is healthy.", category: "Stress",  templateUrl: "/app/components/dimensions/relaxation.html"},
+      {id: 3, question: "I get enough exercise and movement throughout the day for optimal health.", category: "Activity",  templateUrl: "/app/components/dimensions/activity.html"},
       {id: 4, question: "I have a sense of self-worth, a positive attitude and I am free of current and/or past self-doubt and struggles.", category: "Emotional",  templateUrl: "/app/components/dimensions/emotional.html"},
       {id: 5, question: "I feel a connection to a higher source and have a sense of comfort knowing that I am part of something greater than myself.", category: "Spiritual", templateUrl: "/app/components/dimensions/spiritual.html"},
       {id: 6, question: "I am free of unhealthy behavior that impacts my overall wellbeing.", category: "Habits",  templateUrl: "/app/components/dimensions/habits.html"},
-      {id: 7, question: "I have a strong social network and feel my relationships are healthy and fulfilling.", category: "Relationships",  templateUrl: "/app/components/dimensions/relationships.html"},
+      {id: 7, question: " I have a supportive social network and feel my relationships are healthy and fulfilling.", category: "Relationships",  templateUrl: "/app/components/dimensions/relationships.html"},
       {id: 8, question: "I routinely go to my doctor(s), follow medical recommendations and practice self-care.", category: "Health",  templateUrl: "/app/components/dimensions/health.html"},
-      {id: 9, question: "I am satisfied with my income and economic stability", category: "Financial",  templateUrl: "/app/components/dimensions/financial.html"},
+      {id: 9, question: "I am satisfied with my economic position.", category: "Financial",  templateUrl: "/app/components/dimensions/financial.html"},
       {id: 10, question: "I engage in fun activities, hobbies and laugh often.", category: "Play",  templateUrl: "/app/components/dimensions/play.html"},
       {id: 11, question: "I feel a sense of fulfillment with the way I spend my time.", category: "Life Balance",  templateUrl: "/app/components/dimensions/life-balance.html"},
       {id: 12, question: "I feel a sense of peace and contentment in my home.", category: "Home",  templateUrl: "/app/components/dimensions/home.html"},
       {id: 13, question: "I feel that I am challenged and growing as a person.", category: "Intellectual",  templateUrl: "/app/components/dimensions/intellectual.html"},
-      {id: 14, question: "I am content with what I see when I look in the mirror.", category: "Self-image",  templateUrl: "/app/components/dimensions/self-image.html"},
+      {id: 14, question: "I am content with what I see when I look in the mirror.", category: "Self-Image",  templateUrl: "/app/components/dimensions/self-image.html"},
       {id: 15, question: "I feel engaged, valued and have a sense of purpose.", category: "Occupation",  templateUrl: "/app/components/dimensions/occupation.html"}
 
     ];
 
     this.subquestions = [
 
-      {id: "1", category: "Satisfied", question: "I am satisfied in this dimension of my life"},
-      {id: "2", category: "Importance", question: "I feel my life would be better if I improved this dimension or it is important to me to maintain in this dimension if I am completely satisfied."},
-      {id: "3", category: "Motivation", question: "I am motivated to take action to improve this dimension or I am motivated to maintain in this dimension if I am completely satisfied."},
-      {id: "4", category: "Happiness", question: "This dimension impacts my overall happiness."},
-      {id: "5", category: "Performance", question: "This dimension impacts my ability to achieve optimal performance."},
-      {id: "6", category: "Blah", question: "This is a test"}
+      {id: "1", category: "Importance", question: "This dimension of my life is important to me.", color: "purple"},
+      {id: "2", category: "Happiness", question: "This dimension positively impacts my happiness.",  color: "yellow"},
+      {id: "3", category: "Performance", question: "My performance is positively impacted by this dimension.",  color: "orange"},
+      {id: "4", category: "Satisfaction", question: "I am satisfied with this dimension of my life.",  color: "blue"},
+      {id: "5", category: "Action", question: "I am actively working to improve and/or maintain this dimension of my life.",  color: "green"},
+      {id: "6", category: "Motivation", question: "I am motivated to improve and/or maintain this area of my life.",  color: "red"}
 
     ];
 

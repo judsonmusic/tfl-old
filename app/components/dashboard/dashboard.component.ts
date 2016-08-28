@@ -87,7 +87,8 @@ export class DashboardComponent implements OnInit {
       "#bc0015",
       "#039f71",
       "#e5d500",
-      "#eb6b00"
+      "#eb6b00",
+      "#3082e1"
     ];
 
 
@@ -126,6 +127,7 @@ export class DashboardComponent implements OnInit {
 
 
     this.seriesdata = temp2;
+    console.log(this.seriesdata);
   }
 
   goToDimension(id){

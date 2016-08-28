@@ -26,7 +26,7 @@ export class DimensionsComponent implements OnInit, OnDestroy {
   private answerData: any;
   private subquestions: any;
   public data:any;
-  public answerConfirmed:boolean
+  public answerConfirmed:boolean;
 
 
   constructor(private route: ActivatedRoute,
@@ -80,14 +80,9 @@ export class DimensionsComponent implements OnInit, OnDestroy {
     this.answerConfirmed = (this.answerData.subs.length == this.subquestions.length) && this.answerData.subs.indexOf('null') == -1 && this.answerData.subs.indexOf('') == -1;
     this.seriesdata = this.surveyService.getSubsForDimension(this.assessmentData, this.dimension.id)[0].subs || [];
 
-    let temp = [];
-    this.surveyService.subquestions.map((x)=> {
+    console.log('THE DIMENSION IS: ' , this.dimension.category);
+    this.categories.push({id: this.dimension.id, category: this.dimension.category});
 
-      temp.push(x.category);
-
-    });
-    this.categories = temp;
-    //console.log('The categories are:', this.categories);
 
 
     let temp2 = [];
@@ -95,12 +90,12 @@ export class DimensionsComponent implements OnInit, OnDestroy {
     this.surveyService.subquestions.map((x, i)=> {
       //console.log('Row:', i, x);
       let visible = i == 0;
-      temp2.push({name: x.category, data: [ this.assessmentData[this.dimension.id - 1].subs[i]], visible: true});
+      temp2.push({name: x.category, data: [ this.assessmentData[this.dimension.id - 1].subs[i]], visible: true, color: x.color});
 
     });
 
     this.seriesdata = temp2;
-    //console.log('The series data is: ', this.seriesdata);
+    console.log('The series data is: ', this.seriesdata);
 
   }
 

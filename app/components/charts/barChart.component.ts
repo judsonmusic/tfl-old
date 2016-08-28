@@ -65,8 +65,8 @@ export class BarChartComponent implements OnInit {
 
     });
 
-    //console.log('Categories for chart', tempcats);
-    //console.log('Series Data  for chart', this.seriesdata);
+    console.log('Categories for chart', tempcats);
+    console.log('Series Data  for chart', this.seriesdata);
 
     //now that we have the dimension that we want to populate data for...Build series data...
 

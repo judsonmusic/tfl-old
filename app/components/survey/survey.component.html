@@ -1,39 +1,55 @@
 <div class="container">
-  <h1>Train For Life Assessment <span *ngIf="data.account.firstName">for {{data.account.firstName}}</span></h1>
+  <!--<h1>Train For Life Assessment <span *ngIf="data.account.firstName">for {{data.account.firstName}}</span></h1>-->
+  <h1>Welcome to your Train for Life (TFL) assessment!</h1>
   <!--<h4>Please answer the following questions to create your profile. <a href="javascript:void(0)" (click)="finish($event)">Go to dashboard!</a></h4>-->
   <hr/>
 
   <div *ngIf="!data.account.createdAt">
     <div class="row">
-      <div class="col-md-12"> <p>Before we begin, we just need to know a little bit about you. Setting up an account will keep you from losing your data and allow you to come back and finish at any time.</p></div>
-      </div>
+      <div class="col-md-12"><p>Before we begin, we just need to know a little bit about you. Setting up an account will keep you from losing your data and allow you to come back and finish at any time.</p></div>
+    </div>
     <div class="row">
       <div class="col-md-4"></div>
       <div class="col-md-4">
 
-    <user-component></user-component>
-        </div>
-    <div class="col-md-4"></div>
+        <user-component></user-component>
+      </div>
+      <div class="col-md-4"></div>
     </div>
   </div>
 
   <!--show the instructions if count is 0 and account has been created--->
   <div class="instructions" *ngIf="count==0 && data.account.createdAt">
-    <img src="/app/images/log_only_large.jpg" style="float: left; max-width: 100%;"/>
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <img src="/app/images/log_only_large.jpg" style="float: left; width: 100%;"/>
+      </div>
+      <div class="col-md-8">
 
-    <p>Welcome and thank you for making the time to take your Train for Life Assessment (TFL). The TFL Assessment tool is intended to allow you to assess your life in 15 different dimensions and rate how satisfied you are with each. This holistic approach will allow you to take inventory of your life in a more comprehensive manner.  Examining only one aspect of your life would be incomplete so the TFL Assessment tool will provide you with more insight and a broader perspective of your total wellbeing. Become your greatest advocate by becoming more informed.
-    </p>
+        <p>This self-reflection tool allows you to take inventory of your life in a comprehensive manner. Reflecting on one area would be incomplete so by using our holistic approach you will be able to assess your life in <strong>15 different dimensions.</strong> Through this experience we hope you gain valuable insight, a broader perspective of your total wellbeing and that you are motivated to take action in the areas that are important to you.
+          Being informed can empower you to become your greatest advocate.
+        </p>
+        <p><strong>Reflect over the past 3 months</strong> as you answer each question. There is no right or wrong answers so trust your gut and rate each dimension as authentically as possible. Knowing where you are is the first step in making mindful decisions on where you want to go.</p>
 
-    <p>There are no wrong or right answers so just trust your gut and rate each dimension as authentically as possible. Knowing where you are is the first step in making mindful decisions on where you want to go.</p>
+        <p><strong>You are just 20 minutes</strong> away from receiving a complete overview of your life in 15 different dimensions. Once you complete the TFL assessment you will have immediate access to your results and a personalized TFL Action Plan on each dimension which includes: </p>
+        <ul style="padding-left: 40px;" class="fun-facts">
+          <li>Insight and fun facts</li>
+          <li>TFL Actions to consider</li>
+          <li>Self-guided exercises</li>
+          <li>Resources</li>
+        </ul>
 
-    <p><strong>Reflect over the past 3 months</strong> as you answer each question. You will be asked to rate each dimension regarding how satisfied you feel, level of importance, motivation to change and how your happiness and your school and/or job performance is impacted. You are just <strong>20 minutes</strong> away from receiving a complete overview of your life in 15 different dimensions. Once you complete the TFL assessment you will have immediate access to your personalized TFL Dashboard and assessment results.</p>
+        <p>Before you leave the TFL site you will be able to print out your complete <strong>TFL Empowerment Guide</strong> which gives you information on all 15 dimensions. This will help you develop a game plan to take action.</p>
 
-    <p>Start your journey to greater self-awareness by beginning your assessment now!</p>
+        <p><strong>Your privacy is a priority to us so please be assured that the information you share will be kept confidential.</strong></p>
 
+        <p>Start your journey to greater self-awareness by beginning your assessment now.</p>
 
-    <p class="text-right">
-      <button (click)="start($event)" class="btn btn-primary">Let's Begin!</button>
-    </p>
+        <p class="text-right">
+          <button (click)="start($event)" class="btn btn-primary">Let's Begin! <span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+        </p>
+      </div>
+    </div>
 
   </div>
 
@@ -49,9 +65,13 @@
         <ul *ngIf="count">
           <li *ngFor="let q of (questions | myfilter:count)" class="row survey-item">
             <div class="questions"><span class="survey-category">{{q.category}}</span>
-              <div class="survey-question-count"><div style="float: left;">{{count}}</div>
+              <div class="survey-question-count">
+                <div style="float: left;">{{count}}</div>
                 <div style="float: left; width: 300px; background-color:#efefef; height:24px; position: relative;">
-                  <div [ngStyle]="{'background': '#337ab7', 'width': Math.ceil((((count*100/15)/100) * 100)) + '%',  'height':'22px'}"></div></div><div style="float: left;">{{questions.length}}</div></div>
+                  <div [ngStyle]="{'background': '#337ab7', 'width': Math.ceil((((count*100/15)/100) * 100)) + '%',  'height':'22px'}"></div>
+                </div>
+                <div style="float: left;">{{questions.length}}</div>
+              </div>
               <hr/>
               <p class="survey-question">
                 {{q.question}}
@@ -71,8 +91,8 @@
               </div>
             </div>
 
-            <div class="survey-image" [ngStyle]="{'background-image': 'url(/app/images/slides/' + q.category.toLowerCase() + '.jpg)', 'background-repeat' : 'no-repeat', 'background-position': 'center -140px', 'background-size' : '100%'}">
-
+            <div class="survey-image">
+              <img src="/app/images/slides/{{q.category.toLowerCase()}}.png" style="width: 100%;"/>
             </div>
 
             <div class="text-right" style="margin:20px;">
@@ -80,39 +100,6 @@
               <button class="btn btn-primary" *ngIf="data.account.assessment[q.id-1].answer && count != questions.length" (click)="save();">Next</button>
               <button class="btn btn-primary" *ngIf="count == questions.length" (click)="finish($event)">Finish</button>
             </div>
-            <!--END: answers-->
-            <!--sub-->
-            <!--<div class="sub-survey" *ngIf="data.account.assessment[q.id-1].answer">-->
-              <!--<h4>Please answer the following 5 questions based on the below rating scale.</h4>-->
-
-              <!--<p> 1 = strongly disagree |  2 = disagree |  3 somewhat agree |  4 = agree | 5 = strongly agree</p>-->
-
-              <!--<ul>-->
-                <!--<li *ngFor="let s of subquestions; let i = index">-->
-
-                  <!--<p class="sub-question">{{s.question}}</p>-->
-
-                  <!--<div class="survey-radio-wrapper-subs">-->
-                    <!--<input type="radio" id="{{q.id}}_sub_{{s.id}}_1" name="survey_sub_{{s.id}}_{{q.category}}" [value]="20" [(ngModel)]="data.account.assessment[q.id-1].subs[s.id-1]"/>-->
-                    <!--<label [attr.for]="q.id + '_sub_' + s.id + '_1'"><span></span>1</label>-->
-                    <!--<input type="radio" id="{{q.id}}_sub_{{s.id}}_2" name="survey_sub_{{s.id}}_{{q.category}}" [value]="40" [(ngModel)]="data.account.assessment[q.id-1].subs[s.id-1]"/>-->
-                    <!--<label [attr.for]="q.id + '_sub_' + s.id + '_2'"><span></span>2</label>-->
-                    <!--<input type="radio" id="{{q.id}}_sub_{{s.id}}_3" name="survey_sub_{{s.id}}_{{q.category}}" [value]="60" [(ngModel)]="data.account.assessment[q.id-1].subs[s.id-1]"/>-->
-                    <!--<label [attr.for]="q.id + '_sub_' + s.id + '_3'"><span></span>3</label>-->
-                    <!--<input type="radio" id="{{q.id}}_sub_{{s.id}}_4" name="survey_sub_{{s.id}}_{{q.category}}" [value]="80" [(ngModel)]="data.account.assessment[q.id-1].subs[s.id-1]"/>-->
-                    <!--<label [attr.for]="q.id + '_sub_' + s.id + '_4'"><span></span>4</label>-->
-                    <!--<input type="radio" id="{{q.id}}_sub_{{s.id}}_5" name="survey_sub_{{s.id}}_{{q.category}}" [value]="100" [(ngModel)]="data.account.assessment[q.id-1].subs[s.id-1]"/>-->
-                    <!--<label [attr.for]="q.id + '_sub_' + s.id + '_5'"><span></span>5</label>-->
-                  <!--</div>-->
-                <!--</li>-->
-                <!--<li class="text-right">-->
-                  <!--<button class="btn btn-primary" *ngIf="count < questions.length && count > 1" (click)="counterDown()">Back</button>-->
-                  <!--<button class="btn btn-primary" *ngIf="data.account.assessment[q.id-1].subs.length === 6" (click)="save();">Next</button>-->
-                  <!--<button class="btn btn-primary" *ngIf="count == questions.length" (click)="finish($event)">Finish</button>-->
-                <!--</li>-->
-                <!--<li class="clearfix"></li>-->
-              <!--</ul>-->
-            <!--</div>-->
           </li>
         </ul>
       </form>

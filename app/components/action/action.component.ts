@@ -54,7 +54,8 @@ export class ActionComponent implements OnInit {
       "#bc0015",
       "#039f71",
       "#e5d500",
-      "#eb6b00"
+      "#eb6b00",
+      "#3082e1"
     ];
 
 

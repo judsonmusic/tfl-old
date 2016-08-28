@@ -1,3 +1,5 @@
+
+<div class="container">
 <h1>{{dimension.category}}</h1>
 <div *ngIf="!answerData || answerData.answer == ''"><p>You have not yet answered this question in the assessment.</p></div>
 <div *ngIf="answerData && answerData.answer > 0">
@@ -47,6 +49,8 @@
 
     <div [onCreateView]="dimension.templateUrl">Html will appear here..</div>
   </div>
+
+</div>
 
 </div>
 

@@ -43,6 +43,11 @@ body {
   background: #002494
 
 }
+
+.light-blue-bg{
+
+  background: #3082e1;
+}
 .green-bg{
 
   background: #039f71
@@ -59,20 +64,33 @@ body {
 
 }
 
+
+.yellow{
+
+  color: #e5d500
+
+}
 .orange-bg{
 
   background: #eb6b00
 
 }
 
+.orange{
+
+  color: #eb6b00
+
+}
+
 .survey-image{
 
-  height:360px;
+  min-height:350px;
+  background: #444444;
 }
 
 footer {
 
-  background: #337ab7;
+  background: #444444;
   height: 100px;
   margin: 0;
   text-align: center;
@@ -84,6 +102,11 @@ footer {
   right: 0;
   z-index: 999;
 
+}
+
+.col-xs-4.action-icons{
+
+  height:116px;
 }
 
 .modal-header{
@@ -98,6 +121,11 @@ footer {
   padding: 20px;
   min-height: 450px;
 
+}
+
+.fun-facts li{
+
+  list-style: disc;
 }
 
 .navbar {
@@ -186,6 +214,8 @@ li.survey-item {
 
 .answers {
   padding: 20px 40px;
+  position: absolute;
+  top: 120px;
 
 }
 
@@ -337,6 +367,8 @@ ul.swatch-list{
 
 /*MEDIA QUERIES*/
 
+
+
 /*ipad*/
 @media all
 and (min-width: 0px)
@@ -424,6 +456,46 @@ and (max-width: 9999px) {
   footer {
 
     position: fixed;
+  }
+
+}
+
+
+@media all
+and (min-width: 992px)
+and (max-width: 1199px) {
+  .survey-image{
+
+    min-height:288px;
+  }
+
+}
+
+@media all
+and (min-width: 768px)
+and (max-width: 991px) {
+  .survey-image{
+
+    min-height:221px;
+  }
+
+}
+
+@media all
+and (min-width: 280px)
+and (max-width: 767px) {
+  .survey-image{
+
+    min-height:64px;
+  }
+
+}
+
+@media all
+and (max-width: 279px) {
+  .survey-image{
+
+    min-height:0;
   }
 
 }
