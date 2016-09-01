@@ -25,22 +25,32 @@ body {
 }
 
 .red {
-  color: #b90013;
+  color: #d10016;
+}
+
+.purple{
+
+  color: #4600bd;
+}
+
+.purple-bg{
+
+  background: #4600bd;
 }
 
 .blue{
 
-  color: #337ab7;
+  color: #04319e;
 }
 
 .green{
 
-  color: #039f71;
+  color: #089b6f;
 }
 
 .blue-bg{
 
-  background: #002494
+  background: #04319e
 
 }
 
@@ -50,35 +60,34 @@ body {
 }
 .green-bg{
 
-  background: #039f71
+  background: #089b6f
 
 }
 .red-bg{
 
-  background: #bc0015
+  background: #d10016
 
 }
 .yellow-bg{
 
-  background: #e5d500
+  background: #e5e300
 
 }
 
-
 .yellow{
 
-  color: #e5d500
+  color: #e5e300
 
 }
 .orange-bg{
 
-  background: #eb6b00
+  background: #fe7d00
 
 }
 
 .orange{
 
-  color: #eb6b00
+  color: #fe7d00
 
 }
 
@@ -338,10 +347,7 @@ ul.swatch-list{
 
 
 .swatch.swatch-blue {
-
-  background: #68a3ea;
-
-
+  background: #04319e;
 }
 
 .swatch.swatch-black {
@@ -351,17 +357,29 @@ ul.swatch-list{
 
 .swatch.swatch-green {
 
-  background: #7ef064;
+  background: #089b6f;
 }
 
 .swatch.swatch-orange {
 
-  background: #f59244;
+  background: #fe7d00;
 }
 
 .swatch.swatch-purple {
 
-  background: #6c69e7;
+  background: #4600bd;
+
+}
+
+.swatch.swatch-yellow {
+
+  background: #e5e300;
+
+}
+
+.swatch.swatch-red {
+
+  background: #d10016;
 
 }
 

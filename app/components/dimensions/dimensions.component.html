@@ -1,6 +1,6 @@
 
 <div class="container">
-<h1>{{dimension.category}}</h1>
+<h1>{{dimension.category}} <i class="pull-right fa fa-file-pdf-o red" aria-hidden="true" style="font-size: 48px; cursor: pointer"></i></h1>
 <div *ngIf="!answerData || answerData.answer == ''"><p>You have not yet answered this question in the assessment.</p></div>
 <div *ngIf="answerData && answerData.answer > 0">
   <p *ngIf="answerData">The question was: {{dimension.question}}. You answered: {{ (answers | myfilter: answerData.answer)[0].value }}</p>
@@ -15,7 +15,7 @@
   <div class="sub-survey" *ngIf="!answerConfirmed">
     <h4>Please answer the following 5 questions based on the below rating scale.</h4>
 
-    <p> 1 = strongly disagree | 2 = disagree | 3 somewhat agree | 4 = agree | 5 = strongly agree</p>
+    <p> 1 = strongly disagree | 2 = disagree | 3 neutral | 4 = agree | 5 = strongly agree</p>
 
     <ul>
       <li *ngFor="let s of subquestions; let i = index">

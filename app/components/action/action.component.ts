@@ -62,11 +62,12 @@ export class ActionComponent implements OnInit {
     let temp2 = [];
     //loop through sub questions and then get each map data to what they chose for each area.
     this.surveyService.subquestions.map((x, i)=> {
-      //console.log('Row:', i, x);
+      console.log('Row:', i, x);
       let visible = i == 0;
-      temp2.push({name: x.category, data:[], visible: visible, color: colors[i]});
+      temp2.push({name: x.category, data:[], visible: visible, color: x.color});
 
     });
+
 
     this.assessmentData.map((x, y) =>{
       //for each area on the series, we need to set what they selected from each area. 5 total. For example spiriitual.

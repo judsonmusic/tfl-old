@@ -14,6 +14,8 @@ import {OnCreate} from "../directives/oncreate.directive";
 import {UserService} from "../user-service/user.service";
 import {ModalHelpComponent} from "../modals/modalHelpComponent";
 import {MyFilterPipe} from "../pipes/filter.pipe";
+import {ModalYourResultsComponent} from "../modals/modalYourResultsComponent";
+import {ModalDataJunkieComponent} from "../modals/modalDataJunkieComponent";
 
 
 @Component({
@@ -21,7 +23,7 @@ import {MyFilterPipe} from "../pipes/filter.pipe";
   templateUrl: '/app/components/dashboard/dashboard.component.html',
   providers: [BS_VIEW_PROVIDERS],
   pipes: [MyFilterPipe],
-  directives: [SimpleChartComponent, AppleChartComponent, BarChartComponent, DonutChartComponent, AlertComponent, ModalDemoComponent, ModalHelpComponent, NgInitHelperComponent, ModalDirective, OnCreate]
+  directives: [SimpleChartComponent, AppleChartComponent, BarChartComponent, DonutChartComponent, AlertComponent, ModalDemoComponent, ModalHelpComponent, NgInitHelperComponent, ModalDirective, OnCreate, ModalYourResultsComponent, ModalDataJunkieComponent]
 })
 export class DashboardComponent implements OnInit {
 
@@ -97,7 +99,7 @@ export class DashboardComponent implements OnInit {
     this.surveyService.subquestions.map((x, i)=> {
       //console.log('Row:', i, x);
       let visible = i == 0;
-      temp2.push({name: x.category, data:[], visible: visible, color: colors[i]});
+      temp2.push({name: x.category, data:[], visible: visible, color: x.color});
 
     });
 

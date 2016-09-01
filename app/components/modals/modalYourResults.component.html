@@ -1,0 +1,32 @@
+<!-- Large modal -->
+<div bsModal #childModal="bs-modal" #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close" style="color: white; opacity: 10; text-shadow: none; font-size: 36px; font-weight: normal;">
+          <span aria-hidden="true" style="opacity: 10;">&times;</span>
+        </button>
+        <h4 class="modal-title">Your Action Plan</h4>
+      </div>
+
+
+      <div class="modal-body">
+
+        <p>Displayed on your dashboard are the dimensions you reported low satisfaction and the greatest desire to take action.</p>
+
+        <p>Knowing where you are and what is important to you is the first step towards greater self-awareness.</p>
+
+        <p>Spend some time reviewing this information so you can begin to establish a game plan to make positive changes based on the dimensions that were selected for you. We encourage you to focus your efforts on these areas first. Click the <i class="fa fa-unlock-alt green"></i> icon to gain immediate access to tools and resources which will help you take action.</p>
+
+        <p>You have the ability to change the course of your life one dimension at a time.</p>
+
+        <p>You will have the option to click the <i class="fa fa-bar-chart blue"></i> Icon which will give you a comprehensive overview of all 15 dimensions at a glance.</p>
+
+        <div class="text-right">
+          <button class="btn btn-primary" (click)="lgModal.hide()">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

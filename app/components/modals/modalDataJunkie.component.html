@@ -1,0 +1,57 @@
+<!-- Large modal -->
+<div bsModal #childModal="bs-modal" #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close" style="color: white; opacity: 10; text-shadow: none; font-size: 36px; font-weight: normal;">
+          <span aria-hidden="true" style="opacity: 10;">&times;</span>
+        </button>
+        <h4 class="modal-title">Data Junkie</h4>
+      </div>
+
+
+      <div class="modal-body">
+
+        <p>The following interactive TFL Graph will provide you a comprehensive overview of how you ranked yourself in all 15 dimensions of your life. Each bar on the graph is color coded and represents the following:</p>
+        <ul style="margin-left: 50px;">
+          <li>
+            <div class="swatch swatch-purple"></div>
+            How <strong>important</strong> the dimension is to you
+          </li>
+          <li>
+            <div class="swatch swatch-yellow"></div>
+            How the dimension impacts your <strong>happiness</strong></li>
+          <li>
+            <div class="swatch swatch-orange"></div>
+            How the dimension impacts your <strong>performance</strong></li>
+          <li>
+            <div class="swatch swatch-blue"></div>
+            How <strong>satisfied</strong> you are with the dimension.
+          </li>
+          <li>
+            <div class="swatch swatch-green"></div>
+            How <strong>actively</strong> you are working to improve and/or maintain the dimension – bar color Green
+          </li>
+          <li>
+            <div class="swatch swatch-red"></div>
+            How <strong>motivated</strong> you are to improve and/or maintain the dimension – bar color Red
+          </li>
+        </ul>
+
+        <p><strong>Note:</strong> The way you responded to the above questions are reflected on the graph from a <strong>low of 20%</strong> to a <strong>high of 100%</strong></p>
+
+        <p>You can populate the graph by clicking the grayed out words below the chart: Importance, Happiness, Performance, Satisfaction, Action, and Motivation.
+        Remember how you ranked yourself in each dimension will populate once you click the corresponding word below the chart. You can also click and un-click each word in order to populate or suppress the 6 bars in each dimension. This interactive view will allow you to compare and contrast each dimension in all 6 areas.</p>
+
+        <p>By recognizing what impacts your total wellbeing you can begin to take action in the areas which are most important to you. Have fun reviewing your data and remember self-awareness is the first step towards personal empowerment.</p>
+
+        <p><strong>Instructions:</strong> You can click on the <i class="fa fa-question-circle-o blue"></i> Icon at any time for instructions on how to use what is displayed on your dashboard.</p>
+
+        <div class="text-right">
+          <button class="btn btn-primary" (click)="lgModal.hide()">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

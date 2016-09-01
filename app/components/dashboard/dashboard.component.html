@@ -5,11 +5,7 @@
     <bar-chart selector="chart_dashboard" heading="Your 15 TFL Dimensions" [seriesdata]="seriesdata"  [categories]="categories"></bar-chart>
   </div>
 </div>
-
 <div class="row">
-  <div class="col-md-12">
-    <h3>Unlock your 15 dimensions!</h3>
-  </div>
 </div>
 <div class="row">
   <div *ngFor="let item of assessmentData" class="col-xs-4 col-sm-2 col-md-2 text-center action-icons" style="padding: 20px;">
@@ -17,25 +13,36 @@
     <i class="fa fa-lock" aria-hidden="true" style="font-size: 72px; color: #efefef; cursor: pointer" *ngIf="item.subs.length < 6 || item.subs.indexOf('null') > -1 || item.subs.indexOf('') > -1" (click)="goToDimension(item.id)"></i><br>
     {{(categories | myfilter: item.id)[0].category}}
   </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <h3>Your TFL Toolkit:  <span style="color: #999999">Your toolkit will become active once you unlock all 15 dimensions.</span></h3>
+
+  </div>
+
   <div class="col-xs-4 col-sm-2 col-md-2 text-center action-icons" style="padding: 20px;">
-    <i *ngIf="dataCheckPassed" class="fa fa-star orange" aria-hidden="true" style="font-size: 72px; cursor: pointer" (click)="showGraph = !showGraph"></i>
+    <i *ngIf="dataCheckPassed" class="fa fa-star orange" aria-hidden="true" style="font-size: 72px; cursor: pointer" (click)="r.show(); showGraph = !showGraph"></i>
     <i *ngIf="!dataCheckPassed"  class="fa fa-star" aria-hidden="true" style="color: #efefef; font-size: 72px; cursor: pointer"></i><br/>
-    Custom View
+    Your Results
   </div>
   <div class="col-xs-4 col-sm-2 col-md-2 text-center action-icons" style="padding: 20px;">
-    <i *ngIf="dataCheckPassed" class="fa fa-bar-chart blue" aria-hidden="true" style="font-size: 72px; cursor: pointer"></i>
+    <i *ngIf="dataCheckPassed" class="fa fa-bar-chart blue" aria-hidden="true" style="font-size: 72px; cursor: pointer" (click)="j.show();"></i>
     <i *ngIf="!dataCheckPassed" class="fa fa-bar-chart" aria-hidden="true" style="color: #efefef; font-size: 72px; cursor: pointer"></i><br/>
     Data Junkie
   </div>
   <div class="col-xs-4 col-sm-2 col-md-2 text-center action-icons" style="padding: 20px;">
-    <i class="fa fa-file-pdf-o" aria-hidden="true" style="color: #666666; font-size: 72px; cursor: pointer"></i><br/>
-    Print All
+    <i class="fa fa-file-pdf-o red" aria-hidden="true" style="font-size: 72px; cursor: pointer"></i><br/>
+    TFL Guide
   </div>
+
 </div>
 
 
 <modal-demo #m="child"></modal-demo>
 <modal-help #h="child2"></modal-help>
+<modal-results #r="child3"></modal-results>
+<modal-data-junkie #j="child4"></modal-data-junkie>
 
 
 

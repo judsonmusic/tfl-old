@@ -40,12 +40,12 @@ export class SurveyService{
 
     this.subquestions = [
 
-      {id: "1", category: "Importance", question: "This dimension of my life is important to me.", color: "purple"},
-      {id: "2", category: "Happiness", question: "This dimension positively impacts my happiness.",  color: "yellow"},
-      {id: "3", category: "Performance", question: "My performance is positively impacted by this dimension.",  color: "orange"},
-      {id: "4", category: "Satisfaction", question: "I am satisfied with this dimension of my life.",  color: "blue"},
-      {id: "5", category: "Action", question: "I am actively working to improve and/or maintain this dimension of my life.",  color: "green"},
-      {id: "6", category: "Motivation", question: "I am motivated to improve and/or maintain this area of my life.",  color: "red"}
+      {id: "1", category: "Importance", question: "This dimension of my life is important to me.", color: "#4600bd"},
+      {id: "2", category: "Happiness", question: "This dimension positively impacts my happiness.",  color: "#e5e300"},
+      {id: "3", category: "Performance", question: "My performance is positively impacted by this dimension.",  color: "#fe7d00"},
+      {id: "4", category: "Satisfaction", question: "I am satisfied with this dimension of my life.",  color: "#04319e"},
+      {id: "5", category: "Action", question: "I am actively working to improve and/or maintain this dimension of my life.",  color: "#089b6f"},
+      {id: "6", category: "Motivation", question: "I am motivated to improve and/or maintain this area of my life.",  color: "#d10016"}
 
     ];
 
