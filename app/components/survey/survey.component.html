@@ -94,7 +94,7 @@
 
             <div class="text-right survey-nav">
               <button class="btn btn-primary" *ngIf="count <= questions.length && count > 1" (click)="counterDown()">Back</button>
-              <button class="btn btn-primary" *ngIf="data.account.assessment[q.id-1].answer && count != questions.length" (click)="save();">See Results!</button>
+              <button class="btn btn-primary" *ngIf="data.account.assessment[q.id-1].answer && count != questions.length" (click)="save();">Next</button>
               <button class="btn btn-primary" *ngIf="count == questions.length" (click)="finish($event)">Finish</button>
             </div>
 
