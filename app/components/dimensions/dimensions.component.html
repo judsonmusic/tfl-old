@@ -2,6 +2,7 @@
   <h1>
     <img src="/app/images/logo-tfl-mini.jpg"> {{dimension.category}}
     <i class="pull-right fa fa-print"
+       *ngIf="answerData && answerData.subs.indexOf('null') < 0 && answerData.subs.length === 6 && answerConfirmed"
        aria-hidden="true"
        style="font-size: 48px;
        cursor: pointer"
@@ -11,6 +12,7 @@
        [tooltipEnable]="true"></i>
     <a href="javascript:void(0);" style="text-decoration: none;" routerLink="/dashboard">
       <i class="pull-right fa fa-unlock green"
+         *ngIf="answerData && answerData.subs.indexOf('null') < 0 && answerData.subs.length === 6 && answerConfirmed"
          style="font-size: 48px;
          cursor: pointer"
          tooltip="Unlock More Dimensions"
@@ -29,11 +31,11 @@
     <!--</div>-->
 
     <div class="sub-survey" *ngIf="!answerConfirmed">
-      <h4>Please answer the following 5 questions based on the below rating scale.</h4>
+      <h4>Please answer the following 6 questions based on the below rating scale.</h4>
 
       <p> 1 = strongly disagree | 2 = disagree | 3 neutral | 4 = agree | 5 = strongly agree</p>
 
-      <ol style="list-style: none;">
+      <ol>
         <li *ngFor="let s of subquestions; let i = index">
 
           <p class="sub-question">{{s.question}}</p>
@@ -51,10 +53,10 @@
             <label [attr.for]="dimension.id + '_sub_' + s.id + '_5'"><span></span>5</label>
           </div>
         </li>
-        <li class="text-right">
+        <li class="text-right" style="list-style: none;">
           <button class="btn btn-primary" *ngIf="answerData.subs.indexOf('null') < 0 && answerData.subs.length === 6" (click)="save();">See Results!</button>
         </li>
-        <li class="clearfix"></li>
+        <li class="clearfix" style="list-style: none;"></li>
       </ol>
     </div>
 
