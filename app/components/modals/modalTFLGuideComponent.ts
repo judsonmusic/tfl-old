@@ -7,43 +7,32 @@ import {ModalDirective} from 'ng2-bootstrap/ng2-bootstrap';
 
 
 @Component({
-  selector: 'modal-demo',
+  selector: 'modal-tfl-guide',
   directives: [MODAL_DIRECTIVES, CORE_DIRECTIVES],
   viewProviders: [BS_VIEW_PROVIDERS],
-  templateUrl: '/app/components/modals/modalDemo.component.html',
-  exportAs: 'child'
+  templateUrl: '/app/components/modals/modalTFLGuide.component.html',
+  exportAs: 'child5'
+
 })
-export class ModalDemoComponent implements AfterViewInit {
+export class ModalTFLGuideComponent implements AfterViewInit {
 
   @ViewChild('childModal') public childModal:ModalDirective;
   @ViewChild('lgModal') public lgModal:ModalDirective;
 
   public show(){
-
-    console.log('Show modal!');
     this.lgModal.show();
   }
 
-  public hide(){
-    console.log('Hide modal!');
-    sessionStorage.setItem('modal-demo', '1');
-    this.lgModal.hide();
-
-  }
-
   public showChildModal():void {
-    //this.childModal.show();
+    this.childModal.show();
   }
 
   public hideChildModal():void {
-    //this.childModal.hide();
+    this.childModal.hide();
   }
 
   ngAfterViewInit() {
-
-    if(!sessionStorage.getItem('modal-demo')) {
-      this.lgModal.show();
-    }
+    //this.lgModal2.show();
   }
 
 

@@ -42,12 +42,13 @@
         <p>Before you leave the TFL site you will be able to print out your complete <strong>TFL Empowerment Guide</strong> which gives you information on all 15 dimensions. This will help you develop a game plan to take action.</p>
 
         <p><strong>Your privacy is a priority to us so please be assured that the information you share will be kept confidential.</strong></p>
+        <div class="col-md-10">
+        <p>Start your journey to greater self-awareness by beginning your assessment now. </p>
+        </div>
+        <div class="col-md-2"><button (click)="start($event)" class="btn btn-primary pull-right">Let's Begin! <span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+          </div>
 
-        <p>Start your journey to greater self-awareness by beginning your assessment now.</p>
 
-        <p class="text-right">
-          <button (click)="start($event)" class="btn btn-primary">Let's Begin! <span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
-        </p>
       </div>
     </div>
 
@@ -62,7 +63,7 @@
   <div class="">
     <div class="col-md-12">
       <form class="form form-horizontal">
-        <ul *ngIf="count">
+        <ul *ngIf="count" style="margin: 0; list-style: none;">
           <li *ngFor="let q of (questions | myfilter:count)" class="row survey-item">
             <div class="questions"><span class="survey-category">{{q.category}}</span>
               <div class="survey-question-count">
@@ -91,18 +92,20 @@
               </div>
             </div>
 
+            <div class="text-right survey-nav">
+              <button class="btn btn-primary" *ngIf="count <= questions.length && count > 1" (click)="counterDown()">Back</button>
+              <button class="btn btn-primary" *ngIf="data.account.assessment[q.id-1].answer && count != questions.length" (click)="save();">See Results!</button>
+              <button class="btn btn-primary" *ngIf="count == questions.length" (click)="finish($event)">Finish</button>
+            </div>
+
             <div class="survey-image">
               <img src="/app/images/slides/compressed/{{q.category.toLowerCase()}}.jpg" style="width: 100%;"/>
             </div>
 
-            <div class="text-right" style="margin:20px;">
-              <button class="btn btn-primary" *ngIf="count <= questions.length && count > 1" (click)="counterDown()">Back</button>
-              <button class="btn btn-primary" *ngIf="data.account.assessment[q.id-1].answer && count != questions.length" (click)="save();">Next</button>
-              <button class="btn btn-primary" *ngIf="count == questions.length" (click)="finish($event)">Finish</button>
-            </div>
           </li>
         </ul>
       </form>
     </div>
+    <div class="col-md-12 text-center red" *ngIf="count>0"><strong>Please Note:</strong> If you want to log out and finish your assessment later, you can log back in on the home page using your user name and password.</div>
   </div>
 </div>

@@ -7,7 +7,7 @@ import {DonutChartComponent} from "../charts/donutChart.component";
 import {AlertComponent} from 'ng2-bootstrap/ng2-bootstrap';
 import {ModalDemoComponent} from "../modals/modalDemoComponent";
 import {NgInitHelperComponent} from "../helpers/nginit.helper.component";
-import {ModalDirective} from "ng2-bootstrap/ng2-bootstrap";
+import {ModalDirective, TooltipDirective} from "ng2-bootstrap/ng2-bootstrap";
 import {BS_VIEW_PROVIDERS} from 'ng2-bootstrap/ng2-bootstrap';
 import {SurveyService} from "../survey/survey.service";
 import {OnCreate} from "../directives/oncreate.directive";
@@ -16,6 +16,7 @@ import {ModalHelpComponent} from "../modals/modalHelpComponent";
 import {MyFilterPipe} from "../pipes/filter.pipe";
 import {ModalYourResultsComponent} from "../modals/modalYourResultsComponent";
 import {ModalDataJunkieComponent} from "../modals/modalDataJunkieComponent";
+import {ModalTFLGuideComponent} from "../modals/modalTFLGuideComponent";
 
 
 @Component({
@@ -23,7 +24,7 @@ import {ModalDataJunkieComponent} from "../modals/modalDataJunkieComponent";
   templateUrl: '/app/components/dashboard/dashboard.component.html',
   providers: [BS_VIEW_PROVIDERS],
   pipes: [MyFilterPipe],
-  directives: [SimpleChartComponent, AppleChartComponent, BarChartComponent, DonutChartComponent, AlertComponent, ModalDemoComponent, ModalHelpComponent, NgInitHelperComponent, ModalDirective, OnCreate, ModalYourResultsComponent, ModalDataJunkieComponent]
+  directives: [SimpleChartComponent, AppleChartComponent, BarChartComponent, DonutChartComponent, AlertComponent, ModalDemoComponent, ModalHelpComponent, NgInitHelperComponent, ModalDirective, OnCreate, ModalYourResultsComponent, ModalDataJunkieComponent, TooltipDirective, ModalTFLGuideComponent]
 })
 export class DashboardComponent implements OnInit {
 
@@ -43,28 +44,9 @@ export class DashboardComponent implements OnInit {
     this.dataCheckPassed = false;
   }
 
-  /**
-   * series: [{
-            name: 'Tokyo',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-
-        }, {
-            name: 'New York',
-            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-
-        }, {
-            name: 'London',
-            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
-
-        }, {
-            name: 'Berlin',
-            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
-
-        }]
-   */
-
   ngOnInit(){
 
+    //if I already have data from login, simply load it.
     this.assessmentData = this.userService.userData.assessment || [];
 
     let temp = [];
@@ -82,16 +64,6 @@ export class DashboardComponent implements OnInit {
   }
 
   buildSeries(){
-
-
-    let colors = [
-      "#002494",
-      "#bc0015",
-      "#039f71",
-      "#e5d500",
-      "#eb6b00",
-      "#3082e1"
-    ];
 
 
     let temp2 = [];
@@ -120,10 +92,7 @@ export class DashboardComponent implements OnInit {
 
         });
 
-
-
       }
-
 
     });
 

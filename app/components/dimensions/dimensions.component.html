@@ -1,56 +1,74 @@
-
 <div class="container">
-<h1>{{dimension.category}} <i class="pull-right fa fa-file-pdf-o red" aria-hidden="true" style="font-size: 48px; cursor: pointer"></i></h1>
-<div *ngIf="!answerData || answerData.answer == ''"><p>You have not yet answered this question in the assessment.</p></div>
-<div *ngIf="answerData && answerData.answer > 0">
-  <p *ngIf="answerData">The question was: {{dimension.question}}. You answered: {{ (answers | myfilter: answerData.answer)[0].value }}</p>
-  <hr/>
+  <h1>
+    <img src="/app/images/logo-tfl-mini.jpg"> {{dimension.category}}
+    <i class="pull-right fa fa-print"
+       aria-hidden="true"
+       style="font-size: 48px;
+       cursor: pointer"
+       tooltip="Print this page."
+       tooltipPlacement="top"
+       tooltipTrigger="mouseenter"
+       [tooltipEnable]="true"></i>
+    <a href="javascript:void(0);" style="text-decoration: none;" routerLink="/dashboard">
+      <i class="pull-right fa fa-unlock green"
+         style="font-size: 48px;
+         cursor: pointer"
+         tooltip="Unlock More Dimensions"
+         tooltipPlacement="top"
+         tooltipTrigger="mouseenter"
+         [tooltipEnable]="true"></i></a></h1>
+  <div *ngIf="!answerData || answerData.answer == ''"><p>You have not yet answered this question in the assessment.</p></div>
+  <div *ngIf="answerData && answerData.answer > 0">
+    <p *ngIf="answerData">The question was: {{dimension.question}} You answered: <span class="green">{{ (answers | myfilter: answerData.answer)[0].value }}</span></p>
+    <hr/>
 
-  <!--{{answerData | json}}<br>-->
-  <!--<div *ngIf="answerData">-->
-  <!--{{answerData.subs.indexOf('null')}}<br>-->
-  <!--{{answerData.subs.length}} {{subquestions.length}}<br>-->
-  <!--</div>-->
+    <!--{{answerData | json}}<br>-->
+    <!--<div *ngIf="answerData">-->
+    <!--{{answerData.subs.indexOf('null')}}<br>-->
+    <!--{{answerData.subs.length}} {{subquestions.length}}<br>-->
+    <!--</div>-->
 
-  <div class="sub-survey" *ngIf="!answerConfirmed">
-    <h4>Please answer the following 5 questions based on the below rating scale.</h4>
+    <div class="sub-survey" *ngIf="!answerConfirmed">
+      <h4>Please answer the following 5 questions based on the below rating scale.</h4>
 
-    <p> 1 = strongly disagree | 2 = disagree | 3 neutral | 4 = agree | 5 = strongly agree</p>
+      <p> 1 = strongly disagree | 2 = disagree | 3 neutral | 4 = agree | 5 = strongly agree</p>
 
-    <ul>
-      <li *ngFor="let s of subquestions; let i = index">
+      <ol style="list-style: none;">
+        <li *ngFor="let s of subquestions; let i = index">
 
-        <p class="sub-question">{{s.question}}</p>
+          <p class="sub-question">{{s.question}}</p>
 
-        <div class="survey-radio-wrapper-subs">
-          <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_1" name="survey_sub_{{s.id}}_{{dimension.category}}" [value]="20" [(ngModel)]="answerData.subs[s.id-1]"/>
-          <label [attr.for]="dimension.id + '_sub_' + s.id + '_1'"><span></span>1</label>
-          <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_2" name="survey_sub_{{s.id}}_{{dimension.category}}" [value]="40" [(ngModel)]="answerData.subs[s.id-1]"/>
-          <label [attr.for]="dimension.id + '_sub_' + s.id + '_2'"><span></span>2</label>
-          <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_3" name="survey_sub_{{s.id}}_{{dimension.category}}" [value]="60" [(ngModel)]="answerData.subs[s.id-1]"/>
-          <label [attr.for]="dimension.id + '_sub_' + s.id + '_3'"><span></span>3</label>
-          <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_4" name="survey_sub_{{s.id}}_{{dimension.category}}" [value]="80" [(ngModel)]="answerData.subs[s.id-1]"/>
-          <label [attr.for]="dimension.id + '_sub_' + s.id + '_4'"><span></span>4</label>
-          <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_5" name="survey_sub_{{s.id}}_{{dimension.category}}" [value]="100" [(ngModel)]="answerData.subs[s.id-1]"/>
-          <label [attr.for]="dimension.id + '_sub_' + s.id + '_5'"><span></span>5</label>
-        </div>
-      </li>
-      <li class="text-right">
-        <button class="btn btn-primary" *ngIf="answerData.subs.indexOf('null') < 0 && answerData.subs.length === 6" (click)="save();">Next</button>
-      </li>
-      <li class="clearfix"></li>
-    </ul>
-  </div>
-
-  <div *ngIf="answerData && answerConfirmed">
-    <div *ngIf="seriesdata">
-      <bar-chart heading="{{dimension.category}}" selector="{{dimension.category}}_bar_chart" [seriesdata]="seriesdata" [categories]="categories"></bar-chart>
+          <div class="survey-radio-wrapper-subs">
+            <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_1" name="survey_sub_{{s.id}}_{{dimension.category}}" [value]="20" [(ngModel)]="answerData.subs[s.id-1]"/>
+            <label [attr.for]="dimension.id + '_sub_' + s.id + '_1'"><span></span>1</label>
+            <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_2" name="survey_sub_{{s.id}}_{{dimension.category}}" [value]="40" [(ngModel)]="answerData.subs[s.id-1]"/>
+            <label [attr.for]="dimension.id + '_sub_' + s.id + '_2'"><span></span>2</label>
+            <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_3" name="survey_sub_{{s.id}}_{{dimension.category}}" [value]="60" [(ngModel)]="answerData.subs[s.id-1]"/>
+            <label [attr.for]="dimension.id + '_sub_' + s.id + '_3'"><span></span>3</label>
+            <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_4" name="survey_sub_{{s.id}}_{{dimension.category}}" [value]="80" [(ngModel)]="answerData.subs[s.id-1]"/>
+            <label [attr.for]="dimension.id + '_sub_' + s.id + '_4'"><span></span>4</label>
+            <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_5" name="survey_sub_{{s.id}}_{{dimension.category}}" [value]="100" [(ngModel)]="answerData.subs[s.id-1]"/>
+            <label [attr.for]="dimension.id + '_sub_' + s.id + '_5'"><span></span>5</label>
+          </div>
+        </li>
+        <li class="text-right">
+          <button class="btn btn-primary" *ngIf="answerData.subs.indexOf('null') < 0 && answerData.subs.length === 6" (click)="save();">Next</button>
+        </li>
+        <li class="clearfix"></li>
+      </ol>
     </div>
 
-    <div [onCreateView]="dimension.templateUrl">Html will appear here..</div>
-  </div>
+    <div *ngIf="answerData && answerConfirmed">
+      <div *ngIf="seriesdata">
+        <bar-chart heading="{{dimension.category}}" selector="{{dimension.category}}_bar_chart" [seriesdata]="seriesdata" [categories]="categories"></bar-chart>
+      </div>
+      <h3> Your TFL Action Plan </h3>
+      <hr>
 
-</div>
+      <div [onCreateView]="dimension.templateUrl">Html will appear here..</div>
+    </div>
+
+  </div>
 
 </div>
 

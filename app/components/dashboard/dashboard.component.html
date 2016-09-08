@@ -1,4 +1,5 @@
-<h1>Welcome to Your TFL Dashboard! <i class="fa fa-question-circle-o blue" (click)="h.show()" style="cursor: pointer;"></i></h1>
+<h1>Welcome to Your TFL Dashboard! <i class="fa fa-question-circle-o blue" (click)="m.show()" style="cursor: pointer;"></i></h1>
+<h3>15 TFL Dimensions:  <span style="color:#999999">Unlock your dimensions now!</span></h3>
 <hr/>
 <div class="row" *ngIf="dataCheckPassed && showGraph">
   <div class="col-md-12">
@@ -22,17 +23,42 @@
   </div>
 
   <div class="col-xs-4 col-sm-2 col-md-2 text-center action-icons" style="padding: 20px;">
-    <i *ngIf="dataCheckPassed" class="fa fa-star orange" aria-hidden="true" style="font-size: 72px; cursor: pointer" (click)="r.show(); showGraph = !showGraph"></i>
-    <i *ngIf="!dataCheckPassed"  class="fa fa-star" aria-hidden="true" style="color: #efefef; font-size: 72px; cursor: pointer"></i><br/>
+    <i *ngIf="dataCheckPassed" class="fa fa-star orange" aria-hidden="true" style="font-size: 72px; cursor: pointer" (click)="r.show(); showGraph = !showGraph"
+       tooltip="Reveal where you are motivated to take action."
+       tooltipPlacement="top"
+       tooltipTrigger="mouseenter"
+       [tooltipEnable]="true"></i>
+    <i *ngIf="!dataCheckPassed"  class="fa fa-star" aria-hidden="true" style="color: #efefef; font-size: 72px; cursor: pointer"
+       tooltip="Reveal where you are motivated to take action."
+       tooltipPlacement="top"
+       tooltipTrigger="mouseenter"
+       [tooltipEnable]="true"></i><br/>
     Your Results
   </div>
   <div class="col-xs-4 col-sm-2 col-md-2 text-center action-icons" style="padding: 20px;">
-    <i *ngIf="dataCheckPassed" class="fa fa-bar-chart blue" aria-hidden="true" style="font-size: 72px; cursor: pointer" (click)="j.show();"></i>
-    <i *ngIf="!dataCheckPassed" class="fa fa-bar-chart" aria-hidden="true" style="color: #efefef; font-size: 72px; cursor: pointer"></i><br/>
+    <i *ngIf="dataCheckPassed" class="fa fa-bar-chart blue" aria-hidden="true" style="font-size: 72px; cursor: pointer" (click)="j.show();"
+       tooltip="View your 15 dimensions at a glance."
+       tooltipPlacement="top"
+       tooltipTrigger="mouseenter"
+       [tooltipEnable]="true"></i>
+    <i *ngIf="!dataCheckPassed" class="fa fa-bar-chart" aria-hidden="true" style="color: #efefef; font-size: 72px; cursor: pointer"
+       tooltip="View your 15 dimensions at a glance."
+       tooltipPlacement="top"
+       tooltipTrigger="mouseenter"
+       [tooltipEnable]="true"></i><br/>
     Data Junkie
   </div>
   <div class="col-xs-4 col-sm-2 col-md-2 text-center action-icons" style="padding: 20px;">
-    <i class="fa fa-file-pdf-o red" aria-hidden="true" style="font-size: 72px; cursor: pointer"></i><br/>
+    <i *ngIf="dataCheckPassed"  class="fa fa-file-pdf-o red" aria-hidden="true" style="font-size: 72px; cursor: pointer" (click)="t.show();"
+       tooltip="Access your TFL Empowerment Guide."
+       tooltipPlacement="top"
+       tooltipTrigger="mouseenter"
+       [tooltipEnable]="true"></i>
+    <i *ngIf="!dataCheckPassed" class="fa fa-file-pdf-o red" aria-hidden="true" style="font-size: 72px; cursor: pointer"
+       tooltip="Access your TFL Empowerment Guide."
+       tooltipPlacement="top"
+       tooltipTrigger="mouseenter"
+       [tooltipEnable]="true"></i><br/>
     TFL Guide
   </div>
 
@@ -43,6 +69,7 @@
 <modal-help #h="child2"></modal-help>
 <modal-results #r="child3"></modal-results>
 <modal-data-junkie #j="child4"></modal-data-junkie>
+<modal-tfl-guide #t="child5"></modal-tfl-guide>
 
 
 

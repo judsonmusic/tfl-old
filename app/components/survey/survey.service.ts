@@ -26,7 +26,7 @@ export class SurveyService{
       {id: 4, question: "I have a sense of self-worth, a positive attitude and I am free of current and/or past self-doubt and struggles.", category: "Emotional",  templateUrl: "/app/components/dimensions/emotional.html"},
       {id: 5, question: "I feel a connection to a higher source and have a sense of comfort knowing that I am part of something greater than myself.", category: "Spiritual", templateUrl: "/app/components/dimensions/spiritual.html"},
       {id: 6, question: "I am free of unhealthy behavior that impacts my overall wellbeing.", category: "Habits",  templateUrl: "/app/components/dimensions/habits.html"},
-      {id: 7, question: " I have a supportive social network and feel my relationships are healthy and fulfilling.", category: "Relationships",  templateUrl: "/app/components/dimensions/relationships.html"},
+      {id: 7, question: "I have a supportive social network and feel my relationships are healthy and fulfilling.", category: "Relationships",  templateUrl: "/app/components/dimensions/relationships.html"},
       {id: 8, question: "I routinely go to my doctor(s), follow medical recommendations and practice self-care.", category: "Health",  templateUrl: "/app/components/dimensions/health.html"},
       {id: 9, question: "I am satisfied with my economic position.", category: "Financial",  templateUrl: "/app/components/dimensions/financial.html"},
       {id: 10, question: "I engage in fun activities, hobbies and laugh often.", category: "Play",  templateUrl: "/app/components/dimensions/play.html"},
@@ -38,14 +38,62 @@ export class SurveyService{
 
     ];
 
+    /*
+
+     .swatch.swatch-blue {
+     background: #04319e;
+     }
+
+     .swatch.swatch-light-blue {
+     background: #3082e1;
+     }
+
+     .swatch.swatch-black {
+
+     background: #333338;
+     }
+
+     .swatch.swatch-green {
+
+     background: #089b6f;
+     }
+
+     .swatch.swatch-orange {
+
+     background: #fe7d00;
+     }
+
+     .swatch.swatch-purple {
+
+     background: #4600bd;
+
+     }
+
+     .swatch.swatch-yellow {
+
+     background: #e5e300;
+
+     }
+
+     .swatch.swatch-red {
+
+     background: #d10016;
+
+     }
+
+
+
+
+     */
+
     this.subquestions = [
 
-      {id: "1", category: "Importance", question: "This dimension of my life is important to me.", color: "#4600bd"},
-      {id: "2", category: "Happiness", question: "This dimension positively impacts my happiness.",  color: "#e5e300"},
-      {id: "3", category: "Performance", question: "My performance is positively impacted by this dimension.",  color: "#fe7d00"},
-      {id: "4", category: "Satisfaction", question: "I am satisfied with this dimension of my life.",  color: "#04319e"},
-      {id: "5", category: "Action", question: "I am actively working to improve and/or maintain this dimension of my life.",  color: "#089b6f"},
-      {id: "6", category: "Motivation", question: "I am motivated to improve and/or maintain this area of my life.",  color: "#d10016"}
+      {id: "1", category: "Importance", question: "This dimension of my life is important to me.", color: "#04319e"},
+      {id: "2", category: "Happiness", question: "This dimension positively impacts my happiness.",  color: "#d10016"},
+      {id: "3", category: "Performance", question: "This dimension positively effects my performance.",  color: "#089b6f"},
+      {id: "4", category: "Satisfaction", question: "I am satisfied with this dimension of my life.",  color: "#e5e300"},
+      {id: "5", category: "Action", question: "I am actively working to improve and/or maintain this dimension of my life.",  color: "#fe7d00"},
+      {id: "6", category: "Motivation", question: "I am motivated to improve and/or maintain this area of my life.",  color: "#3082e1"}
 
     ];
 

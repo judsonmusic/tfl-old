@@ -47,4 +47,9 @@ export class LoginComponent {
     this.authService.logout();
     this.setMessage();
   }
+
+  forgotPassword(){
+
+    alert('coming soon!');
+  }
 }

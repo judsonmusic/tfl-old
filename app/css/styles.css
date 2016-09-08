@@ -1,6 +1,6 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
-  outline:none;
+  outline: none;
 }
 
 hr {
@@ -14,8 +14,8 @@ p {
 }
 
 ul, li {
-  list-style: none;
   padding: 0;
+  margin-left: 40px;
 }
 
 body {
@@ -24,101 +24,123 @@ body {
   color: #444444;
 }
 
+.powered-by {
+
+  position: absolute;
+  top: 0;
+  background: white;
+  text-align: left;
+  border-top: 1px solid #efefef;
+  left: 0;
+  right: 0;
+  text-align: right;
+
+
+}
+
 .red {
   color: #d10016;
 }
 
-.purple{
+.purple {
 
   color: #4600bd;
 }
 
-.purple-bg{
+.purple-bg {
 
   background: #4600bd;
 }
 
-.blue{
+.blue {
 
   color: #04319e;
 }
 
-.green{
+.green {
 
   color: #089b6f;
 }
 
-.blue-bg{
+.blue-bg {
 
   background: #04319e
 
 }
 
-.light-blue-bg{
+.light-blue {
+
+  color: #3082e1;
+}
+
+.light-blue-bg {
 
   background: #3082e1;
 }
-.green-bg{
+
+.green-bg {
 
   background: #089b6f
 
 }
-.red-bg{
+
+.red-bg {
 
   background: #d10016
 
 }
-.yellow-bg{
+
+.yellow-bg {
 
   background: #e5e300
 
 }
 
-.yellow{
+.yellow {
 
   color: #e5e300
 
 }
-.orange-bg{
+
+.orange-bg {
 
   background: #fe7d00
 
 }
 
-.orange{
+.orange {
 
   color: #fe7d00
 
 }
 
-.survey-image{
+.survey-image {
 
-  min-height:350px;
+  min-height: 350px;
   background: #444444;
 }
 
 footer {
 
   background: #444444;
-  height: 100px;
-  margin: 0;
+  height: auto;
+  margin: 140px 0 0 0;
   text-align: center;
-  padding: 20px;
   color: #ffffff;
-  /*position: fixed;*/
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 999;
-
+  padding: 72px 20px 20px 20px;
 }
 
-.col-xs-4.action-icons{
+.col-xs-4.action-icons {
 
-  height:116px;
+  height: 116px;
 }
 
-.modal-header{
+.modal-header {
 
   background: #337ab7;
   color: white;
@@ -132,7 +154,7 @@ footer {
 
 }
 
-.fun-facts li{
+.fun-facts li {
 
   list-style: disc;
 }
@@ -211,7 +233,7 @@ li.survey-item {
   clear: both;
   display: block;
   padding: 20px;
-  height:120px;
+  height: 120px;
 }
 
 .survey-question-count {
@@ -276,11 +298,12 @@ li.survey-item {
 
 .sub-survey .sub-question {
   font-size: 16px;
+  padding: 10px 0 0 10px;
 }
 
 /*HighCharts Override*/
 /*text[text-anchor="end"] {*/
-  /*display: none;*/
+/*display: none;*/
 /*}*/
 
 /*radio buttons*/
@@ -321,20 +344,18 @@ input[type="radio"]:checked + label span {
   transition: background-color 0.4s linear;
 }
 
-ul.swatch-list{
+ul.swatch-list {
 
   padding-left: 30px;
 }
 
-.swatch-list li{
+.swatch-list li {
 
   padding: 10px;
-
 
 }
 
 .swatch {
-
 
   display: inline-block;
   width: 18px;
@@ -344,10 +365,12 @@ ul.swatch-list{
 
 }
 
-
-
 .swatch.swatch-blue {
   background: #04319e;
+}
+
+.swatch.swatch-light-blue {
+  background: #3082e1;
 }
 
 .swatch.swatch-black {
@@ -383,9 +406,13 @@ ul.swatch-list{
 
 }
 
+.survey-nav {
+  position: absolute;
+  right: 20px;
+  top: 108px;
+}
+
 /*MEDIA QUERIES*/
-
-
 
 /*ipad*/
 @media all
@@ -409,7 +436,7 @@ and (max-width: 1024px) {
     font-size: 12px;
   }
 
-  ul.swatch-list{
+  ul.swatch-list {
 
     padding-left: 10px;
   }
@@ -468,23 +495,23 @@ and (max-width: 9999px) {
 
   body {
 
-    padding-bottom: 100px;
+    padding-bottom: 200px;
   }
 
   footer {
 
     position: fixed;
+    margin: 0;
   }
 
 }
 
-
 @media all
 and (min-width: 992px)
 and (max-width: 1199px) {
-  .survey-image{
+  .survey-image {
 
-    min-height:288px;
+    min-height: 288px;
   }
 
 }
@@ -492,9 +519,14 @@ and (max-width: 1199px) {
 @media all
 and (min-width: 768px)
 and (max-width: 991px) {
-  .survey-image{
+  .survey-image {
 
-    min-height:221px;
+    min-height: 221px;
+  }
+  .survey-nav {
+    position: relative;
+    top: auto;
+    right: auto;
   }
 
 }
@@ -502,18 +534,32 @@ and (max-width: 991px) {
 @media all
 and (min-width: 280px)
 and (max-width: 767px) {
-  .survey-image{
+  .survey-image {
 
-    min-height:64px;
+    min-height: 64px;
+  }
+  .survey-nav {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 10px;
+  }
+  footer{
+
+    margin: 0;
   }
 
 }
 
 @media all
 and (max-width: 279px) {
-  .survey-image{
+  .survey-image {
 
-    min-height:0;
+    min-height: 0;
   }
 
+  footer{
+
+    margin: 0;
+  }
 }

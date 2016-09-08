@@ -97,11 +97,13 @@ export class SurveyComponent implements OnInit {
 
   finish(ev) {
 
-    this.save();
+    if(confirm('Want to change any of your answers? Do it now! Once you hit the finish button all of your answered will be final.')) {
 
-    ev.preventDefault();
-    ev.stopPropagation();
-    this.router.navigate(['dashboard']);
+      this.save();
+      ev.preventDefault();
+      ev.stopPropagation();
+      this.router.navigate(['dashboard']);
+    }
 
   }
 
