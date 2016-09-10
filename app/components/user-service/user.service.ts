@@ -44,7 +44,7 @@ export class UserService{
             this.authService.isLoggedIn = false;
 
           }else {
-            console.log('USER FOUND!', res);
+            //console.log('USER FOUND!', res);
             this.authService.isLoggedIn = true;
             this.loggedIn.next(true);
             this.userData = res;
@@ -143,7 +143,7 @@ export class UserService{
     //
     // });
 
-    console.log('PAYLOAD FOR UPDATE USER: ' , user);
+    //console.log('PAYLOAD FOR UPDATE USER: ' , user);
 
     return this.http
       .put(
@@ -154,10 +154,10 @@ export class UserService{
       .map(res => res.json())
       .map((res) => {
 
-        console.log('RESULT AFTER UPDATE', res);
+        //console.log('RESULT AFTER UPDATE', res);
         if (res['account']) {
 
-          console.log('USER UPDATE RETURNED:  ' , res);
+          //console.log('USER UPDATE RETURNED:  ' , res);
           //localStorage.setItem('jwt', res['jwt']);
           //this.loggedIn$ = true;
           //this.loggedIn.next(true);

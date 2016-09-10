@@ -28,7 +28,7 @@ export class AppComponent implements OnInit{
   ngOnInit() {
 
     this.userService.getUser().subscribe((user) =>{
-      console.log('APP FOUND USER WHILE CALLING GET USER');
+      console.log('APP FOUND USER WHILE CALLING GET USER', user);
       //this.authService.isLoggedIn = true;
       //let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/dashboard';
       // Redirect the user

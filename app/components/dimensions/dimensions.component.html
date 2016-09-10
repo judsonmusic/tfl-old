@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>
+  <h1 style="margin:0">
     <img src="/app/images/logo-tfl-mini.jpg"> {{dimension.category}}
     <i class="pull-right fa fa-print"
        *ngIf="answerData && answerData.subs.indexOf('null') < 0 && answerData.subs.length === 6 && answerConfirmed"
@@ -9,16 +9,9 @@
        tooltip="Print this page."
        tooltipPlacement="top"
        tooltipTrigger="mouseenter"
-       [tooltipEnable]="true"></i>
-    <a href="javascript:void(0);" style="text-decoration: none;" routerLink="/dashboard">
-      <i class="pull-right fa fa-unlock green"
-         *ngIf="answerData && answerData.subs.indexOf('null') < 0 && answerData.subs.length === 6 && answerConfirmed"
-         style="font-size: 48px;
-         cursor: pointer"
-         tooltip="Unlock More Dimensions"
-         tooltipPlacement="top"
-         tooltipTrigger="mouseenter"
-         [tooltipEnable]="true"></i></a></h1>
+       [tooltipEnable]="true"
+       onclick="window.print()"></i>
+    </h1>
   <div *ngIf="!answerData || answerData.answer == ''"><p>You have not yet answered this question in the assessment.</p></div>
   <div *ngIf="answerData && answerData.answer > 0">
     <p *ngIf="answerData">The question was: {{dimension.question}} You answered: <span class="green">{{ (answers | myfilter: answerData.answer)[0].value }}</span></p>
@@ -54,7 +47,7 @@
           </div>
         </li>
         <li class="text-right" style="list-style: none;">
-          <button class="btn btn-primary" *ngIf="answerData.subs.indexOf('null') < 0 && answerData.subs.length === 6" (click)="save();">See Results!</button>
+          <button class="btn btn-primary" *ngIf="answerData.subs.indexOf('null') < 0 && answerData.subs.length === 6" (click)="save();">Reveal Your Results!</button>
         </li>
         <li class="clearfix" style="list-style: none;"></li>
       </ol>
@@ -63,6 +56,8 @@
     <div *ngIf="answerData && answerConfirmed">
       <div *ngIf="seriesdata">
         <bar-chart heading="{{dimension.category}}" selector="{{dimension.category}}_bar_chart" [seriesdata]="seriesdata" [categories]="categories"></bar-chart>
+      </div>
+      <div><a href="javascript:void(0);" style="text-decoration: none;" class="red pull-right" routerLink="/dashboard"><i class="fa fa-lock grey"></i> Click here to unlock more dimensions!</a>
       </div>
       <h3> Your TFL Action Plan </h3>
       <hr>

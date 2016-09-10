@@ -12,11 +12,11 @@ export class AuthGuard implements CanActivate {
 
     if (!this.authService.isLoggedIn){
 
-      console.log('Auth Guard subscribing to get user.');
+      //console.log('Auth Guard subscribing to get user.');
 
       this.userService.getUser().subscribe((user) => {
 
-        console.log('AUTH GUARD GETTING USER', user);
+        //console.log('AUTH GUARD GETTING USER', user);
 
         if (user && user._id) {
           this.authService.isLoggedIn = true;
@@ -47,7 +47,7 @@ export class AuthGuard implements CanActivate {
 
     }else {
 
-      console.log('AUTH GUARD SAYS THEY ARE ALREADY LOGGED IN!');
+      //console.log('AUTH GUARD SAYS THEY ARE ALREADY LOGGED IN!');
       this.authService.redirectUrl = state.url;
       //console.log(state.url);
       //this.router.navigate([this.authService.redirectUrl]);

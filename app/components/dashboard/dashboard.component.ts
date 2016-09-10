@@ -98,7 +98,7 @@ export class DashboardComponent implements OnInit {
 
 
     this.seriesdata = temp2;
-    console.log(this.seriesdata);
+    //console.log(this.seriesdata);
   }
 
   goToDimension(id){
