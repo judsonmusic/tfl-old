@@ -5,6 +5,7 @@ import {Subject} from "../../../node_modules/rxjs/src/Subject";
 import {Observable} from "../../../node_modules/rxjs/src/Observable";
 import {AuthService} from "../auth/auth.service";
 import {AssessmentService} from "../assessment/assessment.service";
+import {SurveyService} from "../survey/survey.service";
 
 
 @Injectable()
@@ -17,7 +18,7 @@ export class UserService{
   loggedIn$:Observable<any>;
 
 
-  constructor(private http:Http, public authService:AuthService, public router:Router, public assessmentService: AssessmentService) {
+  constructor(private http:Http, public authService:AuthService, public router:Router, public assessmentService: AssessmentService, public surveyService: SurveyService) {
 
     this.user = new Subject();
     this.user$ = this.user.asObservable();
@@ -58,6 +59,7 @@ export class UserService{
 
   createAccount(user) {
     user.assessment = this.assessmentService.assessment;
+    user.survey = this.surveyService.survey;
     //console.log('Build empty assessment: ' , user.assessment);
     //console.log('Attempting to create an account with', user);
     let headers = new Headers();
@@ -130,6 +132,7 @@ export class UserService{
   }
 
   updateAccount(user) {
+    console.log('Updating Account');
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('x-access-token', localStorage.getItem('jwt'));

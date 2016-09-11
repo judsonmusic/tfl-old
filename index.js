@@ -234,8 +234,7 @@ router.route('/accounts')
     account.username = req.body.username;
     account.password = req.body.password;
     account.assessment = req.body.assessment;
-    //account.monthlyExpenses = req.body.monthlyExpenses;
-    //account.date = req.body.date;
+    account.survey = req.body.survey;
     console.log('SENDING: ', account);
 
     // save the bear and check for errors
@@ -282,6 +281,8 @@ router.route('/accounts/:account_id')
       account.monthlyExpenses = req.body.monthlyExpenses;
       account.date = req.body.date;
       account.assessment = req.body.assessment;
+      account.survey = req.body.survey;
+
 
       // save the account
       account.save(function (err, account) {

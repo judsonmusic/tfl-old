@@ -9,9 +9,9 @@ import {Observable} from "../../../node_modules/rxjs/src/Observable";
 export class SurveyService{
 
   questions: any;
-  subquestions: any;
   answers: any;
   assessment: any;
+  survey: any;
 
 
   constructor(public http: Http) {
@@ -42,8 +42,6 @@ export class SurveyService{
 
     ];
 
-
-
     this.answers = [
 
       {id: 1, value: "Strongly Disagree"},
@@ -51,6 +49,30 @@ export class SurveyService{
       {id: 3, value: "Neutral"},
       {id: 4, value: "Agree"},
       {id: 5, value: "Strongly Agree"}
+
+    ];
+
+    this.survey = [
+
+      {id: 1, answer: ""},
+      {id: 2, answer: ""},
+      {id: 3, answer: ""},
+      {id: 4, answer: ""},
+      {id: 5, answer: ""},
+      {id: 6, answer: ""},
+      {id: 7, answer: ""},
+      {id: 8, answer: ""},
+      {id: 9, answer: ""},
+      {id: 10, answer: ""},
+      {id: 11, answer: ""},
+      {id: 12, answer: ""},
+      {id: 13, answer: ""},
+      {id: 14, answer: ""},
+      {id: 15, answer: ""},
+      {id: 16, answer: ""},
+      {id: 17, answer: ""},
+      {id: 18, answer: ""},
+      {id: 19, answer: ""}
 
     ];
   }

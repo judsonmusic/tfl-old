@@ -20,15 +20,16 @@ export class ModalSurveyComponent implements AfterViewInit {
   @ViewChild('childModal') public childModal:ModalDirective;
   @ViewChild('lgModal') public lgModal:ModalDirective;
 
-  public answers: any;
-  public questions: any;
   public survey_answers: any;
+  public survey_questions: any;
+  public survey_answered: any;
 
   constructor(public surveyService: SurveyService){
 
-    this.questions = this.surveyService.questions;
-    this.answers = this.surveyService.answers;
-    this.survey_answers = [];
+    this.survey_questions = this.surveyService.questions;
+    console.log('Survey Questions', this.surveyService.questions);
+    this.survey_answers = this.surveyService.answers;
+    this.survey_answered = [];
   }
 
   public show(){

@@ -8,7 +8,8 @@ var AccountSchema   = new Schema({
     lastName: String,
     email: String,
     password: String,
-    assessment: { type: Array, default: []}
+    assessment: { type: Array, default: []},
+    survey: { type: Array, default: []}
 },{
   timestamps: true
 });

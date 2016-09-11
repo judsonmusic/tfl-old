@@ -19,15 +19,12 @@
       1 = strongly disagree, 2 = disagree, 3 neutral 4 = agree 5 = strongly agree</p>
 
           <ol style="padding: 0;">
-            <li *ngFor="let q of (questions)" class="" style="position:relative;">
-              <div style="padding: 10px;">{{q.question}}  <input type="radio" id="{{q.id}}_true" name="assessment_{{q.category}}" [value]="1"/>
-                <label [attr.for]="q.id + '_true'"><span></span>True</label>
-                <input type="radio" id="{{q.id}}_false" name="assessment_{{q.category}}" [value]="0"/>
-                <label [attr.for]="q.id + '_false'"><span></span>False</label></div>
-              <!--<div class="assessment-radio-wrapper" *ngFor="let a of answers">
-                <input type="radio" id="{{q.id}}_{{a.id}}" name="assessment_{{q.category}}" [value]="a.id" [(ngModel)]="survey_answers[q.id-1]"/> {{a.id}}
+            <li *ngFor="let q of survey_questions" class="" style="position:relative;">
+              <div style="padding-bottom:15px;">{{q.question}}</div>
+              <div class="assessment-radio-wrapper" *ngFor="let a of survey_answers">
+                <input type="radio" id="{{q.id}}_{{a.id}}" name="assessment_{{q.category}}" [value]="a.id" [(ngModel)]="survey_answered[q.id-1]"/> {{a.id}}
                 <label [attr.for]="q.id + '_' + a.id"><span></span>{{a.value}}</label>
-              </div>-->
+              </div>
             </li>
           </ol>
 
