@@ -3,13 +3,13 @@ import {MyFilterPipe} from "../pipes/filter.pipe";
 import {Router} from '@angular/router';
 import {UserService} from "../user-service/user.service";
 import {AuthService} from "../auth/auth.service";
-import {SurveyService} from "./survey.service";
+import {AssessmentService} from "../assessment/assessment.service";
 
 @Component({
-  templateUrl: '/app/components/survey/survey.component.html',
+  templateUrl: '/app/components/assessment/assessment.component.html',
   pipes: [MyFilterPipe]
 })
-export class SurveyComponent implements OnInit {
+export class AssessmentComponent implements OnInit {
 
   public data:any;
   public count = 0;
@@ -31,23 +31,23 @@ export class SurveyComponent implements OnInit {
     });
   }
 
-  constructor(private router:Router, public userService: UserService, public authService: AuthService, public surveyService: SurveyService) {
+  constructor(private router:Router, public userService: UserService, public authService: AuthService, public assessmentService: AssessmentService) {
 
 
-    this.authService.redirectUrl = '/survey';
+    this.authService.redirectUrl = '/assessment';
 
     this.Math = Math;
 
 
-    //console.log('the survey componet loaded.');
+    //console.log('the assessment componet loaded.');
     //array of answers they can select for main question.
 
     this.data = {};
     this.data.account = {};
-    this.data.account.assessment = this.surveyService.assessment;
-    this.questions = this.surveyService.questions;
-    this.subquestions = this.surveyService.subquestions;
-    this.answers = this.surveyService.answers;
+    this.data.account.assessment = this.assessmentService.assessment;
+    this.questions = this.assessmentService.questions;
+    this.subquestions = this.assessmentService.subquestions;
+    this.answers = this.assessmentService.answers;
 
   }
 

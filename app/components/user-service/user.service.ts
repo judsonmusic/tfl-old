@@ -4,7 +4,7 @@ import { Http, Headers } from '@angular/http';
 import {Subject} from "../../../node_modules/rxjs/src/Subject";
 import {Observable} from "../../../node_modules/rxjs/src/Observable";
 import {AuthService} from "../auth/auth.service";
-import {SurveyService} from "../survey/survey.service";
+import {AssessmentService} from "../assessment/assessment.service";
 
 
 @Injectable()
@@ -17,7 +17,7 @@ export class UserService{
   loggedIn$:Observable<any>;
 
 
-  constructor(private http:Http, public authService:AuthService, public router:Router, public surveyService: SurveyService) {
+  constructor(private http:Http, public authService:AuthService, public router:Router, public assessmentService: AssessmentService) {
 
     this.user = new Subject();
     this.user$ = this.user.asObservable();
@@ -57,7 +57,7 @@ export class UserService{
   }
 
   createAccount(user) {
-    user.assessment = this.surveyService.assessment;
+    user.assessment = this.assessmentService.assessment;
     //console.log('Build empty assessment: ' , user.assessment);
     //console.log('Attempting to create an account with', user);
     let headers = new Headers();

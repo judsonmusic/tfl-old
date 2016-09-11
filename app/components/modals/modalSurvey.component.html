@@ -1,0 +1,44 @@
+<!-- Large modal -->
+<div bsModal #childModal="bs-modal" #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close" style="color: white; opacity: 10; text-shadow: none; font-size: 36px; font-weight: normal;">
+          <span aria-hidden="true" style="opacity: 10;">&times;</span>
+        </button>
+        <h4 class="modal-title">Feedback</h4>
+      </div>
+
+      <div class="modal-body">
+        <form class="form">
+
+
+        <p>Our desire is to ensure the TFL Assessment experience is meaningful to all participates so your feedback is extremely important to us. Please take a few minute and share your thoughts with us.</p>
+
+        <p>Please rate each statements based on the below rating scale.<br/>
+      1 = strongly disagree, 2 = disagree, 3 neutral 4 = agree 5 = strongly agree</p>
+
+          <ol style="padding: 0;">
+            <li *ngFor="let q of (questions)" class="" style="position:relative;">
+              <div style="padding: 10px;">{{q.question}}  <input type="radio" id="{{q.id}}_true" name="assessment_{{q.category}}" [value]="1"/>
+                <label [attr.for]="q.id + '_true'"><span></span>True</label>
+                <input type="radio" id="{{q.id}}_false" name="assessment_{{q.category}}" [value]="0"/>
+                <label [attr.for]="q.id + '_false'"><span></span>False</label></div>
+              <!--<div class="assessment-radio-wrapper" *ngFor="let a of answers">
+                <input type="radio" id="{{q.id}}_{{a.id}}" name="assessment_{{q.category}}" [value]="a.id" [(ngModel)]="survey_answers[q.id-1]"/> {{a.id}}
+                <label [attr.for]="q.id + '_' + a.id"><span></span>{{a.value}}</label>
+              </div>-->
+            </li>
+          </ol>
+
+
+        <div class="text-right">
+          <button class="btn btn-primary" (click)="lgModal.hide();">Ok</button>
+        </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

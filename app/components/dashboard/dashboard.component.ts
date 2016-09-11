@@ -9,7 +9,7 @@ import {ModalDemoComponent} from "../modals/modalDemoComponent";
 import {NgInitHelperComponent} from "../helpers/nginit.helper.component";
 import {ModalDirective, TooltipDirective} from "ng2-bootstrap/ng2-bootstrap";
 import {BS_VIEW_PROVIDERS} from 'ng2-bootstrap/ng2-bootstrap';
-import {SurveyService} from "../survey/survey.service";
+import {AssessmentService} from "../assessment/assessment.service";
 import {OnCreate} from "../directives/oncreate.directive";
 import {UserService} from "../user-service/user.service";
 import {ModalHelpComponent} from "../modals/modalHelpComponent";
@@ -17,14 +17,16 @@ import {MyFilterPipe} from "../pipes/filter.pipe";
 import {ModalYourResultsComponent} from "../modals/modalYourResultsComponent";
 import {ModalDataJunkieComponent} from "../modals/modalDataJunkieComponent";
 import {ModalTFLGuideComponent} from "../modals/modalTFLGuideComponent";
+import {ModalSurveyComponent} from "../modals/modalSurveyComponent";
+import {MotivatedFilterPipe} from "../pipes/motivated.pipe";
 
 
 @Component({
   selector: 'dashboard',
   templateUrl: '/app/components/dashboard/dashboard.component.html',
   providers: [BS_VIEW_PROVIDERS],
-  pipes: [MyFilterPipe],
-  directives: [SimpleChartComponent, AppleChartComponent, BarChartComponent, DonutChartComponent, AlertComponent, ModalDemoComponent, ModalHelpComponent, NgInitHelperComponent, ModalDirective, OnCreate, ModalYourResultsComponent, ModalDataJunkieComponent, TooltipDirective, ModalTFLGuideComponent]
+  pipes: [MyFilterPipe, MotivatedFilterPipe],
+  directives: [SimpleChartComponent, AppleChartComponent, BarChartComponent, DonutChartComponent, AlertComponent, ModalDemoComponent, ModalHelpComponent, ModalSurveyComponent, NgInitHelperComponent, ModalDirective, OnCreate, ModalYourResultsComponent, ModalDataJunkieComponent, TooltipDirective, ModalTFLGuideComponent]
 })
 export class DashboardComponent implements OnInit {
 
@@ -33,15 +35,17 @@ export class DashboardComponent implements OnInit {
   public categories: any;
   public seriesdata: any;
   public dataCheckPassed: boolean;
+  public motivatedAreas: any;
 
-  constructor(public router: Router, public surveyService: SurveyService, public userService: UserService) {
+  constructor(public router: Router, public assessmentService: AssessmentService, public userService: UserService) {
 
     this.router = router;
-    this.surveyService = surveyService;
-    this.areas = this.surveyService.questions;
+    this.assessmentService = assessmentService;
+    this.areas = this.assessmentService.questions;
     this.assessmentData = [];
     this.userService = userService;
     this.dataCheckPassed = false;
+    this.motivatedAreas = [];
   }
 
   ngOnInit(){
@@ -49,17 +53,20 @@ export class DashboardComponent implements OnInit {
     //if I already have data from login, simply load it.
     this.assessmentData = this.userService.userData.assessment || [];
 
+
     let temp = [];
-    this.surveyService.questions.map((x)=> {
+    this.assessmentService.questions.map((x)=> {
 
       temp.push({id: x.id, category: x.category});
 
     });
+
     this.categories = temp;
-    //console.log('Categories: ', temp);
+
+    console.log('Categories: ', temp);
 
     this.buildSeries();
-    //console.log('Series Data: ', temp2);
+
 
   }
 
@@ -68,7 +75,7 @@ export class DashboardComponent implements OnInit {
 
     let temp2 = [];
     //loop through sub questions and then get each map data to what they chose for each area.
-    this.surveyService.subquestions.map((x, i)=> {
+    this.assessmentService.subquestions.map((x, i)=> {
       //console.log('Row:', i, x);
       let visible = i == 0;
       temp2.push({name: x.category, data:[], visible: visible, color: x.color});
@@ -98,7 +105,20 @@ export class DashboardComponent implements OnInit {
 
 
     this.seriesdata = temp2;
-    //console.log(this.seriesdata);
+    console.log(this.seriesdata);
+
+
+    //at this point we have series data and we have categories...
+    this.assessmentData.map((x, i)=> {
+      //if you are not satisfied but motivated
+      //console.log('Satisfied:', x.subs[3], 'Motivated', x.subs[5]);
+      if(x.subs[3] < 80 && x.subs[5] > 60) {
+       this.motivatedAreas.push(x)
+      }
+    });
+
+    console.log('Motivated Areas', this.motivatedAreas);
+
   }
 
   goToDimension(id){

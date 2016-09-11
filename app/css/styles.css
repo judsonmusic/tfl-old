@@ -22,6 +22,7 @@ body {
 
   padding-top: 50px;
   color: #444444;
+  background-color: #444444;
 }
 
 .powered-by {
@@ -29,11 +30,11 @@ body {
   position: absolute;
   top: 0;
   background: white;
-  text-align: left;
   border-top: 1px solid #efefef;
   left: 0;
   right: 0;
   text-align: right;
+  margin: 0;
 
 
 }
@@ -114,7 +115,7 @@ body {
 
 }
 
-.survey-image {
+.assessment-image {
 
   min-height: 350px;
   background: #444444;
@@ -124,7 +125,7 @@ footer {
 
   background: #444444;
   height: auto;
-  margin: 140px 0 0 0;
+  margin: 140px -15px 0 -15px;
   text-align: center;
   color: #ffffff;
   position: relative;
@@ -132,7 +133,7 @@ footer {
   left: 0;
   right: 0;
   z-index: 999;
-  padding: 72px 20px 20px 20px;
+  padding: 110px 20px 20px 20px;
 }
 
 .col-xs-4.action-icons {
@@ -199,7 +200,7 @@ footer {
   padding-top: 10px;
 }
 
-li.survey-item {
+li.assessment-item {
 
   border: 1px solid #ccc;
   margin-bottom: 10px;
@@ -207,7 +208,7 @@ li.survey-item {
   padding-top: 10px;
 }
 
-.survey-radio-wrapper {
+.assessment-radio-wrapper {
 
   width: 160px;
   display: inline-block;
@@ -215,19 +216,19 @@ li.survey-item {
 
 }
 
-.survey-radio-wrapper-subs {
+.assessment-radio-wrapper-subs {
 
   margin-left: 40px;
 }
 
-.survey-category {
+.assessment-category {
 
   color: #337ab7;
   font-size: 28px;
 
 }
 
-.survey-question {
+.assessment-question {
 
   font-size: 23px;
   clear: both;
@@ -236,7 +237,7 @@ li.survey-item {
   height: 120px;
 }
 
-.survey-question-count {
+.assessment-question-count {
 
   font-size: 18px;
   color: #999;
@@ -250,53 +251,53 @@ li.survey-item {
 
 }
 
-.sub-survey {
+.sub-assessment {
 
   background: #337ab7;
   padding: 20px;
   color: #ffffff;
 }
 
-.sub-survey button.btn.btn-primary {
+.sub-assessment button.btn.btn-primary {
 
   color: #000000;
   background: #ffffff;
 
 }
 
-.sub-survey h3 {
+.sub-assessment h3 {
 
   margin-top: 0;
 }
 
-.sub-survey ul {
+.sub-assessment ul {
 
   margin-left: 20px;
 }
 
-.sub-survey ul li {
+.sub-assessment ul li {
 
   padding: 5px;
 
 }
 
-.sub-survey input[type="radio"] + label span {
+.sub-assessment input[type="radio"] + label span {
 
   background-color: #ffffff;
 }
 
-.sub-survey input[type="radio"] + label {
+.sub-assessment input[type="radio"] + label {
 
   color: white;
 
 }
 
-.survey-radio-wrapper-subs {
+.assessment-radio-wrapper-subs {
 
   display: inline;
 }
 
-.sub-survey .sub-question {
+.sub-assessment .sub-question {
   font-size: 16px;
   padding: 10px 0 0 10px;
 }
@@ -406,7 +407,7 @@ ul.swatch-list {
 
 }
 
-.survey-nav {
+.assessment-nav {
   position: absolute;
   right: 20px;
   top: 108px;
@@ -441,37 +442,37 @@ and (max-width: 1024px) {
     padding-left: 10px;
   }
 
-  .survey-radio-wrapper {
+  .assessment-radio-wrapper {
     width: auto;
     display: block;
     text-align: left;
     margin-left: 40px;
   }
 
-  .survey-radio-wrapper-subs {
+  .assessment-radio-wrapper-subs {
 
     margin-left: 40px;
   }
 
-  .survey-category {
+  .assessment-category {
     font-size: 24px;
   }
 
-  .survey-question {
+  .assessment-question {
     font-size: 18px;
     padding: 0 5px;
   }
 
-  .sub-survey .sub-question {
+  .sub-assessment .sub-question {
     display: block;
     font-size: 14px;
   }
 
-  .survey-question-count {
+  .assessment-question-count {
     font-size: 12px !important;
   }
 
-  .survey-question {
+  .assessment-question {
     font-size: 14px;
   }
 
@@ -483,7 +484,7 @@ and (max-width: 1024px) {
     padding: 5px 40px;
   }
 
-  .sub-survey ul {
+  .sub-assessment ul {
     margin-left: 0;
   }
 
@@ -495,13 +496,13 @@ and (max-width: 9999px) {
 
   body {
 
-    padding-bottom: 200px;
+    /*padding-bottom: 200px;*/
   }
 
   footer {
 
-    position: fixed;
-    margin: 0;
+
+    margin: 0 -15px 0 -15px;
   }
 
 }
@@ -509,7 +510,7 @@ and (max-width: 9999px) {
 @media all
 and (min-width: 992px)
 and (max-width: 1199px) {
-  .survey-image {
+  .assessment-image {
 
     min-height: 288px;
   }
@@ -519,11 +520,11 @@ and (max-width: 1199px) {
 @media all
 and (min-width: 768px)
 and (max-width: 991px) {
-  .survey-image {
+  .assessment-image {
 
     min-height: 221px;
   }
-  .survey-nav {
+  .assessment-nav {
     position: relative;
     top: auto;
     right: auto;
@@ -534,11 +535,11 @@ and (max-width: 991px) {
 @media all
 and (min-width: 280px)
 and (max-width: 767px) {
-  .survey-image {
+  .assessment-image {
 
     min-height: 64px;
   }
-  .survey-nav {
+  .assessment-nav {
     position: relative;
     top: auto;
     right: auto;
@@ -546,14 +547,14 @@ and (max-width: 767px) {
   }
   footer{
 
-    margin: 0;
+    margin: 0 -15px 0 -15px;
   }
 
 }
 
 @media all
 and (max-width: 279px) {
-  .survey-image {
+  .assessment-image {
 
     min-height: 0;
   }
@@ -561,5 +562,14 @@ and (max-width: 279px) {
   footer{
 
     margin: 0;
+  }
+}
+
+
+@media screen and ( max-height: 875px ){
+  footer {
+
+    position: relative;
+    margin: 0 -15px 0 -15px;
   }
 }

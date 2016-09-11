@@ -9,7 +9,7 @@ import {ModalDemoComponent} from "../modals/modalDemoComponent";
 import {NgInitHelperComponent} from "../helpers/nginit.helper.component";
 import {ModalDirective} from "ng2-bootstrap/ng2-bootstrap";
 import {BS_VIEW_PROVIDERS} from 'ng2-bootstrap/ng2-bootstrap';
-import {SurveyService} from "../survey/survey.service";
+import {AssessmentService} from "../assessment/assessment.service";
 import {OnCreate} from "../directives/oncreate.directive";
 import {UserService} from "../user-service/user.service";
 import {ModalHelpComponent} from "../modals/modalHelpComponent";
@@ -29,11 +29,11 @@ export class ActionComponent implements OnInit {
   public categories: any;
   public seriesdata: any;
 
-  constructor(public router: Router, public surveyService: SurveyService, public userService: UserService) {
+  constructor(public router: Router, public assessmentService: AssessmentService, public userService: UserService) {
 
     this.router = router;
-    this.surveyService = surveyService;
-    this.areas = this.surveyService.questions;
+    this.assessmentService = assessmentService;
+    this.areas = this.assessmentService.questions;
     this.assessmentData = [];
     this.userService = userService;
   }
@@ -41,7 +41,7 @@ export class ActionComponent implements OnInit {
   makeSubs(){
 
     let temp = [];
-    this.surveyService.questions.map((x)=> {
+    this.assessmentService.questions.map((x)=> {
 
       temp.push(x.category);
 
@@ -61,7 +61,7 @@ export class ActionComponent implements OnInit {
 
     let temp2 = [];
     //loop through sub questions and then get each map data to what they chose for each area.
-    this.surveyService.subquestions.map((x, i)=> {
+    this.assessmentService.subquestions.map((x, i)=> {
       console.log('Row:', i, x);
       let visible = i == 0;
       temp2.push({name: x.category, data:[], visible: visible, color: x.color});

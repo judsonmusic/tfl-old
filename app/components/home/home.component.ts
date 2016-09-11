@@ -19,7 +19,7 @@ export class HomeComponent {
 
   getStarted(){
 
-    this.router.navigate(['/survey']);
+    this.router.navigate(['/assessment']);
 
   }
 

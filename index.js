@@ -12,15 +12,11 @@ var Account = require('./app/models/account');
 var router = express.Router();
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('./config/config'); // get our config file
-var User = require('./app/models/user'); // get our mongoose model
 var app = express();
-var SMTPConnection = require('smtp-connection');
-
 var nodemailer = require('nodemailer');
 
 // create reusable transporter object using the default SMTP transport
-
-var smtpConfig = {
+/*var smtpConfig = {
   host: 'smtp.mail.me.com',
   port: 587,
   //secure: true, // use SSL
@@ -47,36 +43,11 @@ transporter.sendMail(mailOptions, function(error, info){
     return console.log(error);
   }
   console.log('Message sent: ' + info.response);
-});
-
-/*var options = {
-
-    host: 'smtp.mail.me.com'
-
-
-
-};
-
-var connection = new SMTPConnection(options);
-
-connection.connect(function(){
-
-  console.log('Connected to SMTP');
-
-});
-
-
-connection.login({user: 'judsonmusic@me.com', pass: 'Morr2sse' }, function(err, info){
-
-  /!*console.log('EMAIL CONNECT!', err, info);
-  connection.send({from: 'donotreply@judsonmusic.com', to: 'judsonmusic@me.com', subject: 'test' }, 'this is a test', function(err, info){
-
-    console.log('Trying to send mail.', err, info);
-    connection.quit();
-
-  })*!/
-
 });*/
+
+//end email..
+
+
 
 mongoose.connect(config.database);
 app.set('superSecret', config.secret);
@@ -362,7 +333,7 @@ if ('development' === app.get('env')) {
 }
 
 http.createServer(app).listen(app.get('port'), function () {
-  //open("http://localhost:" + app.get('port'));
+  open("http://localhost:" + app.get('port'));
   console.log('myApp server listening on port ' + app.get('port'));
 });
 /**END SERVER*************************************/

@@ -21,7 +21,19 @@ ALGORITHM:
 </div>
 <div class="row">
 </div>
+
 <div class="row">
+  <div class="col-md-12"><h4>Areas where you have low satisfaction but are motivated to change.</h4><hr/></div>
+  <div *ngFor="let item of assessmentData | motivatedFilter" class="col-xs-4 col-sm-2 col-md-2 text-center action-icons" style="padding: 20px;">
+      <i class="fa fa-unlock-alt green" aria-hidden="true" style="font-size: 72px; cursor: pointer" *ngIf="item.subs.length === 6 && item.subs.indexOf('null') == -1 && item.subs.indexOf('') == -1" (click)="goToDimension(item.id)"></i>
+      <i class="fa fa-lock" aria-hidden="true" style="font-size: 72px; color: #efefef; cursor: pointer" *ngIf="item.subs.length < 6 || item.subs.indexOf('null') > -1 || item.subs.indexOf('') > -1" (click)="goToDimension(item.id)"></i><br>
+      {{(categories | myfilter: item.id)[0].category}}
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12"><h4>All areas</h4><hr/></div>
   <div *ngFor="let item of assessmentData" class="col-xs-4 col-sm-2 col-md-2 text-center action-icons" style="padding: 20px;">
     <i class="fa fa-unlock-alt green" aria-hidden="true" style="font-size: 72px; cursor: pointer" *ngIf="item.subs.length === 6 && item.subs.indexOf('null') == -1 && item.subs.indexOf('') == -1" (click)="goToDimension(item.id)"></i>
     <i class="fa fa-lock" aria-hidden="true" style="font-size: 72px; color: #efefef; cursor: pointer" *ngIf="item.subs.length < 6 || item.subs.indexOf('null') > -1 || item.subs.indexOf('') > -1" (click)="goToDimension(item.id)"></i><br>
@@ -62,7 +74,7 @@ ALGORITHM:
     Data Junkie
   </div>
   <div class="col-xs-4 col-sm-2 col-md-2 text-center action-icons" style="padding: 20px;">
-    <i *ngIf="dataCheckPassed"  class="fa fa-file-pdf-o red" aria-hidden="true" style="font-size: 72px; cursor: pointer" (click)="t.show();"
+    <i *ngIf="dataCheckPassed"  class="fa fa-file-pdf-o red" aria-hidden="true" style="font-size: 72px; cursor: pointer" (click)="s.show();"
        tooltip="Access your TFL Empowerment Guide."
        tooltipPlacement="top"
        tooltipTrigger="mouseenter"
@@ -83,6 +95,7 @@ ALGORITHM:
 <modal-results #r="child3"></modal-results>
 <modal-data-junkie #j="child4"></modal-data-junkie>
 <modal-tfl-guide #t="child5"></modal-tfl-guide>
+<modal-survey #s="child-survey"></modal-survey>
 
 
 

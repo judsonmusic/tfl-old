@@ -23,7 +23,7 @@
     <!--{{answerData.subs.length}} {{subquestions.length}}<br>-->
     <!--</div>-->
 
-    <div class="sub-survey" *ngIf="!answerConfirmed">
+    <div class="sub-assessment" *ngIf="!answerConfirmed">
       <h4>Please answer the following 6 questions based on the below rating scale.</h4>
 
       <p> 1 = strongly disagree | 2 = disagree | 3 neutral | 4 = agree | 5 = strongly agree</p>
@@ -33,16 +33,16 @@
 
           <p class="sub-question">{{s.question}}</p>
 
-          <div class="survey-radio-wrapper-subs">
-            <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_1" name="survey_sub_{{s.id}}_{{dimension.category}}" [value]="20" [(ngModel)]="answerData.subs[s.id-1]"/>
+          <div class="assessment-radio-wrapper-subs">
+            <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_1" name="assessment_sub_{{s.id}}_{{dimension.category}}" [value]="20" [(ngModel)]="answerData.subs[s.id-1]"/>
             <label [attr.for]="dimension.id + '_sub_' + s.id + '_1'"><span></span>1</label>
-            <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_2" name="survey_sub_{{s.id}}_{{dimension.category}}" [value]="40" [(ngModel)]="answerData.subs[s.id-1]"/>
+            <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_2" name="assessment_sub_{{s.id}}_{{dimension.category}}" [value]="40" [(ngModel)]="answerData.subs[s.id-1]"/>
             <label [attr.for]="dimension.id + '_sub_' + s.id + '_2'"><span></span>2</label>
-            <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_3" name="survey_sub_{{s.id}}_{{dimension.category}}" [value]="60" [(ngModel)]="answerData.subs[s.id-1]"/>
+            <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_3" name="assessment_sub_{{s.id}}_{{dimension.category}}" [value]="60" [(ngModel)]="answerData.subs[s.id-1]"/>
             <label [attr.for]="dimension.id + '_sub_' + s.id + '_3'"><span></span>3</label>
-            <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_4" name="survey_sub_{{s.id}}_{{dimension.category}}" [value]="80" [(ngModel)]="answerData.subs[s.id-1]"/>
+            <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_4" name="assessment_sub_{{s.id}}_{{dimension.category}}" [value]="80" [(ngModel)]="answerData.subs[s.id-1]"/>
             <label [attr.for]="dimension.id + '_sub_' + s.id + '_4'"><span></span>4</label>
-            <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_5" name="survey_sub_{{s.id}}_{{dimension.category}}" [value]="100" [(ngModel)]="answerData.subs[s.id-1]"/>
+            <input type="radio" id="{{dimension.id}}_sub_{{s.id}}_5" name="assessment_sub_{{s.id}}_{{dimension.category}}" [value]="100" [(ngModel)]="answerData.subs[s.id-1]"/>
             <label [attr.for]="dimension.id + '_sub_' + s.id + '_5'"><span></span>5</label>
           </div>
         </li>
@@ -59,7 +59,7 @@
       </div>
       <div><a href="javascript:void(0);" style="text-decoration: none;" class="red pull-right" routerLink="/dashboard"><i class="fa fa-lock grey"></i> Click here to unlock more dimensions!</a>
       </div>
-      <h3> Your TFL Action Plan </h3>
+      <h3> <img src="app/images/logo-tfl-mini.jpg" style="float: left; height: 24px;"/> Your TFL Action Plan </h3>
       <hr>
 
       <div [onCreateView]="dimension.templateUrl">Html will appear here..</div>

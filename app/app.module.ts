@@ -14,7 +14,7 @@ import {UserComponent} from "./components/user/user.component";
 import {HomeComponent} from "./components/home/home.component";
 import {PageNotFoundComponent} from "./components/not-found/pageNotFound.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
-import {SurveyComponent} from "./components/survey/survey.component";
+import {AssessmentComponent} from "./components/assessment/assessment.component";
 import {ResourcesComponent} from "./components/resources/resources.component";
 import {LogoutComponent} from "./components/logout/logout.component";
 import {DimensionsComponent} from "./components/dimensions/dimensions.component";
@@ -22,6 +22,7 @@ import {SurveyService} from "./components/survey/survey.service";
 import {BarChartComponent} from "./components/charts/barChart.component";
 import {OnCreate} from "./components/directives/oncreate.directive";
 import {ActionComponent} from "./components/action/action.component";
+import {AssessmentService} from "./components/assessment/assessment.service";
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import {ActionComponent} from "./components/action/action.component";
     HomeComponent,
     PageNotFoundComponent,
     DashboardComponent,
-    SurveyComponent,
+    AssessmentComponent,
     ResourcesComponent,
     LogoutComponent,
     DimensionsComponent,
@@ -50,6 +51,7 @@ import {ActionComponent} from "./components/action/action.component";
   ],
   providers: [
     UserService,
+    AssessmentService,
     SurveyService,
     appRoutingProviders
   ],

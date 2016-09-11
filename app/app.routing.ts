@@ -3,7 +3,7 @@ import { AboutComponent } from './components/about/about.component';
 import {PageNotFoundComponent} from "./components/not-found/pageNotFound.component";
 import {HomeComponent} from "./components/home/home.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
-import {SurveyComponent} from "./components/survey/survey.component";
+import {AssessmentComponent} from "./components/assessment/assessment.component";
 import {ResourcesComponent} from "./components/resources/resources.component";
 import {LogoutComponent} from "./components/logout/logout.component";
 import {AuthGuard} from "./components/auth/auth-guard.service";
@@ -19,7 +19,7 @@ const appRoutes:Routes = [
   { path: 'action', component: ActionComponent, canActivate: [AuthGuard]},
   { path: 'logout', component: LogoutComponent },
   { path: 'resources', component: ResourcesComponent},
-  { path: 'survey', component: SurveyComponent },
+  { path: 'assessment', component: AssessmentComponent },
   { path: 'about', component: AboutComponent},
   { path: 'login', component: LoginComponent},
 

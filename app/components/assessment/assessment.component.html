@@ -64,9 +64,9 @@
     <div class="col-md-12">
       <form class="form form-horizontal">
         <ul *ngIf="count" style="margin: 0; list-style: none;">
-          <li *ngFor="let q of (questions | myfilter:count)" class="row survey-item">
-            <div class="questions"><span class="survey-category">{{q.category}}</span>
-              <div class="survey-question-count">
+          <li *ngFor="let q of (questions | myfilter:count)" class="row assessment-item">
+            <div class="questions"><span class="assessment-category">{{q.category}}</span>
+              <div class="assessment-question-count">
                 <div style="float: left;">{{count}}</div>
                 <div style="float: left; width: 300px; background-color:#efefef; height:24px; position: relative;">
                   <div [ngStyle]="{'background': '#337ab7', 'width': Math.ceil((((count*100/15)/100) * 100)) + '%',  'height':'22px'}"></div>
@@ -74,7 +74,7 @@
                 <div style="float: left;">{{questions.length}}</div>
               </div>
               <hr/>
-              <p class="survey-question">
+              <p class="assessment-question">
                 {{q.question}}
                 <br/>
 
@@ -86,19 +86,19 @@
             </div>
             <!--answers-->
             <div class="answers" *ngIf="!data.account.assessment[q.id-1].answer">
-              <div class="survey-radio-wrapper" *ngFor="let a of answers">
-                <input type="radio" id="{{q.id}}_{{a.id}}" name="survey_{{q.category}}" [value]="a.id" [(ngModel)]="data.account.assessment[q.id-1].answer"/> {{a.id}}
+              <div class="assessment-radio-wrapper" *ngFor="let a of answers">
+                <input type="radio" id="{{q.id}}_{{a.id}}" name="assessment_{{q.category}}" [value]="a.id" [(ngModel)]="data.account.assessment[q.id-1].answer"/> {{a.id}}
                 <label [attr.for]="q.id + '_' + a.id"><span></span>{{a.value}}</label>
               </div>
             </div>
 
-            <div class="text-right survey-nav">
+            <div class="text-right assessment-nav">
               <button class="btn btn-primary" *ngIf="count <= questions.length && count > 1" (click)="counterDown()">Back</button>
               <button class="btn btn-primary" *ngIf="data.account.assessment[q.id-1].answer && count != questions.length" (click)="save();">Next</button>
               <button class="btn btn-primary" *ngIf="count == questions.length" (click)="finish($event)">Finish</button>
             </div>
 
-            <div class="survey-image">
+            <div class="assessment-image">
               <img src="/app/images/slides/compressed/{{q.category.toLowerCase()}}.jpg" style="width: 100%;"/>
             </div>
 

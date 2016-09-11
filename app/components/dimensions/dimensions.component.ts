@@ -1,6 +1,6 @@
 import {Component, OnInit, OnDestroy, Input} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {SurveyService} from "../survey/survey.service";
+import {AssessmentService} from "../assessment/assessment.service";
 import {Subscription} from 'rxjs/Subscription';
 import {BarChartComponent} from "../charts/barChart.component";
 import {UserService} from "../user-service/user.service";
@@ -31,9 +31,9 @@ export class DimensionsComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private userService: UserService,
-              private surveyService: SurveyService) {
+              private assessmentService: AssessmentService) {
 
-    this.subquestions = this.surveyService.subquestions;
+    this.subquestions = this.assessmentService.subquestions;
     this.data = {};
     this.data.account = {};
     this.answerConfirmed = false;
@@ -51,13 +51,13 @@ export class DimensionsComponent implements OnInit, OnDestroy {
 
     });
 
-    this.answers = this.surveyService.answers;
+    this.answers = this.assessmentService.answers;
     //passing route param...
     this.sub = this.route.params.subscribe(params => {
 
       //console.log('Dimension Comp', this.userService.userData);
       let id = +params['id']; // (+) converts string 'id' to a number
-      this.dimension = this.surveyService.getDimension(id);
+      this.dimension = this.assessmentService.getDimension(id);
       this.userService.user$.subscribe((user) =>{
         this.assessmentData = user.assessment;
         this.buildData();
@@ -77,9 +77,9 @@ export class DimensionsComponent implements OnInit, OnDestroy {
 
     console.log('Building data.');
 
-    this.answerData = this.surveyService.getAnwerForQuestion(this.assessmentData, this.dimension.id)[0] || [];
+    this.answerData = this.assessmentService.getAnwerForQuestion(this.assessmentData, this.dimension.id)[0] || [];
     this.answerConfirmed = (this.answerData.subs.length == this.subquestions.length) && this.answerData.subs.indexOf('null') == -1 && this.answerData.subs.indexOf('') == -1;
-    this.seriesdata = this.surveyService.getSubsForDimension(this.assessmentData, this.dimension.id)[0].subs || [];
+    this.seriesdata = this.assessmentService.getSubsForDimension(this.assessmentData, this.dimension.id)[0].subs || [];
 
     console.log('THE DIMENSION IS: ' , this.dimension.category);
     this.categories.push({id: this.dimension.id, category: this.dimension.category});
@@ -88,7 +88,7 @@ export class DimensionsComponent implements OnInit, OnDestroy {
 
     let temp2 = [];
     //loop through sub questions and then get each map data to what they chose for each area.
-    this.surveyService.subquestions.map((x, i)=> {
+    this.assessmentService.subquestions.map((x, i)=> {
       //console.log('Row:', i, x);
       let visible = i == 0;
       temp2.push({name: x.category, data: [ this.assessmentData[this.dimension.id - 1].subs[i]], visible: true, color: x.color});

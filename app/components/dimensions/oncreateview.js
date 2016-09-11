@@ -1,4 +1,4 @@
-System.register(['@angular/core', "../survey/survey.service"], function(exports_1, context_1) {
+System.register(['@angular/core', "../assessment/assessment.service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,27 +10,27 @@ System.register(['@angular/core', "../survey/survey.service"], function(exports_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, survey_service_1;
+    var core_1, assessment_service_1;
     var OnCreateView;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (survey_service_1_1) {
-                survey_service_1 = survey_service_1_1;
+            function (assessment_service_1_1) {
+                assessment_service_1 = assessment_service_1_1;
             }],
         execute: function() {
             OnCreateView = (function () {
-                function OnCreateView(el, surveyService) {
+                function OnCreateView(el, assessmentService) {
                     this.el = el;
-                    this.surveyService = surveyService;
+                    this.assessmentService = assessmentService;
                     this.el = el;
-                    this.surveyService = surveyService;
+                    this.assessmentService = assessmentService;
                 }
                 OnCreateView.prototype.ngOnInit = function () {
                     var _this = this;
-                    this.surveyService.getHtmlForDimension(this.onCreateView).subscribe(function (html) {
+                    this.assessmentService.getHtmlForDimension(this.onCreateView).subscribe(function (html) {
                         _this.el.nativeElement.innerHTML = html;
                     });
                 };
@@ -42,7 +42,7 @@ System.register(['@angular/core', "../survey/survey.service"], function(exports_
                     core_1.Directive({
                         selector: '[onCreateView]'
                     }), 
-                    __metadata('design:paramtypes', [core_1.ElementRef, survey_service_1.SurveyService])
+                    __metadata('design:paramtypes', [core_1.ElementRef, assessment_service_1.AssessmentService])
                 ], OnCreateView);
                 return OnCreateView;
             }());

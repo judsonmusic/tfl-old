@@ -1,6 +1,6 @@
 import {Component, Input, ElementRef, OnInit} from '@angular/core';
 import {TitleCasePipe} from "../pipes/titlecase.pipe";
-import {SurveyService} from "../survey/survey.service";
+import {AssessmentService} from "../assessment/assessment.service";
 import {UserService} from "../user-service/user.service";
 
 declare var jQuery:any;
@@ -25,7 +25,7 @@ export class BarChartComponent implements OnInit {
 
   }
 
-  constructor(public surveyService: SurveyService, public userService: UserService) {
+  constructor(public assessmentService: AssessmentService, public userService: UserService) {
 
   }
 
