@@ -10,13 +10,17 @@
       </div>
 
       <div class="modal-body">
+
+        USER DATA: {{userService.userData | json}}
+
+
         <form class="form">
 
 
-        <p>Our desire is to ensure the TFL Assessment experience is meaningful to all participates so your feedback is extremely important to us. Please take a few minute and share your thoughts with us.</p>
+          <p>Our desire is to ensure the TFL Assessment experience is meaningful to all participates so your feedback is extremely important to us. Please take a few minute and share your thoughts with us.</p>
 
-        <p>Please rate each statements based on the below rating scale.<br/>
-      1 = strongly disagree, 2 = disagree, 3 neutral 4 = agree 5 = strongly agree</p>
+          <p>Please rate each statements based on the below rating scale.<br/>
+            1 = strongly disagree, 2 = disagree, 3 neutral 4 = agree 5 = strongly agree</p>
 
           <ol style="padding: 0;">
             <li *ngFor="let q of survey_questions" class="" style="position:relative;">
@@ -26,12 +30,25 @@
                 <label [attr.for]="q.id + '_' + a.id"><span></span>{{a.value}}</label>
               </div>
             </li>
+            <li style="padding-top:15px;">I think the TFL assessment, reporting and TFL Empowerment Guide is worth:
+              <div class="form-group">
+              <select class="form-control">
+                <option value="">$59 to $68</option>
+                <option value="">$69 to $78</option>
+                <option value="">$79 to $88</option>
+                <option value="">$89 to $99</option>
+                <option value="">$99 to $109</option>
+              </select></div>
+            </li>
+            <li>We value your feedback so feel free to provide any additional comments:
+              <div class="form-group">
+                <textarea class="form-control"></textarea>
+              </div>
+            </li>
           </ol>
-
-
-        <div class="text-right">
-          <button class="btn btn-primary" (click)="lgModal.hide();">Ok</button>
-        </div>
+          <div class="text-right">
+            <button class="btn btn-primary" (click)="lgModal.hide();">Ok</button>
+          </div>
 
         </form>
       </div>

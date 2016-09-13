@@ -11,6 +11,7 @@ import { authProviders }      from './login.routing';
 import {LoginComponent} from "./components/login/login.component";
 import {DimensionsComponent} from "./components/dimensions/dimensions.component";
 import {ActionComponent} from "./components/action/action.component";
+import {TflGuideComponent} from "./components/tfl-guide/tfl-guide.component";
 
 
 const appRoutes:Routes = [
@@ -22,6 +23,7 @@ const appRoutes:Routes = [
   { path: 'assessment', component: AssessmentComponent },
   { path: 'about', component: AboutComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'tfl-guide', component: TflGuideComponent},
 
   { path: 'dimensions/:id', component: DimensionsComponent},
   { path: '**', component: PageNotFoundComponent}

@@ -18,6 +18,11 @@ export class ModalHelpComponent implements AfterViewInit {
   @ViewChild('childModal') public childModal:ModalDirective;
   @ViewChild('lgModal') public lgModal:ModalDirective;
 
+  constructor(){
+
+    console.log('Modal Help Loaded');
+  }
+
   public show(){
     this.lgModal.show();
   }

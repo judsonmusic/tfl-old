@@ -23,6 +23,9 @@ import {BarChartComponent} from "./components/charts/barChart.component";
 import {OnCreate} from "./components/directives/oncreate.directive";
 import {ActionComponent} from "./components/action/action.component";
 import {AssessmentService} from "./components/assessment/assessment.service";
+import {ModalSurveyComponent} from "./components/modals/modalSurveyComponent";
+import {TflGuideComponent} from "./components/tfl-guide/tfl-guide.component";
+import {Action} from "rxjs/scheduler/Action";
 
 
 @NgModule({
@@ -35,19 +38,17 @@ import {AssessmentService} from "./components/assessment/assessment.service";
   ],
   declarations: [
     AppComponent,
-    LoginComponent,
-    UserComponent,
     AboutComponent,
-    HomeComponent,
-    PageNotFoundComponent,
-    DashboardComponent,
-    AssessmentComponent,
-    ResourcesComponent,
     LogoutComponent,
+    ResourcesComponent,
+    HomeComponent,
+    AssessmentComponent,
+    DashboardComponent,
+    ActionComponent,
+    LoginComponent,
+    TflGuideComponent,
     DimensionsComponent,
-    BarChartComponent,
-    OnCreate,
-    ActionComponent
+    PageNotFoundComponent
   ],
   providers: [
     UserService,

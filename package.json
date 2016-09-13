@@ -45,7 +45,7 @@
     "moment": "^2.14.1",
     "mongoose": "^4.5.8",
     "morgan": "^1.7.0",
-    "ng2-bootstrap": "^1.0.24",
+    "ng2-bootstrap": "^1.1.2",
     "nodemailer": "^2.6.0",
     "open": "0.0.5",
     "path": "^0.12.7",

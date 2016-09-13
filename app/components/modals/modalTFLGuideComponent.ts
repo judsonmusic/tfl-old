@@ -19,6 +19,11 @@ export class ModalTFLGuideComponent implements AfterViewInit {
   @ViewChild('childModal') public childModal:ModalDirective;
   @ViewChild('lgModal') public lgModal:ModalDirective;
 
+  constructor(){
+
+    console.log('Modal TFL Guide Loaded');
+  }
+
   public show(){
     this.lgModal.show();
   }

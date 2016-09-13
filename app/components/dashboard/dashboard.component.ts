@@ -30,6 +30,8 @@ import {MotivatedFilterPipe} from "../pipes/motivated.pipe";
 })
 export class DashboardComponent implements OnInit {
 
+
+
   public areas:any;
   public assessmentData: any[];
   public categories: any;
@@ -38,6 +40,8 @@ export class DashboardComponent implements OnInit {
   public motivatedAreas: any;
 
   constructor(public router: Router, public assessmentService: AssessmentService, public userService: UserService) {
+
+    console.log('Dashboard ts loaded.!');
 
     this.router = router;
     this.assessmentService = assessmentService;

@@ -18,6 +18,11 @@ export class ModalDemoComponent implements AfterViewInit {
   @ViewChild('childModal') public childModal:ModalDirective;
   @ViewChild('lgModal') public lgModal:ModalDirective;
 
+  constructor(){
+
+    console.log('Modal Demo Loaded');
+  }
+
   public show(){
 
     console.log('Show modal!');

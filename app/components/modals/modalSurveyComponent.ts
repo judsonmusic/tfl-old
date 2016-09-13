@@ -4,6 +4,7 @@ import {CORE_DIRECTIVES} from '@angular/common';
 // todo: change to ng2-bootstrap
 import {MODAL_DIRECTIVES, BS_VIEW_PROVIDERS} from 'ng2-bootstrap/ng2-bootstrap';
 import {ModalDirective} from 'ng2-bootstrap/ng2-bootstrap';
+import {UserService} from "../user-service/user.service";
 import {SurveyService} from "../survey/survey.service";
 
 
@@ -12,24 +13,21 @@ import {SurveyService} from "../survey/survey.service";
   directives: [MODAL_DIRECTIVES, CORE_DIRECTIVES],
   viewProviders: [BS_VIEW_PROVIDERS],
   templateUrl: '/app/components/modals/modalSurvey.component.html',
-  exportAs: 'child-survey'
-
+  exportAs: 'child6'
 })
 export class ModalSurveyComponent implements AfterViewInit {
 
   @ViewChild('childModal') public childModal:ModalDirective;
   @ViewChild('lgModal') public lgModal:ModalDirective;
 
-  public survey_answers: any;
-  public survey_questions: any;
-  public survey_answered: any;
+  public survey_questions;
 
-  constructor(public surveyService: SurveyService){
+  constructor(public userService: UserService, public surveyService: SurveyService){
 
-    this.survey_questions = this.surveyService.questions;
-    console.log('Survey Questions', this.surveyService.questions);
-    this.survey_answers = this.surveyService.answers;
-    this.survey_answered = [];
+    console.log('Modal Survey Loaded');
+    this.userService = UserService;
+    this.surveyService = SurveyService;
+    this.survey_questions = surveyService.questions;
   }
 
   public show(){

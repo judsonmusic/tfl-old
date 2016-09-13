@@ -19,6 +19,11 @@ export class ModalDataJunkieComponent implements AfterViewInit {
   @ViewChild('childModal') public childModal:ModalDirective;
   @ViewChild('lgModal') public lgModal:ModalDirective;
 
+  constructor(){
+
+    console.log('Modal DataJunkie Loaded');
+  }
+
   public show(){
     this.lgModal.show();
   }
