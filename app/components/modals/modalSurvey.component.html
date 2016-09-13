@@ -11,7 +11,7 @@
 
       <div class="modal-body">
 
-        USER DATA: {{userService.userData | json}}
+        USER DATA: {{userData | json}}
 
 
         <form class="form">
@@ -26,7 +26,7 @@
             <li *ngFor="let q of survey_questions" class="" style="position:relative;">
               <div style="padding-bottom:15px;">{{q.question}}</div>
               <div class="assessment-radio-wrapper" *ngFor="let a of survey_answers">
-                <input type="radio" id="{{q.id}}_{{a.id}}" name="assessment_{{q.category}}" [value]="a.id" [(ngModel)]="survey_answered[q.id-1]"/> {{a.id}}
+                <input type="radio" id="{{q.id}}_{{a.id}}" name="survey_question_{{q.id}}" [value]="a.id" [(ngModel)]="userData.survey[q.id-1]"/> {{a.id}}
                 <label [attr.for]="q.id + '_' + a.id"><span></span>{{a.value}}</label>
               </div>
             </li>

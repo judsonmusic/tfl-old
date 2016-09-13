@@ -21,6 +21,8 @@ export class ModalSurveyComponent implements AfterViewInit {
   @ViewChild('lgModal') public lgModal:ModalDirective;
 
   public survey_questions;
+  public survey_answers;
+  public userData;
 
   constructor(public userService: UserService, public surveyService: SurveyService){
 
@@ -28,6 +30,8 @@ export class ModalSurveyComponent implements AfterViewInit {
     this.userService = UserService;
     this.surveyService = SurveyService;
     this.survey_questions = surveyService.questions;
+    this.survey_answers = surveyService.answers;
+    this.userData = userService.userData;
   }
 
   public show(){
