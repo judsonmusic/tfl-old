@@ -1,5 +1,6 @@
 import { Component, ViewContainerRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {Location} from '@angular/common';
 import {HeaderComponent} from "./components/layout/header.component";
 import {UserService} from "./components/user-service/user.service";
 import {AuthService} from "./components/auth/auth.service";
@@ -15,13 +16,15 @@ export class AppComponent implements OnInit{
   public userService;
   public authService;
   public router;
+  public location;
 
-  public constructor(viewContainerRef:ViewContainerRef, userService: UserService, authService: AuthService, router: Router) {
+  public constructor(viewContainerRef:ViewContainerRef, userService: UserService, authService: AuthService, router: Router, location:Location) {
 
     this.viewContainerRef = viewContainerRef;
     this.userService = userService;
     this.authService = authService;
     this.router = router;
+    this.location = location;
 
   }
 
@@ -32,7 +35,11 @@ export class AppComponent implements OnInit{
       //this.authService.isLoggedIn = true;
       //let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/dashboard';
       // Redirect the user
-      //this.router.navigate([redirect]);
+      //console.log('The location is: ', this.location.path());
+      if(this.location.path() == '/' || this.location.path() == '') {
+
+        this.router.navigate(['/dashboard']);
+      }
 
     }, (error) => {
       console.log('Error! Redirecting!');

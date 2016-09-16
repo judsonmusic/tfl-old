@@ -1,11 +1,13 @@
-import {Component, ViewChild, AfterViewInit, Input} from '@angular/core';
+import {Component, ViewChild, AfterViewInit} from '@angular/core';
 import {CORE_DIRECTIVES} from '@angular/common';
+import {Router} from "@angular/router";
 
 // todo: change to ng2-bootstrap
 import {MODAL_DIRECTIVES, BS_VIEW_PROVIDERS} from 'ng2-bootstrap/ng2-bootstrap';
 import {ModalDirective} from 'ng2-bootstrap/ng2-bootstrap';
 import {UserService} from "../user-service/user.service";
 import {SurveyService} from "../survey/survey.service";
+
 
 
 @Component({
@@ -23,42 +25,75 @@ export class ModalSurveyComponent implements AfterViewInit {
   public survey_questions;
   public survey_answers;
   public userData;
+  public surveyComplete;
 
-  constructor(public userService: UserService, public surveyService: SurveyService) {
+  constructor(public userService: UserService, public surveyService: SurveyService, private router: Router) {
 
-    console.log('Modal Survey Loaded');
+
     this.userService = userService;
     this.surveyService = surveyService;
     this.survey_questions = surveyService.questions;
     this.survey_answers = surveyService.answers;
     this.userData = userService.userData;
+    if(this.userData.survey.length <= 0){
+
+      this.userData.survey = this.surveyService.survey;
+
+    }
+
+
   }
 
-  public updateSurvey(ev, id) {
+  public checkComplete(){
 
-    var itemExists = false;
     this.userData.survey.map((item, index)=> {
 
-      itemExists = false;
-
-      //check if item id event exists?
-      itemExists = item.id == id;
-
-      if (itemExists) {
-
-        item.answer = ev.target.value;
+      if(item.answer == ""){
+        //console.log('Answer Not complete!');
+        this.surveyComplete = false;
 
       }else{
-
-        this.userData.survey.push({id: id, answer: ev.target.value});
+        //console.log('Answer complete!');
+        this.surveyComplete = true;
       }
 
     });
 
-    if (!itemExists) {
+    if(this.surveyComplete){
 
-      this.userData.survey.push({id: id, answer: ev.target.value});
+      console.log('The survey is complete. Lets update the account', this.userData);
+
+      this.userService.updateAccount(this.userData).subscribe((user)=>{
+
+        console.log('Account updated with survey data!', user);
+
+      })
     }
+  }
+
+  public updateSurvey(ev, id) {
+
+    this.surveyComplete = true;
+
+    //console.log('Attempting to update', ev, id);
+
+    let itemExists = false;
+
+    this.userData.survey.map((item, index)=> {
+
+      if (item.id == id) {
+        itemExists = true;
+        item.answer = ev.target.value;
+      }
+
+    });
+
+    itemExists = false;
+    this.checkComplete();
+  }
+
+  getSurveyAnswer(id: number): string {
+    return this.userData.survey.find(s => s.id == id).answer;
   }
 
   public show() {
@@ -74,7 +109,16 @@ export class ModalSurveyComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    //this.lgModal2.show();
+
+    this.checkComplete();
+
+  }
+
+  public completeSurvey(){
+    this.lgModal.hide();
+    this.router.navigate(['tfl-guide']);
+
+
   }
 
 

@@ -50,9 +50,41 @@ export class DashboardComponent implements OnInit {
     this.userService = userService;
     this.dataCheckPassed = false;
     this.motivatedAreas = [];
+
+  }
+
+  public surveyComplete = false;
+
+  public checkComplete(){
+
+    this.userService.userData.survey.map((item, index)=> {
+
+      if(item.answer == ""){
+        //console.log('Answer Not complete!');
+        this.surveyComplete = false;
+
+      }else{
+        //console.log('Answer complete!');
+        this.surveyComplete = true;
+      }
+
+    });
+
+    if(this.surveyComplete){
+
+      console.log('The survey is complete. Lets update the account', this.userService.userData);
+
+      this.userService.updateAccount(this.userService.userData).subscribe((user)=>{
+
+        console.log('Account updated with survey data!', user);
+
+      })
+    }
   }
 
   ngOnInit(){
+
+    this.checkComplete();
 
     //if I already have data from login, simply load it.
     this.assessmentData = this.userService.userData.assessment || [];
@@ -148,4 +180,6 @@ export class DashboardComponent implements OnInit {
 
 
   }
+
+
 }

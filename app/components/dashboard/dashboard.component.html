@@ -75,8 +75,8 @@ ALGORITHM:
        [tooltipEnable]="true"></i><br/>
     Data Junkie
   </div>
-  <div class="col-xs-4 col-sm-2 col-md-2 text-center action-icons" style="padding: 20px;">
-    <i *ngIf="dataCheckPassed"  class="fa fa-file-pdf-o red" aria-hidden="true" style="font-size: 72px; cursor: pointer" (click)="s.show()"
+  <div class="col-xs-4 col-sm-2 col-md-2 text-center action-icons" style="padding: 20px;">{{surveyComplete}}
+    <i *ngIf="dataCheckPassed"  class="fa fa-file-pdf-o red" aria-hidden="true" style="font-size: 72px; cursor: pointer" (click)="(surveyComplete && router.navigate(['tfl-guide'])) || s.show()"
        tooltip="Access your TFL Empowerment Guide."
        tooltipPlacement="top"
        tooltipTrigger="mouseenter"
