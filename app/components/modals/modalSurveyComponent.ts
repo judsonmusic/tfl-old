@@ -17,32 +17,59 @@ import {SurveyService} from "../survey/survey.service";
 })
 export class ModalSurveyComponent implements AfterViewInit {
 
-  @ViewChild('childModal') public childModal:ModalDirective;
-  @ViewChild('lgModal') public lgModal:ModalDirective;
+  @ViewChild('childModal') public childModal: ModalDirective;
+  @ViewChild('lgModal') public lgModal: ModalDirective;
 
   public survey_questions;
   public survey_answers;
   public userData;
 
-  constructor(public userService: UserService, public surveyService: SurveyService){
+  constructor(public userService: UserService, public surveyService: SurveyService) {
 
     console.log('Modal Survey Loaded');
-    this.userService = UserService;
-    this.surveyService = SurveyService;
+    this.userService = userService;
+    this.surveyService = surveyService;
     this.survey_questions = surveyService.questions;
     this.survey_answers = surveyService.answers;
     this.userData = userService.userData;
   }
 
-  public show(){
+  public updateSurvey(ev, id) {
+
+    var itemExists = false;
+    this.userData.survey.map((item, index)=> {
+
+      itemExists = false;
+
+      //check if item id event exists?
+      itemExists = item.id == id;
+
+      if (itemExists) {
+
+        item.answer = ev.target.value;
+
+      }else{
+
+        this.userData.survey.push({id: id, answer: ev.target.value});
+      }
+
+    });
+
+    if (!itemExists) {
+
+      this.userData.survey.push({id: id, answer: ev.target.value});
+    }
+  }
+
+  public show() {
     this.lgModal.show();
   }
 
-  public showChildModal():void {
+  public showChildModal(): void {
     this.childModal.show();
   }
 
-  public hideChildModal():void {
+  public hideChildModal(): void {
     this.childModal.hide();
   }
 

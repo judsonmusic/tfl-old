@@ -65,7 +65,9 @@ export class SurveyService{
       {id: 16, answer: ""},
       {id: 17, answer: ""},
       {id: 18, answer: ""},
-      {id: 19, answer: ""}
+      {id: 19, answer: ""},
+      {id: 100, answer: ""},
+      {id: 1001, answer: ""}
 
     ];
   }

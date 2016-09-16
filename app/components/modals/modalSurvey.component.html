@@ -26,13 +26,13 @@
             <li *ngFor="let q of survey_questions" class="" style="position:relative;">
               <div style="padding-bottom:15px;">{{q.question}}</div>
               <div class="assessment-radio-wrapper" *ngFor="let a of survey_answers">
-                <input type="radio" id="{{q.id}}_{{a.id}}" name="survey_question_{{q.id}}" [value]="a.id" [(ngModel)]="userData.survey[q.id-1]"/> {{a.id}}
+                <input type="radio" id="{{q.id}}_{{a.id}}" name="survey_question_{{q.id}}" [value]="a.id" (change)="updateSurvey($event, q.id)"/> {{a.id}}
                 <label [attr.for]="q.id + '_' + a.id"><span></span>{{a.value}}</label>
               </div>
             </li>
             <li style="padding-top:15px;">I think the TFL assessment, reporting and TFL Empowerment Guide is worth:
               <div class="form-group">
-              <select class="form-control">
+              <select name="guideWorth" class="form-control" (change)="updateSurvey($event, 100)">
                 <option value="">$59 to $68</option>
                 <option value="">$69 to $78</option>
                 <option value="">$79 to $88</option>
@@ -42,7 +42,7 @@
             </li>
             <li>We value your feedback so feel free to provide any additional comments:
               <div class="form-group">
-                <textarea class="form-control"></textarea>
+                <textarea name="comments" class="form-control" (change)="updateSurvey($event, 101)"></textarea>
               </div>
             </li>
           </ol>

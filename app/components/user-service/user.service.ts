@@ -49,6 +49,12 @@ export class UserService{
             this.authService.isLoggedIn = true;
             this.loggedIn.next(true);
             this.userData = res;
+            if(this.userData.survey.length == 0){
+
+              //need to update survey for user...
+              this.userData.survey = this.surveyService.survey;
+              this.updateAccount(this.userData);
+            }
             this.user.next(res);
 
             return res;
@@ -147,6 +153,8 @@ export class UserService{
     // });
 
     //console.log('PAYLOAD FOR UPDATE USER: ' , user);
+
+    //user.survey = this.surveyService.survey;
 
     return this.http
       .put(
