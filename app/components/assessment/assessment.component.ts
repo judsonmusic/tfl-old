@@ -108,7 +108,7 @@ export class AssessmentComponent implements OnInit {
 
     this.g.onShow.subscribe((hidden)=> {
 
-      console.log('The modal us showig!');
+      //console.log('The modal us showig!');
 
     });
 
@@ -117,7 +117,7 @@ export class AssessmentComponent implements OnInit {
 
     this.g.onHide.subscribe((hidden)=>{
 
-      console.log('The modal us hidden!');
+      //console.log('The modal us hidden!');
       this.save();
       this.router.navigate(['dashboard']);
     });

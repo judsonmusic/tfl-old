@@ -132,7 +132,7 @@ export class UserService{
   }
 
   updateAccount(user) {
-    console.log('Updating Account');
+    //console.log('Updating Account');
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('x-access-token', localStorage.getItem('jwt'));

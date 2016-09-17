@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(public router: Router, public assessmentService: AssessmentService, public userService: UserService) {
 
-    console.log('Dashboard ts loaded.!');
+    //console.log('Dashboard ts loaded.!');
 
     this.router = router;
     this.assessmentService = assessmentService;
@@ -57,24 +57,32 @@ export class DashboardComponent implements OnInit {
 
   public checkComplete(){
 
+    let complete = [];
+
     this.userService.userData.survey.map((item, index)=> {
 
-      if(item.answer == ""){
-        this.surveyComplete = false;
+      if (item.id != 101 && item.id != 100 && item.answer == "") {
 
-      }else{
-        this.surveyComplete = true;
+        complete.push(false);
+
+      } else{
+
+        complete.push(true);
+
       }
+
 
     });
 
+    this.surveyComplete = complete.indexOf(false) == -1;
+
     if(this.surveyComplete){
 
-      console.log('The survey is complete. Lets update the account', this.userService.userData);
+      //console.log('The survey is complete. Lets update the account', this.userService.userData);
 
       this.userService.updateAccount(this.userService.userData).subscribe((user)=>{
 
-        console.log('Account updated with survey data!', user);
+        //console.log('Account updated with survey data!', user);
 
       })
     }

@@ -1,12 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Http, Headers} from '@angular/http';
 import {Subject} from "../../../node_modules/rxjs/src/Subject";
 import {Observable} from "../../../node_modules/rxjs/src/Observable";
 
 
-
 @Injectable()
-export class SurveyService{
+export class SurveyService {
 
   questions: any;
   answers: any;
@@ -14,7 +13,6 @@ export class SurveyService{
   survey: any;
   surveyComplete: boolean;
   //surveyComplete$:Observable<any>;
-
 
 
   constructor(public http: Http) {
@@ -65,38 +63,38 @@ export class SurveyService{
       {id: 10, answer: ""},
       {id: 11, answer: ""},
       {id: 12, answer: ""},
-      {id: 13, answer: ""},
-      {id: 14, answer: ""},
-      {id: 15, answer: ""},
-      {id: 16, answer: ""},
-      {id: 17, answer: ""},
-      {id: 18, answer: ""},
-      {id: 19, answer: ""},
       {id: 100, answer: ""},
       {id: 101, answer: ""}
 
     ];
   }
 
-  public checkComplete(userData){
+  public checkComplete(userData) {
 
-    let complete = false;
+    let complete = [];
+
+    if(userData.survey.length > 0) {
 
       userData.survey.map((item)=> {
 
-      if(item.answer == ""){
+        if (item.id == 101 || item.id == 100 || item.answer != "") {
 
-        complete = false;
+          complete.push(true);
 
-      }else{
+        } else {
 
-        complete = true;
-      }
+          complete.push(false);
 
-    });
+        }
 
+      });
 
-    this.surveyComplete = complete;
+      this.surveyComplete = complete.indexOf(false) == -1;
+
+    }else{
+
+      this.surveyComplete = false;
+    }
 
 
   }

@@ -30,6 +30,7 @@
             <li style="padding-top:15px;">I think the TFL assessment, reporting and TFL Empowerment Guide is worth:
               <div class="form-group">
               <select name="guideWorth" class="form-control" (change)="updateSurvey($event, 100)" [value]="getSurveyAnswer(100)">
+                <option value="">Please select</option>
                 <option value="59-68">$59 to $68</option>
                 <option value="69-78">$69 to $78</option>
                 <option value="79-88">$79 to $88</option>
@@ -39,14 +40,13 @@
             </li>
             <li>We value your feedback so feel free to provide any additional comments:
               <div class="form-group">
-                <textarea name="comments" class="form-control" (change)="updateSurvey($event, 101)" [value]="getSurveyAnswer(101)"></textarea>
+                <textarea name="comments" class="form-control" (keyup)="updateSurvey($event, 101)" [value]="getSurveyAnswer(101)"></textarea>
               </div>
             </li>
           </ol>
           <div class="text-right">
             <button class="btn btn-primary" type="button" (click)="completeSurvey()" *ngIf="surveyComplete">Ok</button>
           </div>
-
         </form>
       </div>
     </div>

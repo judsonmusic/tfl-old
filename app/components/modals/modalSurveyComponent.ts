@@ -46,24 +46,32 @@ export class ModalSurveyComponent implements AfterViewInit {
 
   public checkComplete(){
 
+    let complete = [];
+
     this.userData.survey.map((item, index)=> {
 
-      if(item.answer == ""){
-        //console.log('Answer Not complete!');
-        this.surveyComplete = false;
+      if (item.id == 101 || item.id == 100 || item.answer != "") {
 
-      }else{
-        //console.log('Answer complete!');
-        this.surveyComplete = true;
+        complete.push(true);
+
+      } else{
+
+        complete.push(false);
+
       }
 
     });
+    //console.log(complete);
+    this.surveyComplete = complete.indexOf(false) == -1;
+
 
     if(this.surveyComplete){
 
       //console.log('The survey is complete. Lets update the account', this.userData);
 
       this.userService.updateAccount(this.userData).subscribe((user)=>{
+
+        this.surveyService.surveyComplete = true;
 
         //console.log('Account updated with survey data!', user);
 
@@ -85,7 +93,6 @@ export class ModalSurveyComponent implements AfterViewInit {
         itemExists = true;
         item.answer = ev.target.value;
       }
-
     });
 
     itemExists = false;
@@ -117,8 +124,6 @@ export class ModalSurveyComponent implements AfterViewInit {
   public completeSurvey(){
     this.lgModal.hide();
     this.router.navigate(['tfl-guide']);
-
-
   }
 
 

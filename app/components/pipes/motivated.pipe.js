@@ -22,7 +22,7 @@ System.register(['@angular/core'], function(exports_1, context_1) {
                 function MotivatedFilterPipe() {
                 }
                 MotivatedFilterPipe.prototype.transform = function (items, args) {
-                    console.log(items, args);
+                    //console.log(items, args);
                     return items.filter(function (item) { return item.subs[3] < 80 && item.subs[5] > 60; });
                 };
                 MotivatedFilterPipe = __decorate([
