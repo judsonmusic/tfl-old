@@ -78,7 +78,7 @@ export class DimensionsComponent implements OnInit, OnDestroy {
     console.log('Building data.');
 
     this.answerData = this.assessmentService.getAnwerForQuestion(this.assessmentData, this.dimension.id)[0] || [];
-    this.answerConfirmed = (this.answerData.subs.length == this.subquestions.length) && this.answerData.subs.indexOf('null') == -1 && this.answerData.subs.indexOf('') == -1;
+    this.answerConfirmed = (this.answerData.subs.length == this.subquestions.length) && this.answerData.subs.indexOf(0) == -1;
     this.seriesdata = this.assessmentService.getSubsForDimension(this.assessmentData, this.dimension.id)[0].subs || [];
 
     console.log('THE DIMENSION IS: ' , this.dimension.category);

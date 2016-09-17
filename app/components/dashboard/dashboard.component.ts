@@ -114,9 +114,9 @@ export class DashboardComponent implements OnInit {
 
   buildSeries(){
 
-
+  console.log('Build Series');
     let temp2 = [];
-    //loop through sub questions and then get each map data to what they chose for each area.
+    //for 5 subquestions...
     this.assessmentService.subquestions.map((x, i)=> {
       //console.log('Row:', i, x);
       let visible = i == 0;
@@ -125,7 +125,10 @@ export class DashboardComponent implements OnInit {
     });
 
     this.dataCheckPassed = true;
+    console.log('TEMP 2 is: ', temp2);
     this.assessmentData.map((x) =>{
+
+      if(x.subs.length == 0){ x.subs = [0,0,0,0,0,0]};
 
       if(x.answer == ""){
 
@@ -136,8 +139,8 @@ export class DashboardComponent implements OnInit {
         //for each area on the series, we need to set what they selected from each area. 5 total. For example spiriitual.
         temp2.map((z, index)=> {
           //in each of the 5 things, get the values by index.
-          //console.log('The index of data we are pushing to:', z);
-          z.data.push(x.subs[index]);
+          //console.log('The data we are pushing to seriesData:', z);
+          if(x) z.data.push(x.subs[index]);
 
         });
 
@@ -147,11 +150,15 @@ export class DashboardComponent implements OnInit {
 
 
     this.seriesdata = temp2;
-    //console.log(this.seriesdata);
+    console.log('SERIES DATA: ' , this.seriesdata); //only want the dimenstions thaty were populated!
+
+    //cleanup!
+
+
 
 
     //at this point we have series data and we have categories...
-    this.assessmentData.map((x, i)=> {
+    this.assessmentData.map((x)=> {
       //if you are not satisfied but motivated
       //console.log('Satisfied:', x.subs[3], 'Motivated', x.subs[5]);
       if(x.subs[3] < 80 && x.subs[5] > 60) {
@@ -159,7 +166,7 @@ export class DashboardComponent implements OnInit {
       }
     });
 
-    //console.log('Motivated Areas', this.motivatedAreas);
+    console.log('Motivated Areas', this.motivatedAreas);
 
   }
 

@@ -25,8 +25,8 @@ ALGORITHM:
 <div class="row">
   <div class="col-md-12"><h4>Areas where you have low satisfaction but are motivated to change.</h4><hr/></div>
   <div *ngFor="let item of assessmentData | motivatedFilter" class="col-xs-4 col-sm-2 col-md-2 text-center action-icons" style="padding: 20px;">
-      <i class="fa fa-unlock-alt green" aria-hidden="true" style="font-size: 72px; cursor: pointer" *ngIf="item.subs.length === 6 && item.subs.indexOf('null') == -1 && item.subs.indexOf('') == -1" (click)="goToDimension(item.id)"></i>
-      <i class="fa fa-lock" aria-hidden="true" style="font-size: 72px; color: #efefef; cursor: pointer" *ngIf="item.subs.length < 6 || item.subs.indexOf('null') > -1 || item.subs.indexOf('') > -1" (click)="goToDimension(item.id)"></i><br>
+      <i class="fa fa-unlock-alt green" aria-hidden="true" style="font-size: 72px; cursor: pointer" *ngIf="item.subs.indexOf(0) == -1" (click)="goToDimension(item.id)"></i>
+      <i class="fa fa-lock" aria-hidden="true" style="font-size: 72px; color: #efefef; cursor: pointer" *ngIf="item.subs.indexOf(0) > -1" (click)="goToDimension(item.id)"></i><br>
       {{(categories | myfilter: item.id)[0].category}}
   </div>
   <div class="col-md-12"><hr style="margin-top:50px;"/></div>
@@ -36,8 +36,8 @@ ALGORITHM:
 <div class="row">
   <div class="col-md-12"><h4>All areas</h4><hr/></div>
   <div *ngFor="let item of assessmentData" class="col-xs-4 col-sm-2 col-md-2 text-center action-icons" style="padding: 20px;">
-    <i class="fa fa-unlock-alt green" aria-hidden="true" style="font-size: 72px; cursor: pointer" *ngIf="item.subs.length === 6 && item.subs.indexOf('null') == -1 && item.subs.indexOf('') == -1" (click)="goToDimension(item.id)"></i>
-    <i class="fa fa-lock" aria-hidden="true" style="font-size: 72px; color: #efefef; cursor: pointer" *ngIf="item.subs.length < 6 || item.subs.indexOf('null') > -1 || item.subs.indexOf('') > -1" (click)="goToDimension(item.id)"></i><br>
+    <i class="fa fa-unlock-alt green" aria-hidden="true" style="font-size: 72px; cursor: pointer" *ngIf="item.subs.indexOf(0) == -1" (click)="goToDimension(item.id)"></i>
+    <i class="fa fa-lock" aria-hidden="true" style="font-size: 72px; color: #efefef; cursor: pointer" *ngIf="item.subs.indexOf(0) > -1" (click)="goToDimension(item.id)"></i><br>
     {{(categories | myfilter: item.id)[0].category}}
   </div>
   <div class="col-md-12"><hr style="margin-top:50px;"/></div>
