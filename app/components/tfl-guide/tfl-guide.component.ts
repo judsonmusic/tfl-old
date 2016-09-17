@@ -14,6 +14,7 @@ import {OnCreate} from "../directives/oncreate.directive";
 import {UserService} from "../user-service/user.service";
 import {ModalHelpComponent} from "../modals/modalHelpComponent";
 import {ModalHelpAppleComponent} from "../modals/modalHelpAppleComponent";
+import {SurveyService} from "../survey/survey.service";
 
 
 @Component({
@@ -27,19 +28,28 @@ export class TflGuideComponent implements OnInit {
   public areas:any;
   public assessmentData: any[];
   public categories: any;
+  public surveyComplete: any;
 
-  constructor(public router: Router, public assessmentService: AssessmentService, public userService: UserService) {
+  constructor(public router: Router, public assessmentService: AssessmentService, public userService: UserService, public surveyService: SurveyService) {
 
     this.router = router;
     this.assessmentService = assessmentService;
     this.areas = this.assessmentService.questions;
     this.assessmentData = [];
     this.userService = userService;
+    this.surveyService = surveyService;
+
+   if(!this.surveyService.surveyComplete){
+
+     this.router.navigate(['/dashboard']);
+
+    }
+
+
   }
 
 
   ngOnInit() {
-
 
 
 

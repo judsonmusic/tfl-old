@@ -60,11 +60,9 @@ export class DashboardComponent implements OnInit {
     this.userService.userData.survey.map((item, index)=> {
 
       if(item.answer == ""){
-        //console.log('Answer Not complete!');
         this.surveyComplete = false;
 
       }else{
-        //console.log('Answer complete!');
         this.surveyComplete = true;
       }
 
@@ -99,7 +97,7 @@ export class DashboardComponent implements OnInit {
 
     this.categories = temp;
 
-    console.log('Categories: ', temp);
+    //console.log('Categories: ', temp);
 
     this.buildSeries();
 
@@ -141,7 +139,7 @@ export class DashboardComponent implements OnInit {
 
 
     this.seriesdata = temp2;
-    console.log(this.seriesdata);
+    //console.log(this.seriesdata);
 
 
     //at this point we have series data and we have categories...
@@ -153,7 +151,7 @@ export class DashboardComponent implements OnInit {
       }
     });
 
-    console.log('Motivated Areas', this.motivatedAreas);
+    //console.log('Motivated Areas', this.motivatedAreas);
 
   }
 
@@ -163,21 +161,9 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  takeAction(id){
+  takeAction(){
 
     this.router.navigate(['/action']);
-
-  }
-
-  checkIfAnswered(id){
-
-    // this.assessmentData.map((item) =>{
-    //
-    //   console.log(item.id == id);
-    //
-    //
-    // });
-
 
   }
 

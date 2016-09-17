@@ -21,7 +21,7 @@ export class ModalDataJunkieComponent implements AfterViewInit {
 
   constructor(){
 
-    console.log('Modal DataJunkie Loaded');
+    //console.log('Modal DataJunkie Loaded');
   }
 
   public show(){

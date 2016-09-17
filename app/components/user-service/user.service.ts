@@ -25,7 +25,6 @@ export class UserService{
     this.loggedIn = new Subject();
     this.loggedIn$ = this.loggedIn.asObservable();
 
-
   }
 
   getUser(){
@@ -49,13 +48,8 @@ export class UserService{
             this.authService.isLoggedIn = true;
             this.loggedIn.next(true);
             this.userData = res;
-            /*if(this.userData.survey.length == 0){
-              //need to update survey for user...
-              this.userData.survey = this.surveyService.survey;
-              this.updateAccount(this.userData);
-            }*/
             this.user.next(res);
-
+            this.surveyService.checkComplete(this.userData);
             return res;
           }
         }, (error) => console.log('There was an error', error));
@@ -117,6 +111,7 @@ export class UserService{
             this.loggedIn.next(true);
             this.userData = res.user[0];
             this.user.next(res.user[0]);
+            this.surveyService.checkComplete(this.userData);
             return res;
 
 

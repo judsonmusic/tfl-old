@@ -12,11 +12,17 @@ export class SurveyService{
   answers: any;
   assessment: any;
   survey: any;
+  surveyComplete: boolean;
+  //surveyComplete$:Observable<any>;
+
 
 
   constructor(public http: Http) {
 
     this.http = http;
+
+    //this.surveyComplete = new Subject();
+    //this.surveyComplete$ = this.surveyComplete.asObservable();
 
     this.questions = [
 
@@ -72,4 +78,26 @@ export class SurveyService{
     ];
   }
 
+  public checkComplete(userData){
+
+    let complete = false;
+
+      userData.survey.map((item)=> {
+
+      if(item.answer == ""){
+
+        complete = false;
+
+      }else{
+
+        complete = true;
+      }
+
+    });
+
+
+    this.surveyComplete = complete;
+
+
+  }
 }

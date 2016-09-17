@@ -20,17 +20,17 @@ export class ModalDemoComponent implements AfterViewInit {
 
   constructor(){
 
-    console.log('Modal Demo Loaded');
+    //console.log('Modal Demo Loaded');
   }
 
   public show(){
 
-    console.log('Show modal!');
+    //console.log('Show modal!');
     this.lgModal.show();
   }
 
   public hide(){
-    console.log('Hide modal!');
+    //console.log('Hide modal!');
     sessionStorage.setItem('modal-demo', '1');
     this.lgModal.hide();
 

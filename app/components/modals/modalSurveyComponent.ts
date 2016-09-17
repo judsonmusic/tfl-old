@@ -61,11 +61,11 @@ export class ModalSurveyComponent implements AfterViewInit {
 
     if(this.surveyComplete){
 
-      console.log('The survey is complete. Lets update the account', this.userData);
+      //console.log('The survey is complete. Lets update the account', this.userData);
 
       this.userService.updateAccount(this.userData).subscribe((user)=>{
 
-        console.log('Account updated with survey data!', user);
+        //console.log('Account updated with survey data!', user);
 
       })
     }

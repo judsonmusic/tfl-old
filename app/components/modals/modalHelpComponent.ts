@@ -20,7 +20,7 @@ export class ModalHelpComponent implements AfterViewInit {
 
   constructor(){
 
-    console.log('Modal Help Loaded');
+    //console.log('Modal Help Loaded');
   }
 
   public show(){

@@ -21,7 +21,7 @@ export class ModalTFLGuideComponent implements AfterViewInit {
 
   constructor(){
 
-    console.log('Modal TFL Guide Loaded');
+    //console.log('Modal TFL Guide Loaded');
   }
 
   public show(){

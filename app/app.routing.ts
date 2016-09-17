@@ -23,7 +23,7 @@ const appRoutes:Routes = [
   { path: 'assessment', component: AssessmentComponent },
   { path: 'about', component: AboutComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'tfl-guide', component: TflGuideComponent},
+  { path: 'tfl-guide', component: TflGuideComponent, canActivate: [AuthGuard]},
 
   { path: 'dimensions/:id', component: DimensionsComponent},
   { path: '**', component: PageNotFoundComponent}

@@ -21,7 +21,7 @@
 
           <ol style="padding: 0;">
             <li *ngFor="let q of survey_questions; let i = index;" class="" style="position:relative;">
-              <div style="padding-bottom:15px;">{{q.question}}  index: {{userData.survey[i] | json}}</div>
+              <div style="padding-bottom:15px;">{{q.question}}</div>
               <div class="assessment-radio-wrapper" *ngFor="let a of survey_answers">
                 <input type="radio" id="{{q.id}}_{{a.id}}" name="survey_question_{{q.id}}" [value]="a.id" (change)="updateSurvey($event, q.id)" [(ngModel)]="userData.survey[i].answer"/> {{a.id}}
                 <label [attr.for]="q.id + '_' + a.id"><span></span>{{a.value}}</label>

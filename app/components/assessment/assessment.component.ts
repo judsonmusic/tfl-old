@@ -1,15 +1,21 @@
-import{Component, OnInit} from '@angular/core';
+import{Component, OnInit, ViewChild, ElementRef, Renderer} from '@angular/core';
 import {MyFilterPipe} from "../pipes/filter.pipe";
 import {Router} from '@angular/router';
 import {UserService} from "../user-service/user.service";
 import {AuthService} from "../auth/auth.service";
 import {AssessmentService} from "../assessment/assessment.service";
+import {ModalGenericComponent} from "../modals/modalGenericComponent";
+import {ModalDirective} from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
   templateUrl: '/app/components/assessment/assessment.component.html',
-  pipes: [MyFilterPipe]
+  pipes: [MyFilterPipe],
+  directives: [ModalGenericComponent]
 })
 export class AssessmentComponent implements OnInit {
+
+
+  @ViewChild('g') public g:ModalDirective;
 
   public data:any;
   public count = 0;
@@ -31,7 +37,7 @@ export class AssessmentComponent implements OnInit {
     });
   }
 
-  constructor(private router:Router, public userService: UserService, public authService: AuthService, public assessmentService: AssessmentService) {
+  constructor(private router:Router, public userService: UserService, public authService: AuthService, public assessmentService: AssessmentService, private renderer: Renderer) {
 
 
     this.authService.redirectUrl = '/assessment';
@@ -97,17 +103,25 @@ export class AssessmentComponent implements OnInit {
 
   finish(ev) {
 
-    if(confirm('Want to change any of your answers? Do it now! Once you hit the finish button all of your answered will be final.')) {
+    ev.preventDefault();
+    ev.stopPropagation();
 
+    this.g.onShow.subscribe((hidden)=> {
+
+      console.log('The modal us showig!');
+
+    });
+
+
+    this.g.show();
+
+    this.g.onHide.subscribe((hidden)=>{
+
+      console.log('The modal us hidden!');
       this.save();
-      ev.preventDefault();
-      ev.stopPropagation();
       this.router.navigate(['dashboard']);
-    }
-
+    });
   }
-
-
 
 
 }
